@@ -4,23 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kim Anderson | AI-Enabled AML & Fraud</title>
-  <meta name="description" content="AI-enabled AML and fraud professional building investigator-first systems for emerging risk." />
+  <meta name="description" content="AI AML & fraud professional building investigator-first systems for emerging risk." />
 
   <style>
     :root{
-      /* Warm, light, peaceful palette */
-      --bg:#F3EDE4;                 /* warm cream */
-      --ink:#1F2326;                /* near-charcoal */
-      --muted:#5C5F62;              /* cloudy gray */
+      /* Warm + dynamic but professional */
+      --bg1:#F6F0E6;
+      --bg2:#EFE9DF;
+      --ink:#1F2326;
+      --muted:#5A5F63;
       --border:rgba(31,35,38,.16);
 
-      --blue:#4F768F;               /* hushed blue */
-      --green:#7C9B86;              /* natural green */
-      --gold:#B68A3A;               /* subtle warmth accent */
+      --blue:#4D7893;
+      --green:#6F9A84;
+      --gold:#B68A3A;
 
       --card:#FFFFFF;
-      --softBlue:rgba(79,118,143,.14);
-      --softGreen:rgba(124,155,134,.18);
+      --softBlue:rgba(77,120,147,.16);
+      --softGreen:rgba(111,154,132,.20);
+      --softGold:rgba(182,138,58,.12);
 
       --radius:22px;
     }
@@ -29,10 +31,13 @@
 
     html,body{
       margin:0;
-      background:var(--bg);
       color:var(--ink);
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       line-height:1.6;
+      background:
+        radial-gradient(900px 500px at 18% 0%, rgba(77,120,147,.12), transparent 55%),
+        radial-gradient(900px 500px at 80% 10%, rgba(111,154,132,.14), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
     }
 
     a{color:inherit;text-decoration:none}
@@ -70,10 +75,9 @@
       height:92px;
       border-radius:22px;
       overflow:hidden;
-      border:3px solid var(--bg);
+      border:3px solid rgba(255,255,255,.8);
       box-shadow:0 14px 30px rgba(0,0,0,.14);
       flex:0 0 auto;
-      background:#ddd;
     }
 
     .avatar img{
@@ -95,10 +99,8 @@
       font-size:54px;
       font-weight:900;
       line-height:1;
-      letter-spacing:.1px;
     }
 
-    /* OPTION A TAGLINE */
     .tag{
       font-size:13px;
       color:var(--muted);
@@ -111,9 +113,6 @@
     nav{
       display:flex;
       gap:14px;
-      justify-content:flex-end;
-      align-items:flex-start;
-      flex:0 0 auto;
       white-space:nowrap;
       padding-top:8px;
     }
@@ -124,34 +123,35 @@
       padding:8px 10px;
       border-radius:12px;
       border:1px solid transparent;
+      transition:transform .15s ease, background .15s ease;
     }
 
     nav a:hover{
       background:linear-gradient(90deg, var(--softBlue), var(--softGreen));
       border-color:var(--border);
       color:var(--ink);
+      transform:translateY(-1px);
     }
 
-    /* Centered image (smaller) */
+    /* Center image */
     .heroImage{
       margin:22px auto 0;
-      max-width:680px;
-      border-radius:28px;
+      max-width:560px;
+      border-radius:26px;
       overflow:hidden;
       border:1px solid var(--border);
       background:var(--card);
-      box-shadow:0 12px 30px rgba(0,0,0,.08);
+      box-shadow:0 14px 34px rgba(0,0,0,.10);
     }
 
     .heroImage img{
       width:100%;
-      height:auto;
       display:block;
     }
 
     /* Hero */
     .hero{
-      padding:32px 0 10px;
+      padding:28px 0 10px;
       max-width:980px;
       margin:0 auto;
     }
@@ -163,30 +163,38 @@
       padding:8px 14px;
       border-radius:999px;
       border:1px solid var(--border);
-      background:var(--softGreen);
+      background:rgba(255,255,255,.7);
       font-size:13px;
     }
 
+    /* Mission dot blank → green on hover */
     .kicker .dot{
-      width:10px;
-      height:10px;
+      width:12px;
+      height:12px;
       border-radius:50%;
-      background:var(--blue);
+      border:2px solid var(--green);
+      background:transparent;
+      transform:scale(.75);
+      transition:background .2s ease, transform .25s ease;
+    }
+
+    .kicker:hover .dot{
+      background:var(--green);
+      transform:scale(1.05);
     }
 
     h1{
       font-size:28px;
-      font-weight:750;
+      font-weight:780;
       margin:18px 0 12px;
       max-width:52ch;
-      line-height:1.2;
     }
 
     .lead{
       font-size:17px;
       color:var(--muted);
       max-width:74ch;
-      margin:0 0 22px;
+      margin-bottom:22px;
     }
 
     .ctaRow{
@@ -199,23 +207,22 @@
       padding:11px 18px;
       border-radius:14px;
       border:1px solid var(--border);
-      background:var(--card);
+      background:rgba(255,255,255,.85);
       font-weight:650;
       font-size:14px;
-      display:inline-flex;
-      align-items:center;
+      box-shadow:0 10px 24px rgba(0,0,0,.08);
+      transition:transform .15s ease, box-shadow .15s ease;
     }
 
     .btn.primary{
       background:var(--ink);
-      color:var(--bg);
+      color:#fff;
       border-color:var(--ink);
     }
 
-    .btn.primary:hover{opacity:.92}
-
     .btn:hover{
-      background:linear-gradient(90deg, var(--softBlue), rgba(182,138,58,.10));
+      transform:translateY(-2px);
+      box-shadow:0 14px 32px rgba(0,0,0,.12);
     }
 
     .pillRow{
@@ -230,7 +237,7 @@
       padding:6px 12px;
       border-radius:999px;
       border:1px solid var(--border);
-      background:var(--softBlue);
+      background:linear-gradient(90deg, var(--softBlue), var(--softGreen));
     }
 
     section{
@@ -240,55 +247,39 @@
       margin-right:auto;
     }
 
-    h2{font-size:20px;margin:0 0 14px}
+    h2{font-size:20px;margin-bottom:14px}
 
     .box{
-      background:var(--card);
+      background:rgba(255,255,255,.85);
       border:1px solid var(--border);
       border-radius:var(--radius);
       padding:18px;
-      box-shadow:0 12px 30px rgba(0,0,0,.08);
+      box-shadow:0 14px 34px rgba(0,0,0,.10);
     }
 
-    .box.soft{
-      background:var(--softGreen);
-      border-color:transparent;
-      box-shadow:none;
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:18px;
     }
 
-    /* Hover dot OFF until hover */
-    .principles{
-      transition:transform .22s ease, box-shadow .22s ease;
+    .card{
+      grid-column:span 6;
+      background:rgba(255,255,255,.9);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:0 12px 30px rgba(0,0,0,.10);
+      transition:transform .18s ease, box-shadow .18s ease;
     }
 
-    .principles:hover{
+    .card:hover{
       transform:translateY(-4px);
       box-shadow:0 18px 44px rgba(0,0,0,.14);
     }
 
-    .principlesHead{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom:8px;
-    }
-
-    .dotSpin{
-      opacity:0;
-      width:12px;
-      height:12px;
-      border-radius:50%;
-      border:2px solid var(--green);
-      background:transparent;
-      transform:scale(.6);
-      transition:opacity .2s ease, transform .35s ease, background .2s ease;
-    }
-
-    .principles:hover .dotSpin{
-      opacity:1;
-      background:var(--green);
-      transform:rotate(180deg) scale(1.15);
-    }
+    .card h3{margin:0 0 6px;font-size:18px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
 
     footer{
       margin-top:56px;
@@ -299,10 +290,6 @@
       display:flex;
       justify-content:space-between;
       flex-wrap:wrap;
-      gap:12px;
-      max-width:980px;
-      margin-left:auto;
-      margin-right:auto;
     }
 
     @media(max-width:900px){
@@ -310,6 +297,7 @@
       nav{justify-content:flex-start}
       .name{font-size:44px}
       .tag{white-space:normal}
+      .card{grid-column:span 12}
     }
   </style>
 </head>
@@ -334,7 +322,7 @@
           <a href="#approach">Approach</a>
           <a href="#about">About</a>
           <a href="#resume">Resume</a>
-          <a href="#contact">Let’s talk</a>
+          <a href="#contact">Contact</a>
         </nav>
       </div>
     </header>
@@ -346,14 +334,14 @@
     <div class="hero">
       <div class="kicker">
         <span class="dot"></span>
-        <span><strong>Mission:</strong> Reduce fraud, financial harm, and emerging risk through investigator-first AI</span>
+        <span><strong>Mission:</strong> Reduce fraud financial harm, and emerging risk through investigator-first AI</span>
       </div>
 
       <h1>Helping investigators focus on the risk that actually matters.</h1>
 
       <p class="lead">
         I combine AML and fraud investigation experience with data and practical AI to reduce false positives,
-        surface defensible signals, and support better investigative decisions, including emerging risks in crypto.
+        surface defensible signals, and support better investigative decisions including crypto-related risk.
       </p>
 
       <div class="ctaRow">
@@ -364,25 +352,47 @@
 
       <div class="pillRow">
         <span class="pill">SQL</span>
-        <span class="pill">Python (baseline)</span>
+        <span class="pill">Python</span>
         <span class="pill">AML investigations</span>
         <span class="pill">Fraud patterns</span>
-        <span class="pill">Risk scoring</span>
+        <span class="pill">Crypto risk</span>
         <span class="pill">Process automation</span>
       </div>
     </div>
 
-    <section id="approach">
-      <div class="box soft principles">
-        <div class="principlesHead">
-          <span class="dotSpin"></span>
-          <strong>How I build tools investigators actually use</strong>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Alert Triage Risk Scorer</h3>
+          <p><strong>Status:</strong> In progress<br>
+          Explainable alert scoring to reduce false positives and surface real risk faster.</p>
         </div>
-        <ul>
-          <li><strong>It has to be trusted.</strong> If investigators don’t trust it, they won’t use it.</li>
-          <li><strong>It has to be explainable.</strong> Decisions must stand up to audits and regulators.</li>
-          <li><strong>It has to cut the noise.</strong> Reducing false positives creates the biggest impact.</li>
-        </ul>
+        <div class="card">
+          <h3>Entity Network Link Analysis</h3>
+          <p><strong>Status:</strong> Planned<br>
+          Mapping customer and wallet relationships to identify coordinated activity.</p>
+        </div>
+        <div class="card">
+          <h3>KYC Risk Model Case Study</h3>
+          <p><strong>Status:</strong> Planned<br>
+          Risk scoring across onboarding attributes, behavior change, and jurisdiction.</p>
+        </div>
+        <div class="card">
+          <h3>Investigator Assist (GenAI)</h3>
+          <p><strong>Status:</strong> Planned<br>
+          AI-assisted summaries with guardrails that support investigator judgment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="box">
+        <p style="margin:0;color:var(--muted)">
+          I’m an AML and fraud professional with an investigator mindset and a builder’s approach,
+          focused on practical AI, emerging risk, and crypto-related fraud patterns.
+        </p>
       </div>
     </section>
 
@@ -390,6 +400,15 @@
       <h2>Resume</h2>
       <div class="box">
         <a class="btn primary" href="/Kim%20Anderson%20Resume%202025.pdf" target="_blank">Download resume</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="box">
+        <p style="margin:0;color:var(--muted)">
+          Email: <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a>
+        </p>
       </div>
     </section>
 
@@ -405,6 +424,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
