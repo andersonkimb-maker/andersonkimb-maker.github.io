@@ -11,7 +11,7 @@
       --bg:#F2F0EB;
       --ink:#141414;
       --muted:#3A3A40;
-      --accent:#4F7F6A;        /* darker sage */
+      --accent:#4F7F6A;         /* darker sage */
       --soft:rgba(79,127,106,.18);
       --card:#FFFFFF;
       --border:rgba(20,20,20,.14);
@@ -38,20 +38,60 @@
       padding:40px 20px 96px;
     }
 
+    /* Banner */
+    .banner{
+      width:100%;
+      height:170px;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:var(--soft);
+      margin-bottom:22px;
+    }
+
+    .banner img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
     /* Header */
     header{
+      padding-bottom:32px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .profileRow{
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
       gap:20px;
-      padding-bottom:32px;
-      border-bottom:1px solid var(--border);
     }
 
     .brand{
       display:flex;
       flex-direction:column;
-      gap:6px;
+      gap:8px;
+    }
+
+    .avatar{
+      width:112px;
+      height:112px;
+      border-radius:22px;
+      border:3px solid var(--bg);
+      box-shadow:0 14px 30px rgba(20,20,20,.18);
+      overflow:hidden;
+      flex:0 0 auto;
+      margin-top:-64px; /* overlap banner */
+      background:#ddd;
+    }
+
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
     }
 
     header .name{
@@ -62,9 +102,10 @@
     }
 
     .tag{
-      font-size:14px;
+      font-size:15px;
       color:var(--muted);
-      max-width:48ch;
+      max-width:100%;
+      white-space:normal;
     }
 
     nav{
@@ -109,14 +150,15 @@
       height:10px;
       border-radius:50%;
       background:var(--accent);
+      flex:0 0 auto;
     }
 
     h1{
       font-size:24px;
-      font-weight:600;
+      font-weight:650;
       line-height:1.25;
       margin:20px 0 12px;
-      max-width:44ch;
+      max-width:48ch;
     }
 
     .lead{
@@ -142,6 +184,7 @@
       font-size:14px;
       display:inline-flex;
       align-items:center;
+      gap:10px;
     }
 
     .btn.primary{
@@ -195,6 +238,32 @@
       color:var(--muted);
     }
 
+    /* Principles hover + dot animation */
+    .principles{
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+
+    .principles:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(20,20,20,.14);
+    }
+
+    .principlesHead{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:8px;
+    }
+
+    .dotSpin{
+      transition: transform .35s ease, background .35s ease;
+    }
+
+    .principles:hover .dotSpin{
+      transform: rotate(180deg) scale(1.15);
+      background: var(--accent);
+    }
+
     .grid{
       display:grid;
       grid-template-columns:repeat(12,1fr);
@@ -232,7 +301,10 @@
     }
 
     @media (max-width:820px){
-      header{flex-direction:column}
+      .banner{height:150px}
+      .profileRow{flex-direction:column;align-items:flex-start}
+      nav{padding-top:0}
+      .avatar{margin-top:-54px}
       header .name{font-size:44px}
       h1{font-size:22px}
       .card{grid-column:span 12}
@@ -244,31 +316,43 @@
 <body>
   <div class="wrap">
 
+    <!-- Banner -->
+    <div class="banner">
+      <img src="Website%20Photo.png" alt="Website banner image" />
+    </div>
+
     <header>
-      <div class="brand">
-        <div class="name">Kim Anderson</div>
-        <div class="tag">AI-Enabled AML & Fraud • Investigator-first • Practical systems</div>
+      <div class="profileRow">
+        <div class="brand">
+          <div class="avatar">
+            <img src="Profile%20Picture.png" alt="Kim Anderson profile picture" />
+          </div>
+
+          <div class="name">Kim Anderson</div>
+          <div class="tag">AI-Enabled AML & Fraud • Investigator-first • Practical systems for emerging risk</div>
+        </div>
+
+        <nav>
+          <a href="#projects">Projects</a>
+          <a href="#approach">Approach</a>
+          <a href="#about">About</a>
+          <a href="#resume">Resume</a>
+          <a href="#contact">Let’s talk</a>
+        </nav>
       </div>
-      <nav>
-        <a href="#projects">Projects</a>
-        <a href="#approach">Approach</a>
-        <a href="#about">About</a>
-        <a href="#resume">Resume</a>
-        <a href="#contact">Let’s talk</a>
-      </nav>
     </header>
 
     <div class="hero">
       <div class="kicker">
         <span class="dot"></span>
-        <span>Mission: reduce fraud and financial harm</span>
+        <span><strong>Mission:</strong> Reduce fraud, financial harm, and emerging risk through investigator-first AI</span>
       </div>
 
       <h1>Helping investigators focus on the risk that actually matters.</h1>
 
       <p class="lead">
         I combine AML and fraud investigation experience with data and practical AI to reduce false positives,
-        surface defensible signals, and support better investigative decisions.
+        surface defensible signals, and support better investigative decisions, including emerging risks in crypto.
       </p>
 
       <div class="ctaRow">
@@ -288,12 +372,16 @@
     </div>
 
     <section>
-      <div class="box soft">
-        <strong>How I think about AI in AML</strong>
+      <div class="box soft principles">
+        <div class="principlesHead">
+          <span class="dot dotSpin" aria-hidden="true"></span>
+          <strong>How I build tools investigators actually use</strong>
+        </div>
+
         <ul>
-          <li>Investigator trust matters more than model complexity</li>
-          <li>Explainability beats black-box automation</li>
-          <li>Reducing noise is often more valuable than finding new signals</li>
+          <li><strong>It has to be trusted.</strong> If investigators don’t trust it, they won’t use it, even if it’s “smart.”</li>
+          <li><strong>It has to be explainable.</strong> People need to clearly justify decisions to auditors, managers, and regulators.</li>
+          <li><strong>It has to cut the noise.</strong> The biggest wins often come from reducing false positives so teams can focus on real risk.</li>
         </ul>
       </div>
     </section>
@@ -304,29 +392,55 @@
         <div class="card">
           <h3>Alert Triage Risk Scorer</h3>
           <p>
+            <strong>Status:</strong> In progress<br>
             Problem: high false positives slow investigations.<br>
             Built: explainable scoring using velocity, anomalies, and counterparty behavior.<br>
-            Impact: helps investigators prioritize defensible risk faster.
+            Goal: help investigators prioritize defensible risk faster.
           </p>
         </div>
         <div class="card">
           <h3>Entity Network Link Analysis</h3>
           <p>
-            Problem: hidden relationships obscure coordinated activity.<br>
-            Built: network mapping to surface clusters tied to mule behavior and structuring.
+            <strong>Status:</strong> Design phase<br>
+            Problem: hidden relationships can mask coordinated activity.<br>
+            Concept: map connections to surface clusters tied to mule behavior and structuring.
           </p>
         </div>
         <div class="card">
           <h3>KYC Risk Model Case Study</h3>
           <p>
-            Scores customer risk across product, jurisdiction, channel, and behavioral change indicators.
+            <strong>Status:</strong> Design phase<br>
+            Concept: score customer risk across product, jurisdiction, channel, and behavior-change indicators.
           </p>
         </div>
         <div class="card">
           <h3>Investigator Assist (GenAI Prototype)</h3>
           <p>
-            Summarizes alerts and drafts rationales with investigator-first guardrails and controls.
+            <strong>Status:</strong> Design phase<br>
+            Concept: summarize alerts and draft rationales with investigator-first guardrails and controls.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <h2>Approach</h2>
+      <div class="twoCol">
+        <div class="box">
+          <strong>Investigator-first AI</strong>
+          <ul>
+            <li>Explainability over black boxes</li>
+            <li>Reduce noise without missing real risk</li>
+            <li>Guardrails that support judgment</li>
+          </ul>
+        </div>
+        <div class="box">
+          <strong>What I optimize for</strong>
+          <ul>
+            <li>Time-to-signal</li>
+            <li>False positive reduction</li>
+            <li>Audit-ready outputs</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -336,9 +450,10 @@
       <div class="box">
         <p style="margin:0;color:var(--muted)">
           I’m an AML and fraud professional with an investigator mindset and a builder’s approach.
-          I focus on systems that help teams act earlier on real risk without creating unnecessary noise.
+          I focus on tools that help teams act earlier on real risk without creating unnecessary noise.
           <br><br>
-          I’ve seen what happens when tools are built without investigators in the room.
+          I’m especially interested in how AI and agent-style workflows can help teams keep up with emerging risks,
+          including crypto-related typologies, faster-moving fraud patterns, and evolving regulatory expectations.
         </p>
       </div>
     </section>
@@ -361,7 +476,7 @@
       <h2>Let’s talk</h2>
       <div class="box">
         <p style="margin:0;color:var(--muted)">
-          Open to roles and projects where AI is applied responsibly to fraud and AML.
+          Add your email and LinkedIn once ready.
         </p>
       </div>
     </section>
@@ -378,4 +493,5 @@
   </script>
 </body>
 </html>
+
 
