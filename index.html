@@ -50,8 +50,58 @@
 
     .heroRight .imageCard,
     .heroRight img {
-      max-width: 100%;
+      max-width: 420px;
       width: 100%;
+      height: auto;
+    }
+
+    .pill {
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--softBlue);
+      display: inline-block;
+      margin: 4px 4px 0 0;
+    }
+
+    .pills {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .ctaRow {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .btn {
+      padding: 11px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, .85);
+      font-weight: 650;
+      font-size: 14px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
+      transition: transform .15s ease, box-shadow .15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn.primary {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    .btn.primary:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      box-shadow: 0 14px 32px rgba(99, 102, 241, 0.25);
     }
   </style>
 </head>
@@ -126,70 +176,6 @@
       </div>
     </div>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Alert Triage Risk Scorer</h3>
-          <p><strong>Status:</strong> In progress<br>Explainable scoring to reduce false positives and surface real risk faster.</p>
-        </div>
-        <div class="card">
-          <h3>Entity Network Link Analysis</h3>
-          <p><strong>Status:</strong> Planned<br>Mapping connections to identify coordinated activity across entities and wallets.</p>
-        </div>
-        <div class="card">
-          <h3>KYC Risk Model Case Study</h3>
-          <p><strong>Status:</strong> Planned<br>Risk scoring across onboarding attributes, behavior change, and jurisdiction.</p>
-        </div>
-        <div class="card">
-          <h3>Investigator Assist (GenAI)</h3>
-          <p><strong>Status:</strong> Planned<br>AI-assisted summaries with guardrails that support investigator judgment.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="approach">
-      <h2>Approach</h2>
-      <div class="softBox">
-        <div class="principles">
-          <div class="principlesHead">
-            <span class="dotSpin" aria-hidden="true"></span>
-            How I build tools investigators actually use
-          </div>
-          <ul>
-            <li><strong>It has to be trusted.</strong> If investigators don’t trust it, they won’t use it.</li>
-            <li><strong>It has to be explainable.</strong> Decisions should hold up in reviews and audits.</li>
-            <li><strong>It has to cut the noise.</strong> Reducing false positives creates real value.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <h2>About</h2>
-      <div class="box">
-        <p style="margin:0;color:var(--muted)">
-          I’m an AML and fraud professional with an investigator mindset and a builder’s approach. I focus on practical AI and workflows that help teams move faster without losing quality, explainability, or judgment.
-        </p>
-      </div>
-    </section>
-
-    <section id="resume">
-      <h2>Resume</h2>
-      <div class="box">
-        <a class="btn primary" href="/Kim%20Anderson%20Resume%202025.pdf" target="_blank" rel="noopener">Download resume</a>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="box">
-        <p style="margin:0;color:var(--muted)">
-          Email: <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a>
-        </p>
-      </div>
-    </section>
-
     <footer>
       <div>© <span id="y"></span> Kim Anderson</div>
       <div>Built with GitHub Pages</div>
@@ -201,6 +187,7 @@
   </script>
 </body>
 </html>
+
 
 
 
