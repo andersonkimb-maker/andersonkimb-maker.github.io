@@ -7,104 +7,431 @@
   <meta name="description" content="AI-enabled tools for investigators across traditional and emerging financial crime risk." />
 
   <style>
-    :root {
-      --bg1: #F8FAFC;
-      --bg2: #E2E8F0;
-      --ink: #0F172A;
-      --muted: #475569;
-      --border: rgba(15, 23, 42, 0.12);
+    :root{
+      --bg1:#F6F0E6;
+      --bg2:#EFE9DF;
+      --ink:#1F2326;
+      --muted:#5A5F63;
+      --border:rgba(31,35,38,.16);
 
-      --blue: #6366F1;
-      --green: #14B8A6;
-      --gold: #FBBF24;
+      --blue:#4D7893;
+      --green:#6F9A84;
+      --gold:#B68A3A;
 
-      --card: #FFFFFF;
-      --softBlue: rgba(99, 102, 241, 0.16);
-      --softGreen: rgba(20, 184, 166, 0.20);
-      --softGold: rgba(251, 191, 36, 0.12);
+      --card:#FFFFFF;
+      --softBlue:rgba(77,120,147,.16);
+      --softGreen:rgba(111,154,132,.20);
+      --softGold:rgba(182,138,58,.12);
 
-      --radius: 22px;
+      --radius:22px;
     }
 
-    * { box-sizing: border-box; }
+    *{box-sizing:border-box}
 
-    html, body {
-      margin: 0;
-      color: var(--ink);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.6;
+    html,body{
+      margin:0;
+      color:var(--ink);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.6;
       background:
-        radial-gradient(900px 520px at 18% 0%, var(--softBlue), transparent 58%),
-        radial-gradient(900px 520px at 82% 10%, var(--softGreen), transparent 62%),
+        radial-gradient(900px 520px at 18% 0%, rgba(77,120,147,.12), transparent 58%),
+        radial-gradient(900px 520px at 82% 10%, rgba(111,154,132,.14), transparent 62%),
         linear-gradient(180deg, var(--bg1), var(--bg2));
     }
 
-    a { color: inherit; text-decoration: none; }
+    a{color:inherit;text-decoration:none}
 
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      object-fit: contain;
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:28px 20px 96px;
     }
 
-    .heroRight .imageCard,
-    .heroRight img {
-      max-width: 420px;
-      width: 100%;
-      height: auto;
+    /* Top nav */
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      padding-bottom:16px;
+      border-bottom:1px solid var(--border);
     }
 
-    .pill {
-      font-size: 12px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--softBlue);
-      display: inline-block;
-      margin: 4px 4px 0 0;
+    .brandMini{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width:240px;
     }
 
-    .pills {
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
+    .brandMini .kname{
+      font-weight:900;
+      letter-spacing:.2px;
+      font-size:16px;
+      line-height:1.1;
     }
 
-    .ctaRow {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 10px;
+    .brandMini .krole{
+      color:var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:340px;
     }
 
-    .btn {
-      padding: 11px 18px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, .85);
-      font-weight: 650;
-      font-size: 14px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
-      transition: transform .15s ease, box-shadow .15s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+    nav{
+      display:flex;
+      gap:12px;
+      flex-wrap:nowrap;
+      white-space:nowrap;
     }
 
-    .btn.primary {
-      background: var(--ink);
-      color: #fff;
-      border-color: var(--ink);
+    nav a{
+      font-size:13px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      transition:transform .15s ease, background .15s ease;
     }
 
-    .btn.primary:hover {
-      background: var(--blue);
-      border-color: var(--blue);
-      box-shadow: 0 14px 32px rgba(99, 102, 241, 0.25);
+    nav a:hover{
+      background:linear-gradient(90deg, var(--softBlue), var(--softGreen));
+      border-color:var(--border);
+      color:var(--ink);
+      transform:translateY(-1px);
+    }
+
+    /* Split hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:26px;
+      padding:26px 0 0;
+      align-items:center;
+    }
+
+    .heroLeft{
+      padding:18px 0 8px;
+    }
+
+    .name{
+      font-size:58px;
+      font-weight:900;
+      line-height:1;
+      margin:0 0 10px;
+      letter-spacing:.2px;
+    }
+
+    .tagline{
+      font-size:14px;
+      color:var(--muted);
+      margin:0 0 18px;
+      max-width:62ch;
+    }
+
+    /* Mission pill with blank dot that turns green on hover */
+    .mission{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.72);
+      font-size:13px;
+      margin-bottom:18px;
+    }
+
+    .missionDot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      border:2px solid var(--green);
+      background:transparent;
+      transform:scale(.75);
+      transition:background .2s ease, transform .25s ease;
+    }
+
+    .mission:hover .missionDot{
+      background:var(--green);
+      transform:scale(1.05);
+    }
+
+    .heroLine{
+      font-size:22px;
+      font-weight:820;
+      line-height:1.25;
+      margin:0 0 10px;
+      max-width:52ch;
+    }
+
+    .supportLine{
+      font-size:16px;
+      color:var(--muted);
+      margin:0 0 18px;
+      max-width:70ch;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .btn{
+      padding:11px 18px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.85);
+      font-weight:650;
+      font-size:14px;
+      box-shadow:0 10px 24px rgba(0,0,0,.08);
+      transition:transform .15s ease, box-shadow .15s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 32px rgba(0,0,0,.12);
+    }
+
+    .btn.primary{
+      background:var(--ink);
+      color:#fff;
+      border-color:var(--ink);
+    }
+
+    .pills{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .pill{
+      font-size:12px;
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:linear-gradient(90deg, var(--softBlue), var(--softGreen));
+    }
+
+    /* Right side image card */
+    .heroRight{
+      display:flex;
+      justify-content:flex-end;
+    }
+
+    .imageCard{
+      width:100%;
+      max-width:420px;
+      border-radius:26px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.9);
+      box-shadow:0 14px 34px rgba(0,0,0,.10);
+      position:relative;
+    }
+
+    .imageCard img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    /* Profile avatar chip */
+    .profileChip{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.85);
+      backdrop-filter: blur(6px);
+      box-shadow:0 10px 24px rgba(0,0,0,.10);
+    }
+
+    .avatar{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      overflow:hidden;
+      border:2px solid rgba(255,255,255,.8);
+      background:#ddd;
+      flex:0 0 auto;
+    }
+
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .chipText{
+      display:flex;
+      flex-direction:column;
+      gap:0px;
+      line-height:1.15;
+    }
+
+    .chipText .chipName{
+      font-weight:850;
+      font-size:13px;
+    }
+
+    .chipText .chipRole{
+      font-size:12px;
+      color:var(--muted);
+      max-width:220px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    /* Sections */
+    section{
+      margin-top:44px;
+    }
+
+    h2{
+      font-size:20px;
+      margin:0 0 14px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:18px;
+    }
+
+    .card{
+      grid-column:span 6;
+      background:rgba(255,255,255,.88);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 12px 30px rgba(0,0,0,.10);
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 44px rgba(0,0,0,.14);
+    }
+
+    .card h3{
+      margin:0 0 6px;
+      font-size:18px;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* Principles box with dot off then on */
+    .softBox{
+      background:linear-gradient(90deg, rgba(77,120,147,.14), rgba(111,154,132,.18), rgba(182,138,58,.08));
+      border:1px solid transparent;
+      border-radius:var(--radius);
+      padding:18px;
+    }
+
+    .principles{
+      background:rgba(255,255,255,.50);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:16px;
+      box-shadow:0 12px 28px rgba(0,0,0,.08);
+      transition:transform .22s ease, box-shadow .22s ease;
+    }
+
+    .principles:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 44px rgba(0,0,0,.14);
+    }
+
+    .principlesHead{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:8px;
+      font-weight:850;
+    }
+
+    .dotSpin{
+      opacity:0;
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      border:2px solid var(--green);
+      background:transparent;
+      transform:scale(.6);
+      transition:opacity .2s ease, transform .35s ease, background .2s ease;
+    }
+
+    .principles:hover .dotSpin{
+      opacity:1;
+      background:var(--green);
+      transform:rotate(180deg) scale(1.15);
+    }
+
+    ul{
+      margin:10px 0 0 18px;
+      color:var(--muted);
+    }
+
+    .box{
+      background:rgba(255,255,255,.85);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 14px 34px rgba(0,0,0,.10);
+    }
+
+    footer{
+      margin-top:56px;
+      padding-top:24px;
+      border-top:1px solid var(--border);
+      font-size:13px;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    @media (max-width:900px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+      .heroRight{
+        justify-content:flex-start;
+      }
+      .name{
+        font-size:46px;
+      }
+      nav{
+        flex-wrap:wrap;
+      }
+      .card{
+        grid-column:span 12;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
@@ -176,6 +503,70 @@
       </div>
     </div>
 
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Alert Triage Risk Scorer</h3>
+          <p><strong>Status:</strong> In progress<br>Explainable scoring to reduce false positives and surface real risk faster.</p>
+        </div>
+        <div class="card">
+          <h3>Entity Network Link Analysis</h3>
+          <p><strong>Status:</strong> Planned<br>Mapping connections to identify coordinated activity across entities and wallets.</p>
+        </div>
+        <div class="card">
+          <h3>KYC Risk Model Case Study</h3>
+          <p><strong>Status:</strong> Planned<br>Risk scoring across onboarding attributes, behavior change, and jurisdiction.</p>
+        </div>
+        <div class="card">
+          <h3>Investigator Assist (GenAI)</h3>
+          <p><strong>Status:</strong> Planned<br>AI-assisted summaries with guardrails that support investigator judgment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <h2>Approach</h2>
+      <div class="softBox">
+        <div class="principles">
+          <div class="principlesHead">
+            <span class="dotSpin" aria-hidden="true"></span>
+            How I build tools investigators actually use
+          </div>
+          <ul>
+            <li><strong>It has to be trusted.</strong> If investigators don’t trust it, they won’t use it.</li>
+            <li><strong>It has to be explainable.</strong> Decisions should hold up in reviews and audits.</li>
+            <li><strong>It has to cut the noise.</strong> Reducing false positives creates real value.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="box">
+        <p style="margin:0;color:var(--muted)">
+          I’m an AML and fraud professional with an investigator mindset and a builder’s approach. I focus on practical AI and workflows that help teams move faster without losing quality, explainability, or judgment.
+        </p>
+      </div>
+    </section>
+
+    <section id="resume">
+      <h2>Resume</h2>
+      <div class="box">
+        <a class="btn primary" href="/Kim%20Anderson%20Resume%202025.pdf" target="_blank" rel="noopener">Download resume</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="box">
+        <p style="margin:0;color:var(--muted)">
+          Email: <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a>
+        </p>
+      </div>
+    </section>
+
     <footer>
       <div>© <span id="y"></span> Kim Anderson</div>
       <div>Built with GitHub Pages</div>
@@ -183,12 +574,10 @@
   </div>
 
   <script>
-    document.getElementById("y")?.textContent = new Date().getFullYear();
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
-
 
 
 
