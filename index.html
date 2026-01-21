@@ -121,10 +121,151 @@
   </style>
 </head>
 <body>
-  <!-- Your original body content stays exactly the same -->
+  <div class="wrap">
+    <header>
+      <div class="brandMini">
+        <div class="kname">Kim Anderson</div>
+        <div class="krole">AI AML & Fraud • Investigator-first • Emerging risk systems</div>
+      </div>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#approach">Approach</a>
+        <a href="#about">About</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="heroLeft">
+        <div class="mission">
+          <span class="missionDot"></span>
+          <span><strong>Mission:</strong> reduce fraud, financial harm, and emerging risk</span>
+        </div>
+
+        <h1 class="name">Kim Anderson</h1>
+
+        <p class="tagline">
+          AI AML & Fraud • Investigator-first • Emerging risk systems
+        </p>
+
+        <p class="heroLine">
+          Designing AI-enabled tools that help investigators make better decisions across traditional and emerging financial crime risks.
+        </p>
+
+        <p class="supportLine">
+          Including complex environments like crypto and blockchain, while preserving explainability and investigative judgment.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="#projects">View projects</a>
+          <a class="btn" href="#resume">Download resume</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+
+        <div class="pills">
+          <span class="pill">SQL</span>
+          <span class="pill">AML investigations</span>
+          <span class="pill">Fraud patterns</span>
+          <span class="pill">Risk scoring</span>
+          <span class="pill">Crypto risk</span>
+          <span class="pill">Process automation</span>
+        </div>
+      </div>
+
+      <div class="heroRight">
+        <div class="imageCard">
+          <img src="Website%20Photo.png" alt="Featured image" />
+
+          <div class="profileChip">
+            <div class="avatar">
+              <img src="Profile%20Picture.png" alt="Profile picture" />
+            </div>
+            <div class="chipText">
+              <div class="chipName">Kim Anderson</div>
+              <div class="chipRole">AI-enabled AML & fraud, investigator-first systems</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Alert Triage Risk Scorer</h3>
+          <p><strong>Status:</strong> In progress<br>Explainable scoring to reduce false positives and surface real risk faster.</p>
+        </div>
+        <div class="card">
+          <h3>Entity Network Link Analysis</h3>
+          <p><strong>Status:</strong> Planned<br>Mapping connections to identify coordinated activity across entities and wallets.</p>
+        </div>
+        <div class="card">
+          <h3>KYC Risk Model Case Study</h3>
+          <p><strong>Status:</strong> Planned<br>Risk scoring across onboarding attributes, behavior change, and jurisdiction.</p>
+        </div>
+        <div class="card">
+          <h3>Investigator Assist (GenAI)</h3>
+          <p><strong>Status:</strong> Planned<br>AI-assisted summaries with guardrails that support investigator judgment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <h2>Approach</h2>
+      <div class="softBox">
+        <div class="principles">
+          <div class="principlesHead">
+            <span class="dotSpin" aria-hidden="true"></span>
+            How I build tools investigators actually use
+          </div>
+          <ul>
+            <li><strong>It has to be trusted.</strong> If investigators don’t trust it, they won’t use it.</li>
+            <li><strong>It has to be explainable.</strong> Decisions should hold up in reviews and audits.</li>
+            <li><strong>It has to cut the noise.</strong> Reducing false positives creates real value.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="box">
+        <p style="margin:0;color:var(--muted)">
+          I’m an AML and fraud professional with an investigator mindset and a builder’s approach. I focus on practical AI and workflows that help teams move faster without losing quality, explainability, or judgment.
+        </p>
+      </div>
+    </section>
+
+    <section id="resume">
+      <h2>Resume</h2>
+      <div class="box">
+        <a class="btn primary" href="/Kim%20Anderson%20Resume%202025.pdf" target="_blank" rel="noopener">Download resume</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="box">
+        <p style="margin:0;color:var(--muted)">
+          Email: <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a>
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Kim Anderson</div>
+      <div>Built with GitHub Pages</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
 
 
 
