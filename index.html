@@ -77,7 +77,7 @@
     }
     .bannerText h1{
       margin:0;
-      font-size:52px;
+      font-size:56px;
       font-weight:900;
     }
     .bannerText p{
@@ -86,11 +86,9 @@
       opacity:0.9;
     }
 
-    /* Profile overlaps banner (left) */
+    /* Profile overlaps banner (left, above layer) */
     .profileOverlap{
-      position:absolute;
-      top:180px; /* controls vertical overlap */
-      left:50px; /* moves photo to the left side */
+      position:relative;
       z-index:4;
       width:150px;
       height:150px;
@@ -99,6 +97,8 @@
       border:3px solid rgba(255,255,255,.9);
       box-shadow:0 8px 24px rgba(0,0,0,.4);
       background:#fff;
+      margin-top:-75px; /* pulls it upward to overlap banner */
+      margin-left:40px; /* aligns to left edge */
     }
     .profileOverlap img{
       width:100%;
@@ -107,7 +107,7 @@
     }
 
     /* Hero */
-    .hero{text-align:center;padding-top:140px;} /* add top padding for overlap space */
+    .hero{text-align:center;padding-top:60px;} /* space after overlap */
     .mission{
       display:inline-flex;
       align-items:center;
@@ -159,8 +159,8 @@
     @media(max-width:900px){
       .bannerText h1{font-size:36px}
       .bannerText p{font-size:14px}
-      .profileOverlap{top:160px;left:calc(50% - 55px);width:110px;height:110px;}
-      .hero{padding-top:120px;}
+      .profileOverlap{width:110px;height:110px;margin-left:auto;margin-right:auto;margin-top:-55px;}
+      .hero{padding-top:100px;}
       .card{grid-column:span 12}
     }
   </style>
@@ -182,10 +182,11 @@
         <h1>Kim Anderson</h1>
         <p>AI for Financial Crime</p>
       </div>
-      <!-- Profile overlapping left -->
-      <div class="profileOverlap">
-        <img src="Profile%20Picture.png" alt="Profile photo">
-      </div>
+    </div>
+
+    <!-- Profile overlapping left -->
+    <div class="profileOverlap">
+      <img src="Profile%20Picture.png" alt="Profile photo">
     </div>
 
     <!-- Hero -->
