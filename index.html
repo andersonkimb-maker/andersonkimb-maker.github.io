@@ -15,15 +15,17 @@
       --accent3:#22C55E;
       --radius:20px;
       --bg-dark:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
-      --overlay-dark:linear-gradient(to right,rgba(14,36,49,.85),rgba(14,36,49,0));
+      --overlay-dark:linear-gradient(to right,rgba(14,36,49,.7),rgba(14,36,49,0));
     }
+
     [data-theme="light"] {
       --ink:#111;
       --muted:#4b5563;
       --border:rgba(0,0,0,.15);
       --bg-dark:#f5f7fa;
-      --overlay-dark:linear-gradient(to right,rgba(245,247,250,.75),rgba(245,247,250,0));
+      --overlay-dark:linear-gradient(to right,rgba(245,247,250,.7),rgba(245,247,250,0));
     }
+
     *{box-sizing:border-box;transition:background .3s ease,color .3s ease}
     html,body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg-dark);background-size:300% 300%;}
     a{color:inherit;text-decoration:none}
@@ -42,10 +44,10 @@
 
     /* Banner */
     .banner{position:relative;width:100%;overflow:hidden;border-radius:12px;margin-top:24px}
-    .banner img{width:100%;height:300px;object-fit:cover;display:block}
+    .banner img{width:100%;height:420px;object-fit:cover;display:block}
     .banner::after{content:"";position:absolute;inset:0;background:var(--overlay-dark);pointer-events:none}
 
-    /* Hero with large profile */
+    /* Hero */
     .hero{display:flex;align-items:center;gap:30px;flex-wrap:wrap;padding-top:40px}
     .profileLarge{flex:0 0 160px;height:160px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.8);box-shadow:0 8px 24px rgba(0,0,0,.4)}
     .profileLarge img{width:100%;height:100%;object-fit:cover}
@@ -73,9 +75,6 @@
     .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,160,176,.3);border-color:var(--accent1)}
     .card h3{margin:0 0 6px;font-size:18px;color:#fff}
     .card p{margin:0;color:var(--muted);font-size:14px}
-    .imageSection{margin-top:60px;text-align:center}
-    .imageSection img{max-width:100%;border-radius:12px;box-shadow:0 14px 34px rgba(0,0,0,.3)}
-
     .box{background:rgba(255,255,255,.08);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:0 14px 34px rgba(0,0,0,.2)}
     footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--border);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
@@ -84,7 +83,7 @@
       .profileLarge{width:120px;height:120px}
       h1{font-size:38px}
       .card{grid-column:span 12}
-      .banner img{height:200px}
+      .banner img{height:240px}
     }
   </style>
 </head>
@@ -107,10 +106,10 @@
 
     <!-- Banner -->
     <div class="banner">
-      <img src="banner.png" alt="Hero banner image">
+      <img src="Banner.png" alt="Hero banner image">
     </div>
 
-    <!-- Hero with large profile -->
+    <!-- Hero -->
     <div class="hero">
       <div class="profileLarge">
         <img src="Profile%20Picture.png" alt="Profile photo">
@@ -142,11 +141,6 @@
           <div><strong>1 goal:</strong> less fraud, more judgment</div>
         </div>
       </div>
-    </div>
-
-    <!-- Insert website image before projects -->
-    <div class="imageSection">
-      <img src="Website%20Photo.png" alt="Featured website visual">
     </div>
 
     <section id="projects">
@@ -185,6 +179,7 @@
   </script>
 </body>
 </html>
+
 
 
 
