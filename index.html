@@ -5,368 +5,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kim Anderson | AI for Financial Crime</title>
   <meta name="description" content="Building AI tools that help financial investigators detect, explain, and prevent fraud with speed, clarity, and trust." />
-
   <style>
     :root {
-      --ink: #f5f7fa;
-      --muted: #a8b2b8;
-      --border: rgba(255,255,255,.15);
-      --accent1: #00a0b0;
-      --accent2: #72c472;
-      --accent3: #22C55E;
-      --radius: 20px;
-      --bg-dark: linear-gradient(120deg, #0e2431, #173b4d, #264a53);
-      --bg-light: #f5f7fa;
-      --overlay-dark: linear-gradient(to right, rgba(14,36,49,0.85), rgba(14,36,49,0));
-      --overlay-light: linear-gradient(to right, rgba(245,247,250,0.75), rgba(245,247,250,0));
+      --ink:#f5f7fa;
+      --muted:#a8b2b8;
+      --border:rgba(255,255,255,.15);
+      --accent1:#00a0b0;
+      --accent2:#72c472;
+      --accent3:#22C55E;
+      --radius:20px;
+      --bg-dark:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
+      --overlay-dark:linear-gradient(to right,rgba(14,36,49,.85),rgba(14,36,49,0));
     }
-
     [data-theme="light"] {
-      --ink: #111;
-      --muted: #4b5563;
-      --border: rgba(0,0,0,.15);
-      --bg-dark: #f5f7fa;
+      --ink:#111;
+      --muted:#4b5563;
+      --border:rgba(0,0,0,.15);
+      --bg-dark:#f5f7fa;
+      --overlay-dark:linear-gradient(to right,rgba(245,247,250,.75),rgba(245,247,250,0));
     }
+    *{box-sizing:border-box;transition:background .3s ease,color .3s ease}
+    html,body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg-dark);background-size:300% 300%;}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 96px}
 
-    * { box-sizing: border-box; transition: background .3s ease, color .3s ease; }
-
-    html, body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.6;
-      color: var(--ink);
-      background: var(--bg-dark);
-      background-size: 300% 300%;
-      animation: bgShift 18s ease infinite;
-    }
-
-    @keyframes bgShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 28px 20px 96px;
-    }
-
-    /* Header */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 16px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,.8);
-      object-fit: cover;
-    }
-
-    .brandText {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
-    }
-
-    .brandText .name {
-      font-weight: 800;
-      font-size: 16px;
-    }
-
-    .brandText .role {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    nav a {
-      font-size: 13px;
-      color: var(--muted);
-      padding: 8px 10px;
-      border-radius: 12px;
-      transition: background .15s ease, color .15s ease;
-    }
-
-    nav a:hover {
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      color: #fff;
-    }
-
-    .toggle {
-      cursor: pointer;
-      padding: 6px 10px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      font-size: 13px;
-      color: var(--muted);
-    }
+    header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,.8);object-fit:cover}
+    .brandText{display:flex;flex-direction:column;line-height:1.2}
+    .brandText .name{font-weight:800;font-size:16px}
+    .brandText .role{color:var(--muted);font-size:13px}
+    nav{display:flex;align-items:center;gap:12px}
+    nav a{font-size:13px;color:var(--muted);padding:8px 10px;border-radius:12px;transition:background .15s ease,color .15s ease}
+    nav a:hover{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff}
+    .toggle{cursor:pointer;padding:6px 10px;border:1px solid var(--border);border-radius:12px;font-size:13px;color:var(--muted)}
 
     /* Banner */
-    .banner {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border-radius: 12px;
-      margin-top: 24px;
-    }
+    .banner{position:relative;width:100%;overflow:hidden;border-radius:12px;margin-top:24px}
+    .banner img{width:100%;height:300px;object-fit:cover;display:block}
+    .banner::after{content:"";position:absolute;inset:0;background:var(--overlay-dark);pointer-events:none}
 
-    .banner img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      display: block;
-    }
+    /* Hero with large profile */
+    .hero{display:flex;align-items:center;gap:30px;flex-wrap:wrap;padding-top:40px}
+    .profileLarge{flex:0 0 160px;height:160px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.8);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+    .profileLarge img{width:100%;height:100%;object-fit:cover}
+    .heroContent{flex:1 1 500px}
+    .mission{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.08);font-size:13px;margin-bottom:18px}
+    .missionDot{width:12px;height:12px;border-radius:50%;border:2px solid var(--accent2)}
+    h1{font-size:50px;line-height:1.2;margin:0 0 10px}
+    .tagline{font-size:20px;font-weight:600;color:var(--accent2);margin:0 0 10px}
+    .heroLine{font-size:22px;font-weight:500;line-height:1.3;margin:0 0 12px;max-width:54ch}
+    .supportLine{font-size:16px;color:var(--muted);margin:0 0 22px;max-width:70ch}
+    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .btn{padding:11px 18px;border-radius:14px;font-weight:650;font-size:14px;display:inline-flex;align-items:center;gap:10px;color:#fff;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+    .btn.primary{background:var(--accent1)} .btn.contact{background:var(--accent3)}
+    .btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 25px rgba(0,0,0,.25);filter:brightness(1.1)}
+    .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+    .pill{font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.06);box-shadow:inset 0 1px 2px rgba(255,255,255,.05);transition:transform .2s,background .2s}
+    .pill:hover{transform:scale(1.05);background:rgba(255,255,255,.12)}
+    .stats{display:flex;flex-wrap:wrap;gap:24px;margin-top:28px;font-size:14px;color:var(--muted)}
+    .stats strong{font-size:18px;color:var(--accent2);display:block}
 
-    .banner::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: var(--overlay-dark);
-      pointer-events: none;
-      transition: background .3s ease;
-    }
+    section{margin-top:72px}
+    h2{font-size:20px;margin:0 0 14px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .card{grid-column:span 6;background:rgba(255,255,255,.08);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:0 12px 30px rgba(0,0,0,.2);transition:transform .3s,box-shadow .3s,border-color .3s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,160,176,.3);border-color:var(--accent1)}
+    .card h3{margin:0 0 6px;font-size:18px;color:#fff}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    .imageSection{margin-top:60px;text-align:center}
+    .imageSection img{max-width:100%;border-radius:12px;box-shadow:0 14px 34px rgba(0,0,0,.3)}
 
-    [data-theme="light"] .banner::after {
-      background: var(--overlay-light);
-    }
+    .box{background:rgba(255,255,255,.08);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:0 14px 34px rgba(0,0,0,.2)}
+    footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--border);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
-    .profileChip {
-      position: absolute;
-      left: 24px;
-      bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(0,0,0,.5);
-      backdrop-filter: blur(6px);
-      color: var(--ink);
-    }
-
-    .profileChip .avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 2px solid rgba(255,255,255,.8);
-    }
-
-    .profileChip .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .chipText {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.15;
-    }
-
-    .chipText .chipName { font-weight: 850; font-size: 13px; }
-    .chipText .chipRole { font-size: 12px; color: var(--muted); }
-
-    /* Hero */
-    .hero {
-      padding-top: 40px;
-      text-align: left;
-    }
-
-    .mission {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.08);
-      font-size: 13px;
-      margin-bottom: 18px;
-    }
-
-    .missionDot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      border: 2px solid var(--accent2);
-      transition: background .2s ease, transform .25s ease;
-    }
-
-    .mission:hover .missionDot { background: var(--accent2); transform: scale(1.1); }
-
-    h1 {
-      font-size: 54px;
-      line-height: 1.2;
-      margin: 0 0 10px;
-    }
-
-    .tagline {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--accent2);
-      margin: 0 0 10px;
-    }
-
-    .heroLine {
-      font-size: 22px;
-      font-weight: 500;
-      line-height: 1.3;
-      margin: 0 0 12px;
-      max-width: 54ch;
-    }
-
-    .supportLine {
-      font-size: 16px;
-      color: var(--muted);
-      margin: 0 0 22px;
-      max-width: 70ch;
-    }
-
-    .ctaRow {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .btn {
-      padding: 11px 18px;
-      border-radius: 14px;
-      font-weight: 650;
-      font-size: 14px;
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .btn.primary { background: var(--accent1); }
-    .btn.contact { background: var(--accent3); }
-
-    .btn:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 10px 25px rgba(0,0,0,.25);
-      filter: brightness(1.1);
-    }
-
-    .pills {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .pill {
-      font-size: 12px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      box-shadow: inset 0 1px 2px rgba(255,255,255,.05);
-      transition: transform .2s ease, background .2s ease;
-    }
-
-    .pill:hover {
-      transform: scale(1.05);
-      background: rgba(255,255,255,.12);
-    }
-
-    .stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      margin-top: 28px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .stats strong {
-      font-size: 18px;
-      color: var(--accent2);
-      display: block;
-    }
-
-    section { margin-top: 72px; }
-
-    h2 { font-size: 20px; margin: 0 0 14px; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      grid-column: span 6;
-      background: rgba(255,255,255,.08);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 12px 30px rgba(0,0,0,.2);
-      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 40px rgba(0,160,176,0.3);
-      border-color: var(--accent1);
-    }
-
-    .card h3 { margin: 0 0 6px; font-size: 18px; color: #fff; }
-    .card p { margin: 0; color: var(--muted); font-size: 14px; }
-
-    .box {
-      background: rgba(255,255,255,.08);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 14px 34px rgba(0,0,0,.2);
-    }
-
-    footer {
-      margin-top: 72px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      font-size: 13px;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    @media (max-width:900px) {
-      h1 { font-size: 40px; }
-      .card { grid-column: span 12; }
-      .banner img { height: 220px; }
+    @media(max-width:900px){
+      .hero{flex-direction:column;align-items:flex-start}
+      .profileLarge{width:120px;height:120px}
+      h1{font-size:38px}
+      .card{grid-column:span 12}
+      .banner img{height:200px}
     }
   </style>
 </head>
-
 <body>
   <div class="wrap">
     <header>
@@ -384,71 +105,57 @@
       </nav>
     </header>
 
-    <!-- Full-width banner with overlay -->
+    <!-- Banner -->
     <div class="banner">
-      <img src="Website%20Photo.png" alt="Hero banner image">
-      <div class="profileChip">
-        <div class="avatar">
-          <img src="Profile%20Picture.png" alt="Profile">
+      <img src="banner.png" alt="Hero banner image">
+    </div>
+
+    <!-- Hero with large profile -->
+    <div class="hero">
+      <div class="profileLarge">
+        <img src="Profile%20Picture.png" alt="Profile photo">
+      </div>
+      <div class="heroContent">
+        <div class="mission">
+          <span class="missionDot"></span>
+          <span><strong>Mission:</strong> Build AI tools that fight fraud and help real investigators move faster.</span>
         </div>
-        <div class="chipText">
-          <div class="chipName">Kim Anderson</div>
-          <div class="chipRole">Building AI tools for financial investigators</div>
+
+        <h1><strong>Helping investigators see</strong><br><span style="font-weight:600">through the noise of financial crime.</span></h1>
+        <p class="tagline">AI for fraud fighters.</p>
+        <p class="heroLine">I build AI tools that help investigators detect, explain, and prevent financial crime — with speed, clarity, and trust.</p>
+        <p class="supportLine">Working across AML, fraud, and crypto risk with explainable models and human-centered design.</p>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn contact" href="#contact">Contact</a>
+        </div>
+
+        <div class="pills">
+          <span class="pill">SQL</span><span class="pill">AML Investigations</span><span class="pill">Fraud Patterns</span>
+          <span class="pill">Risk Scoring</span><span class="pill">Crypto Risk</span><span class="pill">Process Automation</span>
+        </div>
+
+        <div class="stats">
+          <div><strong>20+</strong> AI-enabled risk models deployed</div>
+          <div><strong>10×</strong> faster alert triage</div>
+          <div><strong>1 goal:</strong> less fraud, more judgment</div>
         </div>
       </div>
     </div>
 
-    <div class="hero">
-      <div class="mission">
-        <span class="missionDot"></span>
-        <span><strong>Mission:</strong> Build AI tools that fight fraud and help real investigators move faster.</span>
-      </div>
-
-      <h1><strong>Helping investigators see</strong><br><span style="font-weight:600">through the noise of financial crime.</span></h1>
-      <p class="tagline">AI for fraud fighters.</p>
-      <p class="heroLine">I build AI tools that help investigators detect, explain, and prevent financial crime — with speed, clarity, and trust.</p>
-      <p class="supportLine">Working across AML, fraud, and crypto risk with explainable models and human-centered design.</p>
-
-      <div class="ctaRow">
-        <a class="btn primary" href="#projects">View Projects</a>
-        <a class="btn contact" href="#contact">Contact</a>
-      </div>
-
-      <div class="pills">
-        <span class="pill">SQL</span>
-        <span class="pill">AML Investigations</span>
-        <span class="pill">Fraud Patterns</span>
-        <span class="pill">Risk Scoring</span>
-        <span class="pill">Crypto Risk</span>
-        <span class="pill">Process Automation</span>
-      </div>
-
-      <div class="stats">
-        <div><strong>20+</strong> AI-enabled risk models deployed</div>
-        <div><strong>10×</strong> faster alert triage</div>
-        <div><strong>1 goal:</strong> less fraud, more judgment</div>
-      </div>
+    <!-- Insert website image before projects -->
+    <div class="imageSection">
+      <img src="Website%20Photo.png" alt="Featured website visual">
     </div>
 
     <section id="projects">
       <h2>Projects</h2>
       <div class="grid">
-        <div class="card">
-          <h3>Alert Triage Risk Scorer</h3>
-          <p><strong>Phase:</strong> Prototyping explainable models to surface real risk faster.</p>
-        </div>
-        <div class="card">
-          <h3>Entity Network Link Analysis</h3>
-          <p><strong>Phase:</strong> Designing visual maps of coordinated activity across entities and wallets.</p>
-        </div>
-        <div class="card">
-          <h3>KYC Risk Model Case Study</h3>
-          <p><strong>Phase:</strong> Evaluating onboarding and jurisdiction risk using structured and behavioral data.</p>
-        </div>
-        <div class="card">
-          <h3>Investigator Assist (GenAI)</h3>
-          <p><strong>Phase:</strong> AI-assisted summaries that support, not replace, investigator judgment.</p>
-        </div>
+        <div class="card"><h3>Alert Triage Risk Scorer</h3><p><strong>Phase:</strong> Prototyping explainable models to surface real risk faster.</p></div>
+        <div class="card"><h3>Entity Network Link Analysis</h3><p><strong>Phase:</strong> Designing visual maps of coordinated activity across entities and wallets.</p></div>
+        <div class="card"><h3>KYC Risk Model Case Study</h3><p><strong>Phase:</strong> Evaluating onboarding and jurisdiction risk using structured and behavioral data.</p></div>
+        <div class="card"><h3>Investigator Assist (GenAI)</h3><p><strong>Phase:</strong> AI-assisted summaries that support, not replace, investigator judgment.</p></div>
       </div>
     </section>
 
@@ -461,9 +168,7 @@
 
     <section id="contact">
       <h2>Contact</h2>
-      <div class="box">
-        <p>Email: <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a></p>
-      </div>
+      <div class="box"><p>Email: <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a></p></div>
     </section>
 
     <footer>
@@ -473,17 +178,10 @@
   </div>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-
-    const themeToggle = document.getElementById('themeToggle');
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) document.body.setAttribute('data-theme', currentTheme);
-
-    themeToggle.addEventListener('click', () => {
-      const newTheme = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      document.body.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    });
+    document.getElementById("y").textContent=new Date().getFullYear();
+    const t=document.getElementById("themeToggle"),s=localStorage.getItem("theme");
+    if(s)document.body.setAttribute("data-theme",s);
+    t.addEventListener("click",()=>{const e=document.body.getAttribute("data-theme")==="light"?"dark":"light";document.body.setAttribute("data-theme",e);localStorage.setItem("theme",e)});
   </script>
 </body>
 </html>
