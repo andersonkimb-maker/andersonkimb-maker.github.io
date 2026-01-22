@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kim Anderson | AI for Financial Crime</title>
-  <meta name="description" content="Building AI tools that help financial investigators see through noise and stop fraud faster." />
+  <meta name="description" content="Building AI tools that help financial investigators detect, explain, and prevent fraud with speed, clarity, and trust." />
 
   <style>
     :root {
@@ -13,18 +13,27 @@
       --border: rgba(255,255,255,.15);
       --accent1: #00a0b0;
       --accent2: #72c472;
-      --accent3: #b68a3a;
+      --accent3: #22C55E; /* new contact green */
       --radius: 20px;
+      --bg-dark: linear-gradient(120deg, #0e2431, #173b4d, #264a53);
+      --bg-light: #f5f7fa;
     }
 
-    * { box-sizing: border-box; }
+    [data-theme="light"] {
+      --ink: #111;
+      --muted: #4b5563;
+      --border: rgba(0,0,0,.15);
+      --bg-dark: #f5f7fa;
+    }
+
+    * { box-sizing: border-box; transition: background .3s ease, color .3s ease; }
 
     html, body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       line-height: 1.6;
       color: var(--ink);
-      background: linear-gradient(120deg, #0e2431, #173b4d, #264a53);
+      background: var(--bg-dark);
       background-size: 300% 300%;
       animation: bgShift 18s ease infinite;
     }
@@ -59,9 +68,9 @@
     }
 
     .brand img {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
       border: 2px solid rgba(255,255,255,.8);
       object-fit: cover;
     }
@@ -73,9 +82,8 @@
     }
 
     .brandText .name {
-      font-weight: 900;
+      font-weight: 800;
       font-size: 16px;
-      letter-spacing: .4px;
     }
 
     .brandText .role {
@@ -85,8 +93,8 @@
 
     nav {
       display: flex;
+      align-items: center;
       gap: 12px;
-      flex-wrap: wrap;
     }
 
     nav a {
@@ -102,13 +110,22 @@
       color: #fff;
     }
 
+    .toggle {
+      cursor: pointer;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
     /* Hero */
     .hero {
       display: grid;
       grid-template-columns: 1.1fr .9fr;
       gap: 26px;
-      padding: 36px 0 0;
-      align-items: center;
+      padding: 48px 0 0;
+      align-items: flex-start;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp .9s ease forwards;
@@ -138,16 +155,12 @@
       transition: background .2s ease, transform .25s ease;
     }
 
-    .mission:hover .missionDot {
-      background: var(--accent2);
-      transform: scale(1.1);
-    }
+    .mission:hover .missionDot { background: var(--accent2); transform: scale(1.1); }
 
     h1 {
-      font-size: 58px;
-      font-weight: 900;
+      font-size: 54px;
+      line-height: 1.2;
       margin: 0 0 10px;
-      letter-spacing: .4px;
     }
 
     .tagline {
@@ -159,16 +172,16 @@
 
     .heroLine {
       font-size: 22px;
-      font-weight: 700;
-      line-height: 1.25;
-      margin: 0 0 10px;
-      max-width: 52ch;
+      font-weight: 500;
+      line-height: 1.3;
+      margin: 0 0 12px;
+      max-width: 54ch;
     }
 
     .supportLine {
       font-size: 16px;
       color: var(--muted);
-      margin: 0 0 18px;
+      margin: 0 0 22px;
       max-width: 70ch;
     }
 
@@ -184,7 +197,6 @@
       border-radius: 14px;
       font-weight: 650;
       font-size: 14px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.1);
       transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
       display: inline-flex;
       align-items: center;
@@ -198,16 +210,16 @@
     .btn.contact { background: var(--accent3); }
 
     .btn:hover {
-      transform: translateY(-3px);
+      transform: translateY(-3px) scale(1.03);
       box-shadow: 0 10px 25px rgba(0,0,0,.25);
-      filter: brightness(1.15);
+      filter: brightness(1.1);
     }
 
     .pills {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-top: 16px;
+      margin-top: 20px;
     }
 
     .pill {
@@ -215,26 +227,36 @@
       padding: 6px 12px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,.1);
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeInPill .6s ease forwards;
+      background: rgba(255,255,255,.06);
+      box-shadow: inset 0 1px 2px rgba(255,255,255,.05);
+      transition: transform .2s ease, background .2s ease;
     }
 
-    .pill:nth-child(1){animation-delay:.2s;}
-    .pill:nth-child(2){animation-delay:.3s;}
-    .pill:nth-child(3){animation-delay:.4s;}
-    .pill:nth-child(4){animation-delay:.5s;}
-    .pill:nth-child(5){animation-delay:.6s;}
-    .pill:nth-child(6){animation-delay:.7s;}
+    .pill:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,.12);
+    }
 
-    @keyframes fadeInPill {
-      to { opacity: 1; transform: translateY(0); }
+    /* Quick Stats */
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 28px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .stats strong {
+      font-size: 18px;
+      color: var(--accent2);
+      display: block;
     }
 
     .heroRight {
       display: flex;
       justify-content: flex-end;
+      align-items: flex-start;
     }
 
     .imageCard {
@@ -247,16 +269,9 @@
       box-shadow: 0 14px 34px rgba(0,0,0,.2);
     }
 
-    .imageCard img {
-      width: 100%;
-      height: auto;
-      display: block;
-      opacity: 0.9;
-    }
+    .imageCard img { width: 100%; display: block; }
 
-    section {
-      margin-top: 56px;
-    }
+    section { margin-top: 72px; }
 
     h2 {
       font-size: 20px;
@@ -285,17 +300,8 @@
       border-color: var(--accent1);
     }
 
-    .card h3 {
-      margin: 0 0 6px;
-      font-size: 18px;
-      color: #fff;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .card h3 { margin: 0 0 6px; font-size: 18px; color: #fff; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
 
     .box {
       background: rgba(255,255,255,.08);
@@ -306,7 +312,7 @@
     }
 
     footer {
-      margin-top: 56px;
+      margin-top: 72px;
       padding-top: 24px;
       border-top: 1px solid var(--border);
       font-size: 13px;
@@ -319,8 +325,8 @@
 
     @media (max-width:900px) {
       .hero { grid-template-columns: 1fr; }
-      .heroRight { justify-content: flex-start; }
-      h1 { font-size: 46px; }
+      .heroRight { justify-content: flex-start; margin-top: 20px; }
+      h1 { font-size: 40px; }
       .card { grid-column: span 12; }
     }
   </style>
@@ -330,7 +336,7 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <img src="Profile%20Picture.png" alt="Kim Anderson profile photo">
+        <img src="Profile%20Picture.png" alt="Kim Anderson profile">
         <div class="brandText">
           <div class="name">Kim Anderson</div>
           <div class="role">AI for Financial Crime • AML & Fraud Systems</div>
@@ -341,6 +347,7 @@
         <a href="#about">About</a>
         <a href="#resume">Resume</a>
         <a href="#contact">Contact</a>
+        <div class="toggle" id="themeToggle">🌓</div>
       </nav>
     </header>
 
@@ -351,10 +358,12 @@
           <span><strong>Mission:</strong> Build AI tools that fight fraud and help real investigators move faster.</span>
         </div>
 
-        <h1>Helping investigators see through the noise of financial crime.</h1>
+        <h1><strong>Helping investigators see</strong><br><span style="font-weight:600">through the noise of financial crime.</span></h1>
+
         <p class="tagline">AI for fraud fighters.</p>
 
-        <p class="heroLine">I design AI tools that empower investigators to detect, explain, and prevent financial crime with clarity and confidence.</p>
+        <p class="heroLine">I build AI tools that help investigators detect, explain, and prevent financial crime — with speed, clarity, and trust.</p>
+
         <p class="supportLine">Working across AML, fraud, and crypto risk with explainable models and human-centered design.</p>
 
         <div class="ctaRow">
@@ -370,6 +379,12 @@
           <span class="pill">Risk Scoring</span>
           <span class="pill">Crypto Risk</span>
           <span class="pill">Process Automation</span>
+        </div>
+
+        <div class="stats">
+          <div><strong>20+</strong> AI-enabled risk models deployed</div>
+          <div><strong>10×</strong> faster alert triage</div>
+          <div><strong>1 goal:</strong> less fraud, more judgment</div>
         </div>
       </div>
 
@@ -431,9 +446,20 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const themeToggle = document.getElementById('themeToggle');
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) document.body.setAttribute('data-theme', currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const newTheme = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
   </script>
 </body>
 </html>
+
 
 
 
