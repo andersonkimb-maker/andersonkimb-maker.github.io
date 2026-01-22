@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kim Anderson | AI for Financial Crime</title>
-  <meta name="description" content="Building AI tools that help financial investigators detect, explain, and prevent fraud with speed, clarity, and trust." />
+  <meta name="description" content="Building AI tools that help investigators detect, explain, and prevent financial crime — with speed, clarity, and trust." />
   <style>
     :root {
       --ink:#f5f7fa;
@@ -15,7 +15,7 @@
       --accent3:#22C55E;
       --radius:20px;
       --bg-dark:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
-      --overlay-dark:linear-gradient(to right,rgba(14,36,49,.7),rgba(14,36,49,0));
+      --overlay-dark:linear-gradient(to bottom,rgba(14,36,49,.7),rgba(14,36,49,.2));
     }
 
     [data-theme="light"] {
@@ -23,19 +23,20 @@
       --muted:#4b5563;
       --border:rgba(0,0,0,.15);
       --bg-dark:#f5f7fa;
-      --overlay-dark:linear-gradient(to right,rgba(245,247,250,.7),rgba(245,247,250,0));
+      --overlay-dark:linear-gradient(to bottom,rgba(245,247,250,.6),rgba(245,247,250,.1));
     }
 
     *{box-sizing:border-box;transition:background .3s ease,color .3s ease}
-    html,body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg-dark);background-size:300% 300%;}
+    html,body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg-dark);}
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 96px}
+    .wrap{max-width:900px;margin:0 auto;padding:28px 20px 96px}
 
+    /* Header */
     header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:16px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,.8);object-fit:cover}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.8);object-fit:cover}
     .brandText{display:flex;flex-direction:column;line-height:1.2}
-    .brandText .name{font-weight:800;font-size:16px}
+    .brandText .name{font-weight:800;font-size:15px}
     .brandText .role{color:var(--muted);font-size:13px}
     nav{display:flex;align-items:center;gap:12px}
     nav a{font-size:13px;color:var(--muted);padding:8px 10px;border-radius:12px;transition:background .15s ease,color .15s ease}
@@ -44,29 +45,26 @@
 
     /* Banner */
     .banner{position:relative;width:100%;overflow:hidden;border-radius:12px;margin-top:24px}
-    .banner img{width:100%;height:420px;object-fit:cover;display:block}
+    .banner img{width:100%;height:240px;object-fit:cover;display:block}
     .banner::after{content:"";position:absolute;inset:0;background:var(--overlay-dark);pointer-events:none}
 
-    /* Hero */
-    .hero{display:flex;align-items:center;gap:30px;flex-wrap:wrap;padding-top:40px}
-    .profileLarge{flex:0 0 160px;height:160px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.8);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+    /* Hero (Centered Intro) */
+    .hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:36px}
+    .profileLarge{width:140px;height:140px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.8);box-shadow:0 8px 24px rgba(0,0,0,.4);margin-bottom:16px}
     .profileLarge img{width:100%;height:100%;object-fit:cover}
-    .heroContent{flex:1 1 500px}
     .mission{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.08);font-size:13px;margin-bottom:18px}
     .missionDot{width:12px;height:12px;border-radius:50%;border:2px solid var(--accent2)}
-    h1{font-size:50px;line-height:1.2;margin:0 0 10px}
-    .tagline{font-size:20px;font-weight:600;color:var(--accent2);margin:0 0 10px}
-    .heroLine{font-size:22px;font-weight:500;line-height:1.3;margin:0 0 12px;max-width:54ch}
+    h1{font-size:44px;line-height:1.2;margin:0 0 10px}
+    .tagline{font-size:20px;font-weight:600;color:var(--accent2);margin:0 0 12px}
+    .heroLine{font-size:20px;font-weight:500;line-height:1.4;margin:0 0 12px;max-width:60ch}
     .supportLine{font-size:16px;color:var(--muted);margin:0 0 22px;max-width:70ch}
-    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
     .btn{padding:11px 18px;border-radius:14px;font-weight:650;font-size:14px;display:inline-flex;align-items:center;gap:10px;color:#fff;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
     .btn.primary{background:var(--accent1)} .btn.contact{background:var(--accent3)}
     .btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 25px rgba(0,0,0,.25);filter:brightness(1.1)}
-    .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+    .pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:20px}
     .pill{font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.06);box-shadow:inset 0 1px 2px rgba(255,255,255,.05);transition:transform .2s,background .2s}
     .pill:hover{transform:scale(1.05);background:rgba(255,255,255,.12)}
-    .stats{display:flex;flex-wrap:wrap;gap:24px;margin-top:28px;font-size:14px;color:var(--muted)}
-    .stats strong{font-size:18px;color:var(--accent2);display:block}
 
     section{margin-top:72px}
     h2{font-size:20px;margin:0 0 14px}
@@ -79,11 +77,10 @@
     footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--border);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
     @media(max-width:900px){
-      .hero{flex-direction:column;align-items:flex-start}
-      .profileLarge{width:120px;height:120px}
-      h1{font-size:38px}
+      h1{font-size:34px}
+      .banner img{height:200px}
+      .profileLarge{width:110px;height:110px}
       .card{grid-column:span 12}
-      .banner img{height:240px}
     }
   </style>
 </head>
@@ -109,37 +106,30 @@
       <img src="Banner.png" alt="Hero banner image">
     </div>
 
-    <!-- Hero -->
+    <!-- Centered Hero -->
     <div class="hero">
       <div class="profileLarge">
         <img src="Profile%20Picture.png" alt="Profile photo">
       </div>
-      <div class="heroContent">
-        <div class="mission">
-          <span class="missionDot"></span>
-          <span><strong>Mission:</strong> Build AI tools that fight fraud and help real investigators move faster.</span>
-        </div>
 
-        <h1><strong>Helping investigators see</strong><br><span style="font-weight:600">through the noise of financial crime.</span></h1>
-        <p class="tagline">AI for fraud fighters.</p>
-        <p class="heroLine">I build AI tools that help investigators detect, explain, and prevent financial crime — with speed, clarity, and trust.</p>
-        <p class="supportLine">Working across AML, fraud, and crypto risk with explainable models and human-centered design.</p>
+      <div class="mission">
+        <span class="missionDot"></span>
+        <span><strong>Mission:</strong> Build AI tools that fight fraud and help real investigators move faster.</span>
+      </div>
 
-        <div class="ctaRow">
-          <a class="btn primary" href="#projects">View Projects</a>
-          <a class="btn contact" href="#contact">Contact</a>
-        </div>
+      <h1><strong>Helping investigators see</strong><br><span style="font-weight:600">through the noise of financial crime.</span></h1>
+      <p class="tagline">AI for fraud fighters.</p>
+      <p class="heroLine">I build AI tools that help investigators detect, explain, and prevent financial crime — with speed, clarity, and trust.</p>
+      <p class="supportLine">Working across AML, fraud, and crypto risk with explainable models and human-centered design.</p>
 
-        <div class="pills">
-          <span class="pill">SQL</span><span class="pill">AML Investigations</span><span class="pill">Fraud Patterns</span>
-          <span class="pill">Risk Scoring</span><span class="pill">Crypto Risk</span><span class="pill">Process Automation</span>
-        </div>
+      <div class="ctaRow">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn contact" href="#contact">Contact</a>
+      </div>
 
-        <div class="stats">
-          <div><strong>20+</strong> AI-enabled risk models deployed</div>
-          <div><strong>10×</strong> faster alert triage</div>
-          <div><strong>1 goal:</strong> less fraud, more judgment</div>
-        </div>
+      <div class="pills">
+        <span class="pill">SQL</span><span class="pill">AML Investigations</span><span class="pill">Fraud Patterns</span>
+        <span class="pill">Risk Scoring</span><span class="pill">Crypto Risk</span><span class="pill">Process Automation</span>
       </div>
     </div>
 
@@ -179,6 +169,7 @@
   </script>
 </body>
 </html>
+
 
 
 
