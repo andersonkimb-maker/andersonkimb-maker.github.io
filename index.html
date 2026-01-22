@@ -70,33 +70,34 @@
       position:absolute;
       top:50%;
       left:50%;
-      transform:translate(-50%,-70%);
+      transform:translate(-50%,-60%);
       z-index:3;
       color:#fff;
       text-align:center;
     }
     .bannerText h1{
       margin:0;
-      font-size:36px;
-      font-weight:800;
+      font-size:52px;
+      font-weight:900;
     }
     .bannerText p{
       margin:4px 0 0 0;
-      font-size:16px;
+      font-size:18px;
       opacity:0.9;
     }
 
-    /* Profile overlaps banner */
+    /* Profile overlaps banner (left) */
     .profileOverlap{
-      position:relative;
-      z-index:3;
+      position:absolute;
+      top:180px; /* controls vertical overlap */
+      left:50px; /* moves photo to the left side */
+      z-index:4;
       width:150px;
       height:150px;
       border-radius:50%;
       overflow:hidden;
       border:3px solid rgba(255,255,255,.9);
       box-shadow:0 8px 24px rgba(0,0,0,.4);
-      margin:-75px auto 20px auto;
       background:#fff;
     }
     .profileOverlap img{
@@ -106,7 +107,7 @@
     }
 
     /* Hero */
-    .hero{text-align:center;padding-top:0}
+    .hero{text-align:center;padding-top:140px;} /* add top padding for overlap space */
     .mission{
       display:inline-flex;
       align-items:center;
@@ -156,9 +157,10 @@
     footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--border);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
     @media(max-width:900px){
-      .bannerText h1{font-size:28px}
+      .bannerText h1{font-size:36px}
       .bannerText p{font-size:14px}
-      .profileOverlap{width:110px;height:110px;margin:-60px auto 16px auto;}
+      .profileOverlap{top:160px;left:calc(50% - 55px);width:110px;height:110px;}
+      .hero{padding-top:120px;}
       .card{grid-column:span 12}
     }
   </style>
@@ -180,11 +182,10 @@
         <h1>Kim Anderson</h1>
         <p>AI for Financial Crime</p>
       </div>
-    </div>
-
-    <!-- Profile overlapping banner -->
-    <div class="profileOverlap">
-      <img src="Profile%20Picture.png" alt="Profile photo">
+      <!-- Profile overlapping left -->
+      <div class="profileOverlap">
+        <img src="Profile%20Picture.png" alt="Profile photo">
+      </div>
     </div>
 
     <!-- Hero -->
@@ -250,6 +251,7 @@
   </script>
 </body>
 </html>
+
 
 
 
