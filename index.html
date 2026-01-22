@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kim Anderson | AI for Financial Crime • AML Risk Tools</title>
+  <title>Kim Anderson | AI for Financial Crime</title>
   <meta name="description" content="Building AI tools that help financial investigators see through noise and stop fraud faster." />
 
   <style>
@@ -13,7 +13,8 @@
       --border: rgba(255,255,255,.15);
       --accent1: #00a0b0;
       --accent2: #72c472;
-      --radius: 22px;
+      --accent3: #b68a3a;
+      --radius: 20px;
     }
 
     * { box-sizing: border-box; }
@@ -47,31 +48,44 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      padding-bottom: 16px;
       border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
     }
 
-    .brandMini {
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 2px solid rgba(255,255,255,.8);
+      object-fit: cover;
+    }
+
+    .brandText {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      line-height: 1.2;
     }
 
-    .kname {
+    .brandText .name {
       font-weight: 900;
       font-size: 16px;
       letter-spacing: .4px;
     }
 
-    .krole {
+    .brandText .role {
       color: var(--muted);
       font-size: 13px;
     }
 
     nav {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
@@ -80,14 +94,12 @@
       color: var(--muted);
       padding: 8px 10px;
       border-radius: 12px;
-      border: 1px solid transparent;
-      transition: transform .15s ease, background .15s ease;
+      transition: background .15s ease, color .15s ease;
     }
 
     nav a:hover {
       background: linear-gradient(90deg, var(--accent1), var(--accent2));
       color: #fff;
-      transform: translateY(-1px);
     }
 
     /* Hero */
@@ -103,50 +115,7 @@
     }
 
     @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .name {
-      font-size: 58px;
-      font-weight: 900;
-      margin: 0 0 10px;
-      letter-spacing: .4px;
-    }
-
-    .tagline {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--accent2);
-      margin: 0 0 10px;
-    }
-
-    .heroLine {
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 1.25;
-      margin: 0 0 10px;
-      max-width: 52ch;
-      position: relative;
-      display: inline-block;
-      background-image: linear-gradient(to right, var(--accent1), var(--accent2));
-      background-size: 0% 3px;
-      background-repeat: no-repeat;
-      background-position: 0 100%;
-      transition: background-size .4s ease;
-    }
-
-    .heroLine:hover {
-      background-size: 100% 3px;
-    }
-
-    .supportLine {
-      font-size: 16px;
-      color: var(--muted);
-      margin: 0 0 18px;
-      max-width: 70ch;
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .mission {
@@ -174,6 +143,35 @@
       transform: scale(1.1);
     }
 
+    h1 {
+      font-size: 58px;
+      font-weight: 900;
+      margin: 0 0 10px;
+      letter-spacing: .4px;
+    }
+
+    .tagline {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--accent2);
+      margin: 0 0 10px;
+    }
+
+    .heroLine {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin: 0 0 10px;
+      max-width: 52ch;
+    }
+
+    .supportLine {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 0 18px;
+      max-width: 70ch;
+    }
+
     .ctaRow {
       display: flex;
       gap: 12px;
@@ -184,26 +182,25 @@
     .btn {
       padding: 11px 18px;
       border-radius: 14px;
-      border: 1px solid var(--border);
       font-weight: 650;
       font-size: 14px;
       box-shadow: 0 10px 24px rgba(0,0,0,.1);
-      transition: transform .2s ease, box-shadow .2s ease;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: rgba(255,255,255,.08);
+      color: #fff;
+      cursor: pointer;
     }
+
+    .btn.primary { background: var(--accent1); }
+    .btn.resume { background: var(--accent2); }
+    .btn.contact { background: var(--accent3); }
 
     .btn:hover {
-      transform: translateY(-3px) scale(1.02);
+      transform: translateY(-3px);
       box-shadow: 0 10px 25px rgba(0,0,0,.25);
-    }
-
-    .btn.primary {
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      border: none;
-      color: #fff;
+      filter: brightness(1.15);
     }
 
     .pills {
@@ -219,14 +216,20 @@
       border-radius: 999px;
       border: 1px solid var(--border);
       background: rgba(255,255,255,.1);
-      cursor: pointer;
-      transition: all .2s ease;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInPill .6s ease forwards;
     }
 
-    .pill:hover {
-      transform: translateY(-2px);
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      color: white;
+    .pill:nth-child(1){animation-delay:.2s;}
+    .pill:nth-child(2){animation-delay:.3s;}
+    .pill:nth-child(3){animation-delay:.4s;}
+    .pill:nth-child(4){animation-delay:.5s;}
+    .pill:nth-child(5){animation-delay:.6s;}
+    .pill:nth-child(6){animation-delay:.7s;}
+
+    @keyframes fadeInPill {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .heroRight {
@@ -242,7 +245,6 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,.08);
       box-shadow: 0 14px 34px rgba(0,0,0,.2);
-      position: relative;
     }
 
     .imageCard img {
@@ -250,57 +252,6 @@
       height: auto;
       display: block;
       opacity: 0.9;
-    }
-
-    .profileChip {
-      position: absolute;
-      left: 14px;
-      bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(0,0,0,.5);
-      backdrop-filter: blur(6px);
-    }
-
-    .avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 2px solid rgba(255,255,255,.8);
-      flex: 0 0 auto;
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .chipText {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      line-height: 1.15;
-    }
-
-    .chipName {
-      font-weight: 850;
-      font-size: 13px;
-    }
-
-    .chipRole {
-      font-size: 12px;
-      color: var(--muted);
-      max-width: 220px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     section {
@@ -369,7 +320,7 @@
     @media (max-width:900px) {
       .hero { grid-template-columns: 1fr; }
       .heroRight { justify-content: flex-start; }
-      .name { font-size: 46px; }
+      h1 { font-size: 46px; }
       .card { grid-column: span 12; }
     }
   </style>
@@ -378,13 +329,15 @@
 <body>
   <div class="wrap">
     <header>
-      <div class="brandMini">
-        <div class="kname">Kim Anderson</div>
-        <div class="krole">AI for Financial Crime • AML & Fraud Systems</div>
+      <div class="brand">
+        <img src="Profile%20Picture.png" alt="Kim Anderson profile photo">
+        <div class="brandText">
+          <div class="name">Kim Anderson</div>
+          <div class="role">AI for Financial Crime • AML & Fraud Systems</div>
+        </div>
       </div>
       <nav>
         <a href="#projects">Projects</a>
-        <a href="#approach">Approach</a>
         <a href="#about">About</a>
         <a href="#resume">Resume</a>
         <a href="#contact">Contact</a>
@@ -398,17 +351,16 @@
           <span><strong>Mission:</strong> Build AI tools that fight fraud and help real investigators move faster.</span>
         </div>
 
-        <h1 class="name">Kim Anderson</h1>
+        <h1>Helping investigators see through the noise of financial crime.</h1>
         <p class="tagline">AI for fraud fighters.</p>
 
-        <p class="heroLine">Helping investigators see through the noise of financial crime with clarity, speed, and explainability.</p>
-
+        <p class="heroLine">I design AI tools that empower investigators to detect, explain, and prevent financial crime with clarity and confidence.</p>
         <p class="supportLine">Working across AML, fraud, and crypto risk with explainable models and human-centered design.</p>
 
         <div class="ctaRow">
           <a class="btn primary" href="#projects">View Projects</a>
-          <a class="btn" href="#resume">Download Resume</a>
-          <a class="btn" href="#contact">Contact</a>
+          <a class="btn resume" href="#resume">Download Resume</a>
+          <a class="btn contact" href="#contact">Contact</a>
         </div>
 
         <div class="pills">
@@ -423,16 +375,7 @@
 
       <div class="heroRight">
         <div class="imageCard">
-          <img src="Website%20Photo.png" alt="Featured image" />
-          <div class="profileChip">
-            <div class="avatar">
-              <img src="Profile%20Picture.png" alt="Profile picture" />
-            </div>
-            <div class="chipText">
-              <div class="chipName">Kim Anderson</div>
-              <div class="chipRole">Building AI tools for financial investigators</div>
-            </div>
-          </div>
+          <img src="Website%20Photo.png" alt="Featured project image">
         </div>
       </div>
     </div>
@@ -459,17 +402,6 @@
       </div>
     </section>
 
-    <section id="approach">
-      <h2>Approach</h2>
-      <div class="box">
-        <ul>
-          <li><strong>Trusted:</strong> If investigators don’t trust it, they won’t use it.</li>
-          <li><strong>Explainable:</strong> Decisions should hold up under audits and reviews.</li>
-          <li><strong>Effective:</strong> Cut false positives, focus on real threats.</li>
-        </ul>
-      </div>
-    </section>
-
     <section id="about">
       <h2>About</h2>
       <div class="box">
@@ -480,7 +412,7 @@
     <section id="resume">
       <h2>Resume</h2>
       <div class="box">
-        <a class="btn primary" href="/Kim%20Anderson%20Resume%202025.pdf" target="_blank" rel="noopener">Download Resume</a>
+        <a class="btn resume" href="/Kim%20Anderson%20Resume%202025.pdf" target="_blank" rel="noopener">Download Resume</a>
       </div>
     </section>
 
@@ -499,16 +431,10 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
-
-    // Make pills scroll to Projects
-    document.querySelectorAll('.pill').forEach(pill => {
-      pill.addEventListener('click', () => {
-        document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-      });
-    });
   </script>
 </body>
 </html>
+
 
 
 
