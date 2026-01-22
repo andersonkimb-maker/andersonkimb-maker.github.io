@@ -13,10 +13,12 @@
       --border: rgba(255,255,255,.15);
       --accent1: #00a0b0;
       --accent2: #72c472;
-      --accent3: #22C55E; /* new contact green */
+      --accent3: #22C55E;
       --radius: 20px;
       --bg-dark: linear-gradient(120deg, #0e2431, #173b4d, #264a53);
       --bg-light: #f5f7fa;
+      --overlay-dark: linear-gradient(to right, rgba(14,36,49,0.85), rgba(14,36,49,0));
+      --overlay-light: linear-gradient(to right, rgba(245,247,250,0.75), rgba(245,247,250,0));
     }
 
     [data-theme="light"] {
@@ -119,20 +121,77 @@
       color: var(--muted);
     }
 
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 26px;
-      padding: 48px 0 0;
-      align-items: flex-start;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp .9s ease forwards;
+    /* Banner */
+    .banner {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-top: 24px;
     }
 
-    @keyframes fadeInUp {
-      to { opacity: 1; transform: translateY(0); }
+    .banner img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--overlay-dark);
+      pointer-events: none;
+      transition: background .3s ease;
+    }
+
+    [data-theme="light"] .banner::after {
+      background: var(--overlay-light);
+    }
+
+    .profileChip {
+      position: absolute;
+      left: 24px;
+      bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,.5);
+      backdrop-filter: blur(6px);
+      color: var(--ink);
+    }
+
+    .profileChip .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,.8);
+    }
+
+    .profileChip .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .chipText {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .chipText .chipName { font-weight: 850; font-size: 13px; }
+    .chipText .chipRole { font-size: 12px; color: var(--muted); }
+
+    /* Hero */
+    .hero {
+      padding-top: 40px;
+      text-align: left;
     }
 
     .mission {
@@ -206,7 +265,6 @@
     }
 
     .btn.primary { background: var(--accent1); }
-    .btn.resume { background: var(--accent2); }
     .btn.contact { background: var(--accent3); }
 
     .btn:hover {
@@ -237,7 +295,6 @@
       background: rgba(255,255,255,.12);
     }
 
-    /* Quick Stats */
     .stats {
       display: flex;
       flex-wrap: wrap;
@@ -253,30 +310,9 @@
       display: block;
     }
 
-    .heroRight {
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-start;
-    }
-
-    .imageCard {
-      width: 100%;
-      max-width: 420px;
-      border-radius: 26px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.08);
-      box-shadow: 0 14px 34px rgba(0,0,0,.2);
-    }
-
-    .imageCard img { width: 100%; display: block; }
-
     section { margin-top: 72px; }
 
-    h2 {
-      font-size: 20px;
-      margin: 0 0 14px;
-    }
+    h2 { font-size: 20px; margin: 0 0 14px; }
 
     .grid {
       display: grid;
@@ -324,10 +360,9 @@
     }
 
     @media (max-width:900px) {
-      .hero { grid-template-columns: 1fr; }
-      .heroRight { justify-content: flex-start; margin-top: 20px; }
       h1 { font-size: 40px; }
       .card { grid-column: span 12; }
+      .banner img { height: 220px; }
     }
   </style>
 </head>
@@ -339,59 +374,59 @@
         <img src="Profile%20Picture.png" alt="Kim Anderson profile">
         <div class="brandText">
           <div class="name">Kim Anderson</div>
-          <div class="role">AI for Financial Crime • AML & Fraud Systems</div>
+          <div class="role">AI for Financial Crime</div>
         </div>
       </div>
       <nav>
-        <a href="#projects">Projects</a>
         <a href="#about">About</a>
-        <a href="#resume">Resume</a>
         <a href="#contact">Contact</a>
         <div class="toggle" id="themeToggle">🌓</div>
       </nav>
     </header>
 
-    <div class="hero">
-      <div class="heroLeft">
-        <div class="mission">
-          <span class="missionDot"></span>
-          <span><strong>Mission:</strong> Build AI tools that fight fraud and help real investigators move faster.</span>
+    <!-- Full-width banner with overlay -->
+    <div class="banner">
+      <img src="Website%20Photo.png" alt="Hero banner image">
+      <div class="profileChip">
+        <div class="avatar">
+          <img src="Profile%20Picture.png" alt="Profile">
         </div>
-
-        <h1><strong>Helping investigators see</strong><br><span style="font-weight:600">through the noise of financial crime.</span></h1>
-
-        <p class="tagline">AI for fraud fighters.</p>
-
-        <p class="heroLine">I build AI tools that help investigators detect, explain, and prevent financial crime — with speed, clarity, and trust.</p>
-
-        <p class="supportLine">Working across AML, fraud, and crypto risk with explainable models and human-centered design.</p>
-
-        <div class="ctaRow">
-          <a class="btn primary" href="#projects">View Projects</a>
-          <a class="btn resume" href="#resume">Download Resume</a>
-          <a class="btn contact" href="#contact">Contact</a>
-        </div>
-
-        <div class="pills">
-          <span class="pill">SQL</span>
-          <span class="pill">AML Investigations</span>
-          <span class="pill">Fraud Patterns</span>
-          <span class="pill">Risk Scoring</span>
-          <span class="pill">Crypto Risk</span>
-          <span class="pill">Process Automation</span>
-        </div>
-
-        <div class="stats">
-          <div><strong>20+</strong> AI-enabled risk models deployed</div>
-          <div><strong>10×</strong> faster alert triage</div>
-          <div><strong>1 goal:</strong> less fraud, more judgment</div>
+        <div class="chipText">
+          <div class="chipName">Kim Anderson</div>
+          <div class="chipRole">Building AI tools for financial investigators</div>
         </div>
       </div>
+    </div>
 
-      <div class="heroRight">
-        <div class="imageCard">
-          <img src="Website%20Photo.png" alt="Featured project image">
-        </div>
+    <div class="hero">
+      <div class="mission">
+        <span class="missionDot"></span>
+        <span><strong>Mission:</strong> Build AI tools that fight fraud and help real investigators move faster.</span>
+      </div>
+
+      <h1><strong>Helping investigators see</strong><br><span style="font-weight:600">through the noise of financial crime.</span></h1>
+      <p class="tagline">AI for fraud fighters.</p>
+      <p class="heroLine">I build AI tools that help investigators detect, explain, and prevent financial crime — with speed, clarity, and trust.</p>
+      <p class="supportLine">Working across AML, fraud, and crypto risk with explainable models and human-centered design.</p>
+
+      <div class="ctaRow">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn contact" href="#contact">Contact</a>
+      </div>
+
+      <div class="pills">
+        <span class="pill">SQL</span>
+        <span class="pill">AML Investigations</span>
+        <span class="pill">Fraud Patterns</span>
+        <span class="pill">Risk Scoring</span>
+        <span class="pill">Crypto Risk</span>
+        <span class="pill">Process Automation</span>
+      </div>
+
+      <div class="stats">
+        <div><strong>20+</strong> AI-enabled risk models deployed</div>
+        <div><strong>10×</strong> faster alert triage</div>
+        <div><strong>1 goal:</strong> less fraud, more judgment</div>
       </div>
     </div>
 
@@ -424,13 +459,6 @@
       </div>
     </section>
 
-    <section id="resume">
-      <h2>Resume</h2>
-      <div class="box">
-        <a class="btn resume" href="/Kim%20Anderson%20Resume%202025.pdf" target="_blank" rel="noopener">Download Resume</a>
-      </div>
-    </section>
-
     <section id="contact">
       <h2>Contact</h2>
       <div class="box">
@@ -459,6 +487,7 @@
   </script>
 </body>
 </html>
+
 
 
 
