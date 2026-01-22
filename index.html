@@ -39,7 +39,6 @@
       transition:background .15s ease,color .15s ease;
     }
     nav a:hover{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff}
-    .toggle{cursor:pointer;padding:6px 10px;border:1px solid var(--border);border-radius:12px;font-size:13px;color:var(--muted)}
 
     /* Banner */
     .banner{
@@ -107,50 +106,88 @@
     }
 
     /* Hero */
-    .hero{text-align:center;padding-top:40px;} /* slightly less gap since photo is higher */
-    .mission{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:8px 14px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.08);
-      font-size:13px;
-      margin-bottom:18px;
-      animation:pulse 2s infinite ease-in-out;
-    }
-    @keyframes pulse{
-      0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.4)}
-      50%{box-shadow:0 0 0 8px rgba(34,197,94,0)}
-    }
-    .missionDot{
-      width:12px;
-      height:12px;
-      border-radius:50%;
-      border:2px solid var(--accent2);
-      background:var(--accent2);
-      animation:blink 1.4s infinite;
-    }
-    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-
+    .hero{text-align:center;padding-top:40px;} 
     h1{font-size:44px;line-height:1.2;margin:0 0 10px}
     .tagline{font-size:20px;font-weight:600;color:var(--accent2);margin:0 0 12px}
     .heroLine{font-size:20px;font-weight:500;line-height:1.4;margin:0 0 12px;max-width:60ch;margin-inline:auto}
     .supportLine{font-size:16px;color:var(--muted);margin:0 0 22px;max-width:70ch;margin-inline:auto}
+
+    /* Stats section */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 48px 0 24px;
+      text-align: center;
+      color: var(--muted);
+    }
+    .stat {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .stat strong {
+      display: block;
+      font-size: 26px;
+      color: var(--ink);
+    }
+
     .ctaRow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
-    .btn{padding:11px 18px;border-radius:14px;font-weight:650;font-size:14px;display:inline-flex;align-items:center;gap:10px;color:#fff;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
-    .btn.primary{background:var(--accent1)} .btn.contact{background:var(--accent3)}
-    .btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 25px rgba(0,0,0,.25);filter:brightness(1.1)}
-    .pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:20px}
-    .pill{font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.06);box-shadow:inset 0 1px 2px rgba(255,255,255,.05);transition:transform .2s,background .2s}
+    .btn{
+      padding:11px 18px;
+      border-radius:14px;
+      font-weight:650;
+      font-size:14px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:#fff;
+      cursor:pointer;
+      transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+    }
+    .btn.primary{background:var(--accent1)}
+    .btn.contact{background:var(--accent3)}
+    .btn:hover{
+      transform:scale(1.05);
+      background-color:var(--accent3);
+      box-shadow:0 8px 24px rgba(34,197,94,0.4);
+      color:#fff;
+    }
+
+    /* Skill pills */
+    .pills{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:20px;
+    }
+    .pill{
+      font-size:12px;
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      box-shadow:inset 0 1px 2px rgba(255,255,255,.05);
+      transition:transform .2s,background .2s;
+    }
     .pill:hover{transform:scale(1.05);background:rgba(255,255,255,.12)}
 
     section{margin-top:72px}
     h2{font-size:20px;margin:0 0 14px;text-align:left}
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-    .card{grid-column:span 6;background:rgba(255,255,255,.08);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:0 12px 30px rgba(0,0,0,.2);transition:transform .3s,box-shadow .3s,border-color .3s}
-    .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,160,176,.3);border-color:var(--accent1)}
+    .card{
+      grid-column:span 6;
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 12px 30px rgba(0,0,0,.2);
+      transition:transform .3s,box-shadow .3s,border-color .3s;
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 18px 40px rgba(0,160,176,.3);
+      border-color:var(--accent1);
+    }
     .card h3{margin:0 0 6px;font-size:18px;color:#fff}
     .card p{margin:0;color:var(--muted);font-size:14px}
     .box{background:rgba(255,255,255,.08);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:0 14px 34px rgba(0,0,0,.2)}
@@ -162,6 +199,7 @@
       .profileOverlap{width:110px;height:110px;margin-left:auto;margin-right:auto;margin-top:-95px;}
       .hero{padding-top:100px;}
       .card{grid-column:span 12}
+      .stats{flex-direction:column;gap:16px;}
     }
   </style>
 </head>
@@ -171,7 +209,6 @@
       <nav>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
-        <div class="toggle" id="themeToggle">🌓</div>
       </nav>
     </header>
 
@@ -191,15 +228,9 @@
 
     <!-- Hero -->
     <div class="hero">
-      <div class="mission">
-        <span class="missionDot"></span>
-        <span><strong>Mission:</strong> Build AI tools that fight fraud and help real investigators move faster.</span>
-      </div>
-
       <h1><strong>Helping investigators see</strong><br><span style="font-weight:600">through the noise of financial crime.</span></h1>
-      <p class="tagline">AI for fraud fighters.</p>
-      <p class="heroLine">I build AI tools that help investigators detect, explain, and prevent financial crime — with speed, clarity, and trust.</p>
-      <p class="supportLine">Working across AML, fraud, and crypto risk with explainable models and human-centered design.</p>
+      <p class="heroLine">I design AI tools that cut false positives, surface real risk, and support confident decisions.</p>
+      <p class="supportLine">Built for fraud fighters — across AML, crypto, and emerging risk systems.</p>
 
       <div class="ctaRow">
         <a class="btn primary" href="#projects">View Projects</a>
@@ -207,11 +238,22 @@
       </div>
 
       <div class="pills">
-        <span class="pill">SQL</span><span class="pill">AML Investigations</span><span class="pill">Fraud Patterns</span>
-        <span class="pill">Risk Scoring</span><span class="pill">Crypto Risk</span><span class="pill">Process Automation</span>
+        <span class="pill">🔎 AML Investigations</span>
+        <span class="pill">🧠 Fraud Patterns</span>
+        <span class="pill">🪙 Crypto Risk</span>
+        <span class="pill">📊 Risk Scoring</span>
+        <span class="pill">⚙️ Process Automation</span>
       </div>
+
+      <!-- Stats -->
+      <section class="stats">
+        <div class="stat"><strong>20+</strong>investigator-first models built</div>
+        <div class="stat"><strong>10×</strong>reduction in false positives</div>
+        <div class="stat"><strong>15+</strong>teams supported in AML/Fraud Ops</div>
+      </section>
     </div>
 
+    <!-- Projects -->
     <section id="projects">
       <h2>Projects</h2>
       <div class="grid">
@@ -222,6 +264,7 @@
       </div>
     </section>
 
+    <!-- About -->
     <section id="about">
       <h2>About</h2>
       <div class="box">
@@ -229,6 +272,7 @@
       </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact">
       <h2>Contact</h2>
       <div class="box"><p>Email: <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a></p></div>
