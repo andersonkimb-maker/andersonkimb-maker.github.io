@@ -86,7 +86,7 @@
       opacity:0.9;
     }
 
-    /* Profile overlaps banner (left, above layer) */
+    /* Profile overlaps banner (left, raised up) */
     .profileOverlap{
       position:relative;
       z-index:4;
@@ -97,8 +97,8 @@
       border:3px solid rgba(255,255,255,.9);
       box-shadow:0 8px 24px rgba(0,0,0,.4);
       background:#fff;
-      margin-top:-75px; /* pulls it upward to overlap banner */
-      margin-left:40px; /* aligns to left edge */
+      margin-top:-130px; /* raised higher */
+      margin-left:40px;  /* left aligned */
     }
     .profileOverlap img{
       width:100%;
@@ -107,7 +107,7 @@
     }
 
     /* Hero */
-    .hero{text-align:center;padding-top:60px;} /* space after overlap */
+    .hero{text-align:center;padding-top:40px;} /* slightly less gap since photo is higher */
     .mission{
       display:inline-flex;
       align-items:center;
@@ -159,7 +159,7 @@
     @media(max-width:900px){
       .bannerText h1{font-size:36px}
       .bannerText p{font-size:14px}
-      .profileOverlap{width:110px;height:110px;margin-left:auto;margin-right:auto;margin-top:-55px;}
+      .profileOverlap{width:110px;height:110px;margin-left:auto;margin-right:auto;margin-top:-95px;}
       .hero{padding-top:100px;}
       .card{grid-column:span 12}
     }
@@ -242,16 +242,10 @@
 
   <script>
     document.getElementById("y").textContent=new Date().getFullYear();
-    const t=document.getElementById("themeToggle"),s=localStorage.getItem("theme");
-    if(s)document.body.setAttribute("data-theme",s);
-    t.addEventListener("click",()=>{
-      const e=document.body.getAttribute("data-theme")==="light"?"dark":"light";
-      document.body.setAttribute("data-theme",e);
-      localStorage.setItem("theme",e);
-    });
   </script>
 </body>
 </html>
+
 
 
 
