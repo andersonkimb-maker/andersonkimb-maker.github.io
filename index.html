@@ -19,7 +19,13 @@
     }
 
     *{box-sizing:border-box;transition:background .3s ease,color .3s ease}
-    html,body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg-dark);}
+    html,body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.6;
+      color:var(--ink);
+      background:var(--bg-dark);
+    }
     a{color:inherit;text-decoration:none}
     .wrap{max-width:900px;margin:0 auto;padding:28px 20px 96px}
 
@@ -112,24 +118,6 @@
     .heroLine{font-size:20px;font-weight:500;line-height:1.4;margin:0 0 12px;max-width:60ch;margin-inline:auto}
     .supportLine{font-size:16px;color:var(--muted);margin:0 0 22px;max-width:70ch;margin-inline:auto}
 
-    /* Stats section */
-    .stats {
-      display: flex;
-      justify-content: space-around;
-      margin: 48px 0 24px;
-      text-align: center;
-      color: var(--muted);
-    }
-    .stat {
-      font-size: 14px;
-      line-height: 1.4;
-    }
-    .stat strong {
-      display: block;
-      font-size: 26px;
-      color: var(--ink);
-    }
-
     .ctaRow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
     .btn{
       padding:11px 18px;
@@ -143,12 +131,11 @@
       cursor:pointer;
       transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
     }
-    .btn.primary{background:var(--accent1)}
-    .btn.contact{background:var(--accent3)}
+    .btn.primary{background:var(--accent3)}
+    .btn.contact{background:var(--accent1)}
     .btn:hover{
       transform:scale(1.05);
-      background-color:var(--accent3);
-      box-shadow:0 8px 24px rgba(34,197,94,0.4);
+      box-shadow:0 8px 24px rgba(0,160,176,0.4);
       color:#fff;
     }
 
@@ -170,6 +157,65 @@
       transition:transform .2s,background .2s;
     }
     .pill:hover{transform:scale(1.05);background:rgba(255,255,255,.12)}
+
+    /* Flip Cards Section */
+    .impact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 22px;
+      margin: 64px 0;
+      perspective: 1000px;
+    }
+
+    .impact-card {
+      background: transparent;
+      height: 140px;
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s cubic-bezier(.4,.2,.2,1);
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .impact-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 8px 28px rgba(0,0,0,.25);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .card-front strong {
+      color: var(--accent1);
+      font-weight: 700;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: rgba(255,255,255,.12);
+      color: var(--muted);
+    }
 
     section{margin-top:72px}
     h2{font-size:20px;margin:0 0 14px;text-align:left}
@@ -199,7 +245,7 @@
       .profileOverlap{width:110px;height:110px;margin-left:auto;margin-right:auto;margin-top:-95px;}
       .hero{padding-top:100px;}
       .card{grid-column:span 12}
-      .stats{flex-direction:column;gap:16px;}
+      .impact-cards{gap:16px;margin:48px 0;}
     }
   </style>
 </head>
@@ -207,7 +253,6 @@
   <div class="wrap">
     <header>
       <nav>
-        <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -245,11 +290,32 @@
         <span class="pill">⚙️ Process Automation</span>
       </div>
 
-      <!-- Stats -->
-      <section class="stats">
-        <div class="stat"><strong>20+</strong>investigator-first models built</div>
-        <div class="stat"><strong>10×</strong>reduction in false positives</div>
-        <div class="stat"><strong>15+</strong>teams supported in AML/Fraud Ops</div>
+      <!-- Impact Flip Cards -->
+      <section class="impact-cards">
+        <div class="impact-card">
+          <div class="card-inner">
+            <div class="card-front"><strong>Reducing noise</strong></div>
+            <div class="card-back">Instead of adding alerts</div>
+          </div>
+        </div>
+        <div class="impact-card">
+          <div class="card-inner">
+            <div class="card-front"><strong>Surfacing risk earlier</strong></div>
+            <div class="card-back">In the investigative process</div>
+          </div>
+        </div>
+        <div class="impact-card">
+          <div class="card-inner">
+            <div class="card-front"><strong>Scaling reviews</strong></div>
+            <div class="card-back">Without scaling headcount</div>
+          </div>
+        </div>
+        <div class="impact-card">
+          <div class="card-inner">
+            <div class="card-front"><strong>Supporting better calls</strong></div>
+            <div class="card-back">Faster, more consistent decisions</div>
+          </div>
+        </div>
       </section>
     </div>
 
@@ -261,14 +327,6 @@
         <div class="card"><h3>Entity Network Link Analysis</h3><p><strong>Phase:</strong> Designing visual maps of coordinated activity across entities and wallets.</p></div>
         <div class="card"><h3>KYC Risk Model Case Study</h3><p><strong>Phase:</strong> Evaluating onboarding and jurisdiction risk using structured and behavioral data.</p></div>
         <div class="card"><h3>Investigator Assist (GenAI)</h3><p><strong>Phase:</strong> AI-assisted summaries that support, not replace, investigator judgment.</p></div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <h2>About</h2>
-      <div class="box">
-        <p>I’m an AML and fraud professional with an investigator mindset and a builder’s approach. I focus on practical AI and workflows that help teams move faster without losing explainability or judgment.</p>
       </div>
     </section>
 
@@ -286,9 +344,21 @@
 
   <script>
     document.getElementById("y").textContent=new Date().getFullYear();
+
+    // Auto-flip cards every few seconds on mobile
+    const cards = document.querySelectorAll('.card-inner');
+    let i = 0;
+    function autoFlip() {
+      cards.forEach((card, idx) => {
+        card.style.transform = (idx === i) ? 'rotateY(180deg)' : 'rotateY(0)';
+      });
+      i = (i + 1) % cards.length;
+    }
+    if (window.innerWidth < 900) setInterval(autoFlip, 3000);
   </script>
 </body>
 </html>
+
 
 
 
