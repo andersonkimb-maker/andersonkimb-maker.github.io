@@ -4,6 +4,390 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kim Anderson | AI for Financial Crime</title>
+  <meta name="description" content="AI tools that help investigators see through financial crime by cutting false positives and supporting confident decisions." />
+
+  <style>
+    :root {
+      --ink:#f5f7fa;
+      --muted:#a8b2b8;
+      --border:rgba(255,255,255,.15);
+      --accent1:#00a0b0;
+      --accent2:#22c55e;
+      --radius:20px;
+      --bg-dark:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
+      --overlay-dark:linear-gradient(to bottom,rgba(14,36,49,.6),rgba(14,36,49,.2));
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.6;
+      color:var(--ink);
+      background:var(--bg-dark);
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:960px;margin:0 auto;padding:24px 20px 96px}
+
+    /* Header */
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-bottom:1px solid var(--border);
+      padding-bottom:16px;
+    }
+
+    .statusBadge{
+      font-size:12px;
+      color:var(--muted);
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px dashed var(--border);
+      letter-spacing:.2px;
+    }
+
+    .topNav{
+      display:flex;
+      gap:14px;
+    }
+
+    .topNav a{
+      font-size:13px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:10px;
+      transition:background .15s ease,color .15s ease;
+    }
+
+    .topNav a:hover{
+      background:rgba(255,255,255,.08);
+      color:var(--ink);
+    }
+
+    /* Banner */
+    .banner{
+      position:relative;
+      margin-top:28px;
+      border-radius:14px;
+      overflow:hidden;
+    }
+
+    .banner img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .banner::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:var(--overlay-dark);
+    }
+
+    .bannerText{
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      z-index:2;
+    }
+
+    .bannerText h1{
+      font-size:56px;
+      font-weight:900;
+      margin:0;
+    }
+
+    .bannerText p{
+      margin-top:6px;
+      font-size:18px;
+      opacity:.9;
+    }
+
+    /* Profile overlap */
+    .profileOverlap{
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      overflow:hidden;
+      border:3px solid rgba(255,255,255,.9);
+      background:#fff;
+      box-shadow:0 8px 24px rgba(0,0,0,.4);
+      margin:-120px 0 0 40px;
+      position:relative;
+      z-index:3;
+    }
+
+    .profileOverlap img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* Hero */
+    .hero{
+      text-align:center;
+      padding-top:40px;
+    }
+
+    .hero h1{
+      font-size:48px;
+      line-height:1.25;
+      margin-bottom:14px;
+      letter-spacing:-.3px;
+    }
+
+    .heroLine{
+      font-size:20px;
+      color:var(--muted);
+      margin-bottom:32px;
+    }
+
+    .ctaRow{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      padding:11px 18px;
+      border-radius:14px;
+      font-size:14px;
+      font-weight:650;
+      color:#fff;
+      transition:transform .2s ease,box-shadow .2s ease;
+    }
+
+    .btn.primary{background:var(--accent2)}
+    .btn.contact{background:var(--accent1)}
+
+    .btn:hover{
+      transform:scale(1.05);
+      box-shadow:0 8px 24px rgba(0,0,0,.35);
+    }
+
+    /* Pills */
+    .pills{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-bottom:48px;
+    }
+
+    .pill{
+      font-size:12px;
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+    }
+
+    /* Impact Cards */
+    .impact-cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
+      max-width:700px;
+      margin:0 auto 72px;
+    }
+
+    .impact-card{
+      height:120px;
+      perspective:1000px;
+    }
+
+    .card-inner{
+      width:100%;
+      height:100%;
+      transition:transform .7s ease;
+      transform-style:preserve-3d;
+    }
+
+    .impact-card:hover .card-inner{
+      transform:rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--border);
+      backface-visibility:hidden;
+      box-shadow:0 8px 24px rgba(0,0,0,.25);
+    }
+
+    .card-front{
+      font-weight:700;
+      color:var(--accent1);
+    }
+
+    .card-back{
+      transform:rotateY(180deg);
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    /* Sections */
+    section{margin-top:72px}
+
+    h2{
+      font-size:20px;
+      margin-bottom:14px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:18px;
+    }
+
+    .card{
+      grid-column:span 6;
+      background:rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      padding:18px;
+      border:1px solid var(--border);
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+
+    .card h3{margin:0 0 6px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    .box{
+      background:rgba(255,255,255,.08);
+      padding:18px;
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      text-align:center;
+    }
+
+    footer{
+      margin-top:72px;
+      padding-top:24px;
+      border-top:1px solid var(--border);
+      font-size:13px;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:800px){
+      .impact-cards{grid-template-columns:1fr}
+      .grid .card{grid-column:span 12}
+      .profileOverlap{margin-left:auto;margin-right:auto}
+      .bannerText h1{font-size:38px}
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="statusBadge">🚧 Under construction</div>
+    <nav class="topNav">
+      <a href="/about.html">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="Banner.png" alt="Banner">
+    <div class="bannerText">
+      <h1>Kim Anderson</h1>
+      <p>AI for Financial Crime</p>
+    </div>
+  </div>
+
+  <div class="profileOverlap">
+    <img src="Profile%20Picture.png" alt="Profile photo">
+  </div>
+
+  <div class="hero">
+    <h1>Helping investigators see<br>through financial crime.</h1>
+    <p class="heroLine">AI tools that cut false positives and support confident decisions.</p>
+
+    <div class="ctaRow">
+      <a class="btn primary" href="#projects">View Projects</a>
+      <a class="btn contact" href="#contact">Contact</a>
+    </div>
+
+    <div class="pills">
+      <span class="pill">AML Investigations</span>
+      <span class="pill">Fraud Patterns</span>
+      <span class="pill">Crypto Risk</span>
+      <span class="pill">Risk Scoring</span>
+    </div>
+
+    <div class="impact-cards">
+      <div class="impact-card"><div class="card-inner"><div class="card-front">Reducing noise</div><div class="card-back">Instead of adding alerts</div></div></div>
+      <div class="impact-card"><div class="card-inner"><div class="card-front">Surfacing risk earlier</div><div class="card-back">In the investigative process</div></div></div>
+      <div class="impact-card"><div class="card-inner"><div class="card-front">Scaling reviews</div><div class="card-back">Without scaling headcount</div></div></div>
+      <div class="impact-card"><div class="card-inner"><div class="card-front">Supporting better calls</div><div class="card-back">Faster, consistent decisions</div></div></div>
+    </div>
+  </div>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card"><h3>Alert Triage Risk Scorer</h3><p>Explainable scoring to surface real risk faster.</p></div>
+      <div class="card"><h3>Entity Network Analysis</h3><p>Mapping coordinated activity across entities and wallets.</p></div>
+      <div class="card"><h3>KYC Risk Modeling</h3><p>Onboarding and jurisdiction risk evaluation.</p></div>
+      <div class="card"><h3>Investigator Assist (GenAI)</h3><p>Summaries that support — not replace — judgment.</p></div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+    <div class="box">
+      <a class="btn primary" href="Kim%20Anderson%20Resume%202025.pdf" target="_blank">Download Resume</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="box">
+      <p>Email: <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a></p>
+    </div>
+  </section>
+
+  <footer>
+    <div>© <span id="y"></span> Kim Anderson</div>
+    <div>Built with GitHub Pages</div>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kim Anderson | AI for Financial Crime</title>
   <meta name="description" content="Building AI tools that help investigators detect, explain, and prevent financial crime — with speed, clarity, and trust." />
   <style>
     :root {
