@@ -11,9 +11,9 @@
       --ink:#f5f7fa;
       --muted:#a8b2b8;
       --border:rgba(255,255,255,.15);
-      --accent-blue:#00a0b0;
-      --accent-green:#22c55e;
-      --accent-yellow:#eab308;
+      --blue:#00a0b0;
+      --green:#22c55e;
+      --yellow:#eab308;
       --radius:20px;
       --bg-dark:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
       --overlay-dark:linear-gradient(to bottom,rgba(14,36,49,.6),rgba(14,36,49,.2));
@@ -42,9 +42,9 @@
 
     .statusBadge{
       font-size:15px;
-      color:var(--muted);
       padding:10px 16px;
       border-radius:999px;
+      color:var(--muted);
       background:rgba(255,255,255,.07);
       border:1px dashed var(--border);
       letter-spacing:.3px;
@@ -160,17 +160,29 @@
     }
 
     .btn{
+      position:relative;
       padding:11px 18px;
       border-radius:14px;
       font-size:14px;
       font-weight:650;
       color:#fff;
+      overflow:hidden;
       transition:transform .2s ease,box-shadow .2s ease;
     }
 
-    .btn.primary{background:var(--accent-green)}
-    .btn.contact{background:var(--accent-blue)}
+    .btn.primary{background:var(--green)}
+    .btn.contact{background:var(--blue)}
 
+    .btn::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at center,rgba(255,255,255,.35),transparent 60%);
+      opacity:0;
+      transition:opacity .25s ease;
+    }
+
+    .btn:hover::after{opacity:.6}
     .btn:hover{
       transform:scale(1.05);
       box-shadow:0 8px 24px rgba(0,0,0,.35);
@@ -182,7 +194,7 @@
       flex-wrap:wrap;
       justify-content:center;
       gap:18px;
-      max-width:760px;
+      max-width:780px;
       margin:0 auto 72px;
     }
 
@@ -194,7 +206,6 @@
       border-radius:50%;
       padding:14px;
       font-size:13px;
-      line-height:1.2;
       border:1px solid var(--border);
       transition:transform .2s ease;
     }
@@ -212,11 +223,7 @@
 
     /* Projects */
     section{margin-top:72px}
-
-    h2{
-      font-size:20px;
-      margin-bottom:14px;
-    }
+    h2{font-size:20px;margin-bottom:14px}
 
     .grid{
       display:grid;
@@ -224,17 +231,71 @@
       gap:18px;
     }
 
-    .card{
+    .project-card{
       grid-column:span 6;
-      background:rgba(255,255,255,.08);
+      perspective:1200px;
+    }
+
+    .project-inner{
+      position:relative;
+      height:280px;
+      transform-style:preserve-3d;
+      transition:transform .6s ease;
+    }
+
+    .project-card:hover .project-inner{
+      transform:rotateY(180deg);
+    }
+
+    .project-front,
+    .project-back{
+      position:absolute;
+      inset:0;
       border-radius:var(--radius);
-      padding:18px;
+      background:rgba(255,255,255,.08);
       border:1px solid var(--border);
+      padding:18px;
+      backface-visibility:hidden;
       box-shadow:0 10px 30px rgba(0,0,0,.25);
     }
 
-    .card h3{margin:0 0 8px}
-    .card p{margin:0;color:var(--muted);font-size:14px}
+    .project-front h3{margin:0 0 6px}
+
+    .status{
+      font-size:12px;
+      color:var(--green);
+      margin-bottom:10px;
+      display:inline-block;
+    }
+
+    .project-back{
+      transform:rotateY(180deg);
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* Contact box */
+    .contactBox{
+      max-width:520px;
+      margin:0 auto;
+      padding:22px 24px;
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.10);
+      border:1px solid var(--border);
+      box-shadow:0 12px 30px rgba(0,0,0,.25);
+      text-align:center;
+    }
+
+    .contactBox p{
+      margin:12px 0;
+      font-size:16px;
+      color:var(--muted);
+    }
+
+    .contactBox a{
+      font-size:18px;
+      color:var(--ink);
+    }
 
     footer{
       margin-top:72px;
@@ -248,7 +309,7 @@
     }
 
     @media(max-width:800px){
-      .grid .card{grid-column:span 12}
+      .grid .project-card{grid-column:span 12}
       .profileOverlap{margin-left:auto;margin-right:auto}
       .bannerText h1{font-size:38px}
     }
@@ -288,7 +349,6 @@
       <a class="btn contact" href="#contact">Contact</a>
     </div>
 
-    <!-- Skill Bubbles -->
     <div class="skills">
       <div class="bubble xl green">AML & Fraud Investigations</div>
       <div class="bubble xl green">Transaction Monitoring</div>
@@ -297,10 +357,12 @@
       <div class="bubble lg blue">Risk Scoring & QA</div>
       <div class="bubble lg blue">SQL & Tableau</div>
       <div class="bubble md blue">Explainable AI</div>
+      <div class="bubble md blue">Entity Analysis</div>
 
       <div class="bubble sm yellow">Crypto Risk</div>
       <div class="bubble sm yellow">OFAC / Sanctions</div>
       <div class="bubble sm yellow">Process Automation</div>
+      <div class="bubble sm yellow">Investigator Training</div>
     </div>
   </div>
 
@@ -309,33 +371,56 @@
     <h2>Projects</h2>
     <div class="grid">
 
-      <div class="card">
-        <h3>SAR Assist <span style="font-size:12px;color:#22c55e;">● Complete</span></h3>
-        <p>
-          Investigator workflow tool built in Excel + VBA for scalabitly and to organize, validate, and document suspicious activity reports.
-        </p>
-        <p style="margin-top:10px;">
-          <strong>Key capabilities:</strong><br>
-          • Centralizes investigative inputs into a single working view<br>
-          • Structured validation and fraud-type classification<br>
-          • Clear SAR-required indicators<br>
-          • Automated generation of complete, regulator-ready SAR narratives
-        </p>
+      <div class="project-card">
+        <div class="project-inner">
+          <div class="project-front">
+            <h3>SAR Assist</h3>
+            <span class="status">● Complete</span>
+            <p>Investigator workflow tool for SAR decisioning.</p>
+          </div>
+          <div class="project-back">
+            <p>
+              Built in Excel + VBA to help investigators consolidate inputs from
+              multiple sources into a single working view. A second tab validates
+              and classifies activity, determines SAR requirement, and flags
+              outcomes visually. When required, a third tab generates a complete,
+              regulator-ready SAR narrative.
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Second Project <span style="font-size:12px;color:var(--muted);">TBD</span></h3>
-        <p>
-          Next project currently in development.
-        </p>
+      <div class="project-card">
+        <div class="project-inner">
+          <div class="project-front">
+            <h3>Second Project</h3>
+            <span class="status" style="color:var(--muted)">TBD</span>
+            <p>Next project currently in development.</p>
+          </div>
+          <div class="project-back">
+            <p>Details will be added once development is complete.</p>
+          </div>
+        </div>
       </div>
 
     </div>
   </section>
 
+  <!-- Contact -->
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a></p>
+    <div class="contactBox">
+      <p>
+        Email:<br>
+        <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a>
+      </p>
+      <p>
+        LinkedIn:<br>
+        <a href="https://www.linkedin.com/in/andersonkimb" target="_blank" rel="noopener">
+          www.linkedin.com/in/andersonkimb
+        </a>
+      </p>
+    </div>
   </section>
 
   <footer>
@@ -350,20 +435,6 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
