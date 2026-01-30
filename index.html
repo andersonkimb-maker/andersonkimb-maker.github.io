@@ -40,13 +40,13 @@
     }
 
     .statusBadge{
-      font-size:12px;
+      font-size:14px;
       color:var(--muted);
-      padding:6px 10px;
+      padding:8px 14px;
       border-radius:999px;
       background:rgba(255,255,255,.06);
       border:1px dashed var(--border);
-      letter-spacing:.2px;
+      letter-spacing:.3px;
     }
 
     .topNav{
@@ -155,7 +155,7 @@
       display:flex;
       justify-content:center;
       gap:12px;
-      margin-bottom:24px;
+      margin-bottom:48px;
     }
 
     .btn{
@@ -175,76 +175,38 @@
       box-shadow:0 8px 24px rgba(0,0,0,.35);
     }
 
-    /* Pills */
-    .pills{
+    /* Skill bubbles */
+    .skills{
       display:flex;
-      justify-content:center;
-      gap:8px;
       flex-wrap:wrap;
-      margin-bottom:48px;
-    }
-
-    .pill{
-      font-size:12px;
-      padding:6px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
-    }
-
-    /* Impact Cards */
-    .impact-cards{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:24px;
-      max-width:700px;
+      justify-content:center;
+      gap:18px;
+      max-width:720px;
       margin:0 auto 72px;
     }
 
-    .impact-card{
-      height:120px;
-      perspective:1000px;
-    }
-
-    .card-inner{
-      width:100%;
-      height:100%;
-      transition:transform .7s ease;
-      transform-style:preserve-3d;
-    }
-
-    .impact-card:hover .card-inner{
-      transform:rotateY(180deg);
-    }
-
-    .card-front,
-    .card-back{
-      position:absolute;
-      inset:0;
+    .bubble{
       display:flex;
       align-items:center;
       justify-content:center;
       text-align:center;
-      padding:20px;
-      border-radius:var(--radius);
+      border-radius:50%;
       background:rgba(255,255,255,.08);
       border:1px solid var(--border);
-      backface-visibility:hidden;
-      box-shadow:0 8px 24px rgba(0,0,0,.25);
+      color:var(--ink);
+      font-size:13px;
+      padding:12px;
+      transition:transform .2s ease;
     }
 
-    .card-front{
-      font-weight:700;
-      color:var(--accent1);
-    }
+    .bubble:hover{transform:translateY(-4px)}
 
-    .card-back{
-      transform:rotateY(180deg);
-      color:var(--muted);
-      font-size:15px;
-    }
+    .xl{width:140px;height:140px;font-size:14px;font-weight:700}
+    .lg{width:120px;height:120px}
+    .md{width:100px;height:100px}
+    .sm{width:80px;height:80px;font-size:12px}
 
-    /* Sections */
+    /* Projects */
     section{margin-top:72px}
 
     h2{
@@ -270,14 +232,6 @@
     .card h3{margin:0 0 6px}
     .card p{margin:0;color:var(--muted);font-size:14px}
 
-    .box{
-      background:rgba(255,255,255,.08);
-      padding:18px;
-      border-radius:var(--radius);
-      border:1px solid var(--border);
-      text-align:center;
-    }
-
     footer{
       margin-top:72px;
       padding-top:24px;
@@ -290,7 +244,6 @@
     }
 
     @media(max-width:800px){
-      .impact-cards{grid-template-columns:1fr}
       .grid .card{grid-column:span 12}
       .profileOverlap{margin-left:auto;margin-right:auto}
       .bannerText h1{font-size:38px}
@@ -302,10 +255,10 @@
 <div class="wrap">
 
   <header>
-    <div class="statusBadge">🚧 Under construction</div>
+    <div class="statusBadge">Currently under construction</div>
     <nav class="topNav">
-      <a href="/about.html">About</a>
-      <a href="#resume">Resume</a>
+      <a href="/about.html">About Me</a>
+      <a href="Kim%20Anderson%20Resume%202025.pdf" target="_blank">Resume</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -331,18 +284,16 @@
       <a class="btn contact" href="#contact">Contact</a>
     </div>
 
-    <div class="pills">
-      <span class="pill">AML Investigations</span>
-      <span class="pill">Fraud Patterns</span>
-      <span class="pill">Crypto Risk</span>
-      <span class="pill">Risk Scoring</span>
-    </div>
-
-    <div class="impact-cards">
-      <div class="impact-card"><div class="card-inner"><div class="card-front">Reducing noise</div><div class="card-back">Instead of adding alerts</div></div></div>
-      <div class="impact-card"><div class="card-inner"><div class="card-front">Surfacing risk earlier</div><div class="card-back">In the investigative process</div></div></div>
-      <div class="impact-card"><div class="card-inner"><div class="card-front">Scaling reviews</div><div class="card-back">Without scaling headcount</div></div></div>
-      <div class="impact-card"><div class="card-inner"><div class="card-front">Supporting better calls</div><div class="card-back">Faster, consistent decisions</div></div></div>
+    <!-- Skill Bubbles -->
+    <div class="skills">
+      <div class="bubble xl">AML Investigations</div>
+      <div class="bubble xl">Fraud Detection</div>
+      <div class="bubble lg">Risk Scoring</div>
+      <div class="bubble lg">Crypto Risk</div>
+      <div class="bubble md">Explainable AI</div>
+      <div class="bubble md">Entity Analysis</div>
+      <div class="bubble sm">SQL</div>
+      <div class="bubble sm">Process Automation</div>
     </div>
   </div>
 
@@ -353,13 +304,6 @@
       <div class="card"><h3>Entity Network Analysis</h3><p>Mapping coordinated activity across entities and wallets.</p></div>
       <div class="card"><h3>KYC Risk Modeling</h3><p>Onboarding and jurisdiction risk evaluation.</p></div>
       <div class="card"><h3>Investigator Assist (GenAI)</h3><p>Summaries that support — not replace — judgment.</p></div>
-    </div>
-  </section>
-
-  <section id="resume">
-    <h2>Resume</h2>
-    <div class="box">
-      <a class="btn primary" href="Kim%20Anderson%20Resume%202025.pdf" target="_blank">Download Resume</a>
     </div>
   </section>
 
@@ -382,366 +326,7 @@
 </script>
 </body>
 </html>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kim Anderson | AI for Financial Crime</title>
-  <meta name="description" content="Building AI tools that help investigators detect, explain, and prevent financial crime — with speed, clarity, and trust." />
-  <style>
-    :root {
-      --ink:#f5f7fa;
-      --muted:#a8b2b8;
-      --border:rgba(255,255,255,.15);
-      --accent1:#00a0b0;
-      --accent2:#72c472;
-      --accent3:#22C55E;
-      --radius:20px;
-      --bg-dark:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
-      --overlay-dark:linear-gradient(to bottom,rgba(14,36,49,.6),rgba(14,36,49,.2));
-    }
 
-    *{box-sizing:border-box;transition:background .3s ease,color .3s ease}
-    html,body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      line-height:1.6;
-      color:var(--ink);
-      background:var(--bg-dark);
-    }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:900px;margin:0 auto;padding:28px 20px 96px}
-
-    header{
-      display:flex;
-      justify-content:flex-end;
-      align-items:center;
-      border-bottom:1px solid var(--border);
-      padding-bottom:16px;
-    }
-    nav{display:flex;align-items:center;gap:12px}
-    nav a{
-      font-size:13px;
-      color:var(--muted);
-      padding:8px 10px;
-      border-radius:12px;
-      transition:background .15s ease,color .15s ease;
-    }
-    nav a:hover{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff}
-
-    /* Banner */
-    .banner{
-      position:relative;
-      width:100%;
-      overflow:hidden;
-      border-radius:12px;
-      margin-top:24px;
-      z-index:1;
-      text-align:center;
-    }
-    .banner img{
-      width:100%;
-      height:260px;
-      object-fit:cover;
-      display:block;
-      filter:brightness(.9);
-    }
-    .banner::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:var(--overlay-dark);
-      pointer-events:none;
-      z-index:2;
-    }
-    .bannerText{
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-60%);
-      z-index:3;
-      color:#fff;
-      text-align:center;
-    }
-    .bannerText h1{
-      margin:0;
-      font-size:56px;
-      font-weight:900;
-    }
-    .bannerText p{
-      margin:4px 0 0 0;
-      font-size:18px;
-      opacity:0.9;
-    }
-
-    /* Profile overlaps banner (left, raised up) */
-    .profileOverlap{
-      position:relative;
-      z-index:4;
-      width:150px;
-      height:150px;
-      border-radius:50%;
-      overflow:hidden;
-      border:3px solid rgba(255,255,255,.9);
-      box-shadow:0 8px 24px rgba(0,0,0,.4);
-      background:#fff;
-      margin-top:-130px; /* raised higher */
-      margin-left:40px;  /* left aligned */
-    }
-    .profileOverlap img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    /* Hero */
-    .hero{text-align:center;padding-top:40px;} 
-    h1{font-size:44px;line-height:1.2;margin:0 0 10px}
-    .tagline{font-size:20px;font-weight:600;color:var(--accent2);margin:0 0 12px}
-    .heroLine{font-size:20px;font-weight:500;line-height:1.4;margin:0 0 12px;max-width:60ch;margin-inline:auto}
-    .supportLine{font-size:16px;color:var(--muted);margin:0 0 22px;max-width:70ch;margin-inline:auto}
-
-    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
-    .btn{
-      padding:11px 18px;
-      border-radius:14px;
-      font-weight:650;
-      font-size:14px;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      color:#fff;
-      cursor:pointer;
-      transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
-    }
-    .btn.primary{background:var(--accent3)}
-    .btn.contact{background:var(--accent1)}
-    .btn:hover{
-      transform:scale(1.05);
-      box-shadow:0 8px 24px rgba(0,160,176,0.4);
-      color:#fff;
-    }
-
-    /* Skill pills */
-    .pills{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      justify-content:center;
-      margin-top:20px;
-    }
-    .pill{
-      font-size:12px;
-      padding:6px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
-      box-shadow:inset 0 1px 2px rgba(255,255,255,.05);
-      transition:transform .2s,background .2s;
-    }
-    .pill:hover{transform:scale(1.05);background:rgba(255,255,255,.12)}
-
-    /* Flip Cards Section */
-    .impact-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 22px;
-      margin: 64px 0;
-      perspective: 1000px;
-    }
-
-    .impact-card {
-      background: transparent;
-      height: 140px;
-      perspective: 1000px;
-    }
-
-    .card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.8s cubic-bezier(.4,.2,.2,1);
-      transform-style: preserve-3d;
-      cursor: pointer;
-    }
-
-    .impact-card:hover .card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .card-front,
-    .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 8px 28px rgba(0,0,0,.25);
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      color: var(--ink);
-      font-size: 16px;
-      line-height: 1.3;
-    }
-
-    .card-front strong {
-      color: var(--accent1);
-      font-weight: 700;
-    }
-
-    .card-back {
-      transform: rotateY(180deg);
-      background: rgba(255,255,255,.12);
-      color: var(--muted);
-    }
-
-    section{margin-top:72px}
-    h2{font-size:20px;margin:0 0 14px;text-align:left}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-    .card{
-      grid-column:span 6;
-      background:rgba(255,255,255,.08);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:18px;
-      box-shadow:0 12px 30px rgba(0,0,0,.2);
-      transition:transform .3s,box-shadow .3s,border-color .3s;
-    }
-    .card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 18px 40px rgba(0,160,176,.3);
-      border-color:var(--accent1);
-    }
-    .card h3{margin:0 0 6px;font-size:18px;color:#fff}
-    .card p{margin:0;color:var(--muted);font-size:14px}
-    .box{background:rgba(255,255,255,.08);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:0 14px 34px rgba(0,0,0,.2)}
-    footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--border);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-
-    @media(max-width:900px){
-      .bannerText h1{font-size:36px}
-      .bannerText p{font-size:14px}
-      .profileOverlap{width:110px;height:110px;margin-left:auto;margin-right:auto;margin-top:-95px;}
-      .hero{padding-top:100px;}
-      .card{grid-column:span 12}
-      .impact-cards{gap:16px;margin:48px 0;}
-    }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <nav>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <!-- Banner -->
-    <div class="banner">
-      <img src="Banner.png" alt="Hero banner image">
-      <div class="bannerText">
-        <h1>Kim Anderson</h1>
-        <p>AI for Financial Crime</p>
-      </div>
-    </div>
-
-    <!-- Profile overlapping left -->
-    <div class="profileOverlap">
-      <img src="Profile%20Picture.png" alt="Profile photo">
-    </div>
-
-    <!-- Hero -->
-    <div class="hero">
-      <h1><strong>Helping investigators see</strong><br><span style="font-weight:600">through the noise of financial crime.</span></h1>
-      <p class="heroLine">I design AI tools that cut false positives, surface real risk, and support confident decisions.</p>
-      <p class="supportLine">Built for fraud fighters — across AML, crypto, and emerging risk systems.</p>
-
-      <div class="ctaRow">
-        <a class="btn primary" href="#projects">View Projects</a>
-        <a class="btn contact" href="#contact">Contact</a>
-      </div>
-
-      <div class="pills">
-        <span class="pill">🔎 AML Investigations</span>
-        <span class="pill">🧠 Fraud Patterns</span>
-        <span class="pill">🪙 Crypto Risk</span>
-        <span class="pill">📊 Risk Scoring</span>
-        <span class="pill">⚙️ Process Automation</span>
-      </div>
-
-      <!-- Impact Flip Cards -->
-      <section class="impact-cards">
-        <div class="impact-card">
-          <div class="card-inner">
-            <div class="card-front"><strong>Reducing noise</strong></div>
-            <div class="card-back">Instead of adding alerts</div>
-          </div>
-        </div>
-        <div class="impact-card">
-          <div class="card-inner">
-            <div class="card-front"><strong>Surfacing risk earlier</strong></div>
-            <div class="card-back">In the investigative process</div>
-          </div>
-        </div>
-        <div class="impact-card">
-          <div class="card-inner">
-            <div class="card-front"><strong>Scaling reviews</strong></div>
-            <div class="card-back">Without scaling headcount</div>
-          </div>
-        </div>
-        <div class="impact-card">
-          <div class="card-inner">
-            <div class="card-front"><strong>Supporting better calls</strong></div>
-            <div class="card-back">Faster, more consistent decisions</div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- Projects -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="grid">
-        <div class="card"><h3>Alert Triage Risk Scorer</h3><p><strong>Phase:</strong> Prototyping explainable models to surface real risk faster.</p></div>
-        <div class="card"><h3>Entity Network Link Analysis</h3><p><strong>Phase:</strong> Designing visual maps of coordinated activity across entities and wallets.</p></div>
-        <div class="card"><h3>KYC Risk Model Case Study</h3><p><strong>Phase:</strong> Evaluating onboarding and jurisdiction risk using structured and behavioral data.</p></div>
-        <div class="card"><h3>Investigator Assist (GenAI)</h3><p><strong>Phase:</strong> AI-assisted summaries that support, not replace, investigator judgment.</p></div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="box"><p>Email: <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a></p></div>
-    </section>
-
-    <footer>
-      <div>© <span id="y"></span> Kim Anderson</div>
-      <div>Built with GitHub Pages</div>
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById("y").textContent=new Date().getFullYear();
-
-    // Auto-flip cards every few seconds on mobile
-    const cards = document.querySelectorAll('.card-inner');
-    let i = 0;
-    function autoFlip() {
-      cards.forEach((card, idx) => {
-        card.style.transform = (idx === i) ? 'rotateY(180deg)' : 'rotateY(0)';
-      });
-      i = (i + 1) % cards.length;
-    }
-    if (window.innerWidth < 900) setInterval(autoFlip, 3000);
-  </script>
-</body>
-</html>
 
 
 
