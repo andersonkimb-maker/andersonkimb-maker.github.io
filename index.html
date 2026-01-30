@@ -11,8 +11,9 @@
       --ink:#f5f7fa;
       --muted:#a8b2b8;
       --border:rgba(255,255,255,.15);
-      --accent1:#00a0b0;
-      --accent2:#22c55e;
+      --accent-blue:#00a0b0;
+      --accent-green:#22c55e;
+      --accent-yellow:#eab308;
       --radius:20px;
       --bg-dark:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
       --overlay-dark:linear-gradient(to bottom,rgba(14,36,49,.6),rgba(14,36,49,.2));
@@ -40,11 +41,11 @@
     }
 
     .statusBadge{
-      font-size:14px;
+      font-size:15px;
       color:var(--muted);
-      padding:8px 14px;
+      padding:10px 16px;
       border-radius:999px;
-      background:rgba(255,255,255,.06);
+      background:rgba(255,255,255,.07);
       border:1px dashed var(--border);
       letter-spacing:.3px;
     }
@@ -167,8 +168,8 @@
       transition:transform .2s ease,box-shadow .2s ease;
     }
 
-    .btn.primary{background:var(--accent2)}
-    .btn.contact{background:var(--accent1)}
+    .btn.primary{background:var(--accent-green)}
+    .btn.contact{background:var(--accent-blue)}
 
     .btn:hover{
       transform:scale(1.05);
@@ -181,7 +182,7 @@
       flex-wrap:wrap;
       justify-content:center;
       gap:18px;
-      max-width:720px;
+      max-width:760px;
       margin:0 auto 72px;
     }
 
@@ -191,20 +192,23 @@
       justify-content:center;
       text-align:center;
       border-radius:50%;
-      background:rgba(255,255,255,.08);
-      border:1px solid var(--border);
-      color:var(--ink);
+      padding:14px;
       font-size:13px;
-      padding:12px;
+      line-height:1.2;
+      border:1px solid var(--border);
       transition:transform .2s ease;
     }
 
     .bubble:hover{transform:translateY(-4px)}
 
-    .xl{width:140px;height:140px;font-size:14px;font-weight:700}
-    .lg{width:120px;height:120px}
-    .md{width:100px;height:100px}
-    .sm{width:80px;height:80px;font-size:12px}
+    .xl{width:150px;height:150px;font-weight:700}
+    .lg{width:125px;height:125px}
+    .md{width:105px;height:105px}
+    .sm{width:85px;height:85px;font-size:12px}
+
+    .green{background:rgba(34,197,94,.18);color:#b7f3cd}
+    .blue{background:rgba(0,160,176,.18);color:#bfeef2}
+    .yellow{background:rgba(234,179,8,.18);color:#fde68a}
 
     /* Projects */
     section{margin-top:72px}
@@ -229,7 +233,7 @@
       box-shadow:0 10px 30px rgba(0,0,0,.25);
     }
 
-    .card h3{margin:0 0 6px}
+    .card h3{margin:0 0 8px}
     .card p{margin:0;color:var(--muted);font-size:14px}
 
     footer{
@@ -255,7 +259,7 @@
 <div class="wrap">
 
   <header>
-    <div class="statusBadge">Currently under construction</div>
+    <div class="statusBadge">🚧 Currently under construction</div>
     <nav class="topNav">
       <a href="/about.html">About Me</a>
       <a href="Kim%20Anderson%20Resume%202025.pdf" target="_blank">Resume</a>
@@ -286,32 +290,52 @@
 
     <!-- Skill Bubbles -->
     <div class="skills">
-      <div class="bubble xl">AML Investigations</div>
-      <div class="bubble xl">Fraud Detection</div>
-      <div class="bubble lg">Risk Scoring</div>
-      <div class="bubble lg">Crypto Risk</div>
-      <div class="bubble md">Explainable AI</div>
-      <div class="bubble md">Entity Analysis</div>
-      <div class="bubble sm">SQL</div>
-      <div class="bubble sm">Process Automation</div>
+      <div class="bubble xl green">AML & Fraud Investigations</div>
+      <div class="bubble xl green">Transaction Monitoring</div>
+      <div class="bubble lg green">Risk Mitigation</div>
+
+      <div class="bubble lg blue">Risk Scoring & QA</div>
+      <div class="bubble lg blue">SQL & Tableau</div>
+      <div class="bubble md blue">Explainable AI</div>
+
+      <div class="bubble sm yellow">Crypto Risk</div>
+      <div class="bubble sm yellow">OFAC / Sanctions</div>
+      <div class="bubble sm yellow">Process Automation</div>
     </div>
   </div>
 
+  <!-- Projects -->
   <section id="projects">
     <h2>Projects</h2>
     <div class="grid">
-      <div class="card"><h3>Alert Triage Risk Scorer</h3><p>Explainable scoring to surface real risk faster.</p></div>
-      <div class="card"><h3>Entity Network Analysis</h3><p>Mapping coordinated activity across entities and wallets.</p></div>
-      <div class="card"><h3>KYC Risk Modeling</h3><p>Onboarding and jurisdiction risk evaluation.</p></div>
-      <div class="card"><h3>Investigator Assist (GenAI)</h3><p>Summaries that support — not replace — judgment.</p></div>
+
+      <div class="card">
+        <h3>SAR Assist <span style="font-size:12px;color:#22c55e;">● Complete</span></h3>
+        <p>
+          Investigator workflow tool built in Excel + VBA to organize, validate, and document suspicious activity reports.
+        </p>
+        <p style="margin-top:10px;">
+          <strong>Key capabilities:</strong><br>
+          • Centralizes investigative inputs into a single working view<br>
+          • Structured validation and fraud-type classification<br>
+          • Clear SAR-required indicators<br>
+          • Automated generation of complete, regulator-ready SAR narratives
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Second Project <span style="font-size:12px;color:var(--muted);">TBD</span></h3>
+        <p>
+          Next project currently in development.
+        </p>
+      </div>
+
     </div>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <div class="box">
-      <p>Email: <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a></p>
-    </div>
+    <p>Email: <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a></p>
   </section>
 
   <footer>
