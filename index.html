@@ -4,8 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kim Anderson | AI for Financial Crimes</title>
-  <meta name="description" content="As financial crime evolves toward AI — particularly with the growth of crypto and digital assets —
-I am building investigator-first tools that help cut through complexity and support confident decision-making." />
 
   <style>
     :root {
@@ -15,22 +13,22 @@ I am building investigator-first tools that help cut through complexity and supp
       --blue:#00a0b0;
       --green:#22c55e;
       --yellow:#eab308;
-      --radius:20px;
-      --bg-dark:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
-      --overlay-dark:linear-gradient(to bottom,rgba(14,36,49,.6),rgba(14,36,49,.2));
+      --radius:18px;
+      --bg:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
+      --overlay:linear-gradient(to bottom,rgba(14,36,49,.6),rgba(14,36,49,.2));
     }
 
     *{box-sizing:border-box}
-    html,body{
+    body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      line-height:1.6;
+      background:var(--bg);
       color:var(--ink);
-      background:var(--bg-dark);
+      line-height:1.6;
     }
 
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:960px;margin:0 auto;padding:24px 20px 96px}
+    .wrap{max-width:980px;margin:0 auto;padding:24px 20px 96px}
 
     /* Header */
     header{
@@ -41,29 +39,29 @@ I am building investigator-first tools that help cut through complexity and supp
       padding-bottom:16px;
     }
 
-    .statusBadge{
-      font-size:14px;
+    .construction{
+      background:rgba(234,179,8,.25);
+      border:1px solid rgba(234,179,8,.5);
+      color:#fde68a;
       padding:8px 14px;
       border-radius:999px;
-      background:rgba(234,179,8,.25);
-      color:#fde68a;
-      border:1px solid rgba(234,179,8,.5);
+      font-size:14px;
       font-weight:600;
     }
 
-    .topNav{
+    nav{
       display:flex;
       gap:18px;
     }
 
-    .topNav a{
-      position:relative;
+    nav a{
       font-size:13px;
       color:var(--muted);
-      padding:6px 2px;
+      position:relative;
+      padding-bottom:4px;
     }
 
-    .topNav a::after{
+    nav a::after{
       content:"";
       position:absolute;
       left:0;
@@ -76,18 +74,18 @@ I am building investigator-first tools that help cut through complexity and supp
       transition:transform .2s ease;
     }
 
-    .topNav a:hover{
+    nav a:hover{
       color:var(--ink);
     }
 
-    .topNav a:hover::after{
+    nav a:hover::after{
       transform:scaleX(1);
     }
 
     /* Banner */
     .banner{
-      position:relative;
       margin-top:28px;
+      position:relative;
       border-radius:14px;
       overflow:hidden;
     }
@@ -102,7 +100,7 @@ I am building investigator-first tools that help cut through complexity and supp
       content:"";
       position:absolute;
       inset:0;
-      background:var(--overlay-dark);
+      background:var(--overlay);
     }
 
     .bannerText{
@@ -112,14 +110,14 @@ I am building investigator-first tools that help cut through complexity and supp
       flex-direction:column;
       justify-content:center;
       align-items:center;
-      text-align:center;
       z-index:2;
+      text-align:center;
     }
 
     .bannerText h1{
       font-size:56px;
-      font-weight:900;
       margin:0;
+      text-shadow:0 4px 18px rgba(0,0,0,.35);
     }
 
     .bannerText p{
@@ -128,20 +126,19 @@ I am building investigator-first tools that help cut through complexity and supp
     }
 
     /* Profile overlap */
-    .profileOverlap{
+    .profile{
       width:150px;
       height:150px;
       border-radius:50%;
       overflow:hidden;
       border:3px solid #fff;
-      background:#fff;
-      box-shadow:0 8px 24px rgba(0,0,0,.4);
-      margin:-120px auto 0;
+      margin:-70px auto 0;
       position:relative;
       z-index:3;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
     }
 
-    .profileOverlap img{
+    .profile img{
       width:100%;
       height:100%;
       object-fit:cover;
@@ -151,33 +148,52 @@ I am building investigator-first tools that help cut through complexity and supp
     .hero{
       text-align:center;
       padding-top:40px;
-      margin-bottom:64px;
+      margin-bottom:48px;
+      opacity:0;
+      transform:translateY(12px);
+      animation:heroFade .8s ease-out forwards;
+      animation-delay:.15s;
+    }
+
+    @keyframes heroFade{
+      to{opacity:1;transform:translateY(0)}
     }
 
     .hero h2{
-      font-size:44px;
+      font-size:40px;
+      letter-spacing:-.2px;
       margin-bottom:18px;
-      letter-spacing:-.3px;
     }
 
-    .heroMain{
-      font-size:20px;
-      color:var(--muted);
+    .hero p{
       max-width:760px;
-      margin:0 auto 18px;
-    }
-
-    .heroSupport{
-      font-size:16px;
-      color:var(--muted);
-      opacity:.9;
-      max-width:680px;
       margin:0 auto;
+      font-size:18px;
+      color:var(--muted);
     }
 
     /* Sections */
     section{margin-top:72px}
-    h3{font-size:20px;margin-bottom:14px}
+
+    #projects{
+      scroll-margin-top:96px;
+      padding-top:24px;
+    }
+
+    #projects::before{
+      content:"";
+      display:block;
+      width:64px;
+      height:2px;
+      background:rgba(255,255,255,.2);
+      margin:0 auto 24px;
+      border-radius:2px;
+    }
+
+    h3{
+      font-size:20px;
+      margin-bottom:16px;
+    }
 
     .grid{
       display:grid;
@@ -186,24 +202,23 @@ I am building investigator-first tools that help cut through complexity and supp
     }
 
     /* Project cards */
-    .project-card{
+    .card{
       grid-column:span 6;
       perspective:1200px;
     }
 
-    .project-inner{
+    .inner{
       position:relative;
       height:320px;
       transform-style:preserve-3d;
       transition:transform .6s ease;
     }
 
-    .project-card:hover .project-inner{
+    .card:hover .inner{
       transform:rotateY(180deg);
     }
 
-    .project-front,
-    .project-back{
+    .front,.back{
       position:absolute;
       inset:0;
       padding:18px;
@@ -213,7 +228,7 @@ I am building investigator-first tools that help cut through complexity and supp
       backface-visibility:hidden;
     }
 
-    .project-front h4{
+    .front h4{
       margin:0 0 6px;
       font-size:18px;
     }
@@ -225,16 +240,16 @@ I am building investigator-first tools that help cut through complexity and supp
       display:inline-block;
     }
 
-    .project-front ul{
+    .front ul{
       padding-left:18px;
       color:var(--muted);
       font-size:14px;
     }
 
-    .project-back{
+    .back{
       transform:rotateY(180deg);
-      color:var(--muted);
       font-size:14px;
+      color:var(--muted);
     }
 
     /* Contact */
@@ -260,9 +275,9 @@ I am building investigator-first tools that help cut through complexity and supp
     }
 
     @media(max-width:800px){
-      .project-card{grid-column:span 12}
+      .card{grid-column:span 12}
       .bannerText h1{font-size:38px}
-      .hero h2{font-size:34px}
+      .hero h2{font-size:32px}
     }
   </style>
 </head>
@@ -271,8 +286,8 @@ I am building investigator-first tools that help cut through complexity and supp
 <div class="wrap">
 
 <header>
-  <div class="statusBadge">🚧 Currently under construction</div>
-  <nav class="topNav">
+  <div class="construction">🚧 Currently under construction</div>
+  <nav>
     <a href="#projects">View Projects</a>
     <a href="/about.html">About Me</a>
     <a href="Kim%20Anderson%20Resume%202025.pdf" target="_blank">Resume</a>
@@ -288,20 +303,15 @@ I am building investigator-first tools that help cut through complexity and supp
   </div>
 </div>
 
-<div class="profileOverlap">
-  <img src="Profile%20Picture.png" alt="Profile photo">
+<div class="profile">
+  <img src="Profile%20Picture.png" alt="Profile">
 </div>
 
 <div class="hero">
   <h2>Building investigator-first AI for complex financial crime.</h2>
-
-  <p class="heroMain">
+  <p>
     As financial crime evolves toward AI — particularly with the growth of crypto and digital assets —
     I am building investigator-first tools that help cut through complexity and support confident decision-making.
-  </p>
-
-  <p class="heroSupport">
-    AI tools that help investigators see through financial crime by reducing complexity and supporting confident decisions.
   </p>
 </div>
 
@@ -309,39 +319,38 @@ I am building investigator-first tools that help cut through complexity and supp
   <h3>Projects</h3>
   <div class="grid">
 
-    <div class="project-card">
-      <div class="project-inner">
-        <div class="project-front">
-          <h4>SAR Assist <span style="font-size:12px;color:var(--muted);font-weight:500;">(Prototype)</span></h4>
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <h4>SAR Assist <span style="font-size:12px;font-weight:500;color:var(--muted)">(Prototype)</span></h4>
           <span class="status">● Complete</span>
           <ul>
             <li>Excel + VBA investigator workflow tool</li>
             <li>Centralizes fragmented investigative inputs</li>
-            <li>Guides SAR decisioning and narrative creation</li>
+            <li>Automates SAR decisioning & drafting</li>
           </ul>
         </div>
-        <div class="project-back">
+        <div class="back">
           <p>
-            SAR Assist was built in Excel + VBA to support investigators working across fragmented systems.
-            Excel was intentionally chosen as a scalable prototyping environment, enabling rapid iteration
-            within existing investigative workflows.
+            SAR Assist was built in Excel + VBA to support investigators operating across fragmented systems.
+            Excel was intentionally chosen as a scalable prototyping environment that fit existing workflows.
           </p>
           <p>
-            The tool consolidates inputs into a single view, validates information, classifies fraud type,
-            determines SAR requirements, and generates a complete, regulator-ready SAR narrative.
+            The tool validates inputs, classifies fraud type, determines SAR requirements, and generates
+            a regulator-ready SAR narrative.
           </p>
         </div>
       </div>
     </div>
 
-    <div class="project-card">
-      <div class="project-inner">
-        <div class="project-front">
+    <div class="card">
+      <div class="inner">
+        <div class="front">
           <h4>Second Project</h4>
           <span class="status" style="color:var(--muted)">TBD</span>
           <p>Next project currently in development.</p>
         </div>
-        <div class="project-back">
+        <div class="back">
           <p>Details will be added once development is complete.</p>
         </div>
       </div>
@@ -376,6 +385,7 @@ I am building investigator-first tools that help cut through complexity and supp
 </script>
 </body>
 </html>
+
 
 
 
