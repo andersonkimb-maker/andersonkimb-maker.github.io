@@ -79,7 +79,7 @@
       transform:scaleX(1);
     }
 
-    /* Page intro */
+    /* Intro */
     .intro{
       margin-top:48px;
       margin-bottom:56px;
@@ -118,6 +118,26 @@
       margin:0;
     }
 
+    /* Visual section */
+    .about-visual{
+      margin:56px 0;
+      text-align:center;
+    }
+
+    .about-visual img{
+      width:100%;
+      max-width:900px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      box-shadow:0 18px 40px rgba(0,0,0,.35);
+    }
+
+    .about-visual .caption{
+      margin-top:14px;
+      font-size:14px;
+      color:var(--muted);
+    }
+
     /* Principles */
     .principles ul{
       margin:12px 0 0 18px;
@@ -128,7 +148,13 @@
       margin-bottom:10px;
     }
 
-    /* Skills */
+    /* Experience */
+    .experience-intro{
+      color:var(--muted);
+      max-width:680px;
+      margin-bottom:24px;
+    }
+
     .skills{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -176,9 +202,9 @@
 <section class="intro">
   <h1>About Me</h1>
   <p>
-    I work at the intersection of financial crime investigations, risk systems,
-    and practical AI. My focus is building tools that investigators actually trust,
-    understand, and use — especially in high-noise, high-risk environments.
+    I work at the intersection of financial crime investigations, risk systems, and practical AI.
+    My focus is building tools investigators actually trust — especially in high-noise,
+    high-risk environments where explainability matters as much as detection.
   </p>
 </section>
 
@@ -186,31 +212,43 @@
   <h2>How I Think About the Problem</h2>
   <div class="card">
     <p>
-      Financial crime systems fail when they optimize for detection at the expense
-      of investigation. Too many alerts, too little context, and not enough
-      explainability create friction instead of clarity.
+      Financial crime systems break down when they optimize for detection without supporting
+      investigation. Too many alerts, too little context, and opaque decisioning
+      slow teams down and increase risk.
     </p>
     <p style="margin-top:12px">
-      I approach AI as a decision-support layer — not a replacement for judgment.
-      My work focuses on reducing noise, surfacing meaningful risk earlier, and
-      preserving the reasoning investigators need to stand behind their decisions.
+      I approach AI as a decision-support layer — one that reduces cognitive load,
+      surfaces meaningful risk earlier, and preserves the reasoning investigators
+      need to stand behind their conclusions.
     </p>
   </div>
+</section>
+
+<section class="about-visual">
+  <img src="Website%20Photo%202.png" alt="Evolution of investigator-first AI for financial crime">
+  <p class="caption">
+    Built on experience. Focused on the future — where investigative judgment meets intelligent systems.
+  </p>
 </section>
 
 <section class="principles">
   <h2>Design Principles</h2>
   <div class="card">
     <ul>
-      <li><strong>Explainability is non-negotiable.</strong> Outputs must hold up in audits, reviews, and court.</li>
-      <li><strong>Workflow matters.</strong> Tools should fit investigative reality, not theoretical pipelines.</li>
-      <li><strong>Reduce harm before scaling.</strong> Faster decisions are only valuable if they’re better ones.</li>
+      <li><strong>Experience comes first.</strong> Systems should reflect how investigations actually happen.</li>
+      <li><strong>Explainability enables trust.</strong> Outputs must stand up to review, audit, and challenge.</li>
+      <li><strong>Scale judgment, not just detection.</strong> Automation should amplify human decision-making.</li>
     </ul>
   </div>
 </section>
 
 <section>
-  <h2>Areas of Experience</h2>
+  <h2>Where I’ve Built and Led</h2>
+  <p class="experience-intro">
+    My experience spans investigations, risk systems, and applied AI — with a consistent focus
+    on tools that scale judgment rather than overwhelm it.
+  </p>
+
   <div class="skills">
     <div class="card skill-group">
       <h3>Financial Crime & Investigations</h3>
@@ -258,14 +296,12 @@
   <h2>What I’m Building Toward</h2>
   <div class="card">
     <p>
-      My current work focuses on investigator-first prototypes that demonstrate how
-      AI can reduce cognitive load, surface risk earlier, and scale review capacity
-      without scaling headcount.
+      I’m focused on investigator-first systems that demonstrate how AI can reduce
+      complexity, surface risk earlier, and scale review capacity without scaling headcount.
     </p>
     <p style="margin-top:12px">
-      I’m especially interested in systems that support emerging risk areas —
-      where ambiguity is high, patterns evolve quickly, and explainability matters
-      more than raw prediction.
+      I’m especially interested in work that sits at the edge of emerging risk —
+      where patterns evolve quickly, data is imperfect, and explainability is critical.
     </p>
   </div>
 </section>
@@ -282,3 +318,5 @@
 </script>
 </body>
 </html>
+
+
