@@ -68,9 +68,24 @@ nav a::after{
 nav a:hover{color:var(--ink)}
 nav a:hover::after{transform:scaleX(1)}
 
+/* Hero visual */
+.about-hero-visual{
+  margin:36px 0 48px;
+}
+.about-hero-visual img{
+  width:100%;
+  max-width:1100px;
+  display:block;
+  margin:0 auto;
+  border-radius:18px;
+  border:1px solid var(--border);
+  box-shadow:0 22px 50px rgba(0,0,0,.45);
+}
+
+/* Back link */
 .back-link{
   display:inline-block;
-  margin-top:18px;
+  margin-bottom:32px;
   font-size:14px;
   color:var(--muted);
 }
@@ -81,12 +96,20 @@ nav a:hover::after{transform:scaleX(1)}
 
 /* Intro */
 .intro{
-  margin-top:48px;
   margin-bottom:48px;
 }
 .intro h1{
   font-size:40px;
-  margin-bottom:14px;
+  margin-bottom:12px;
+}
+.about-avatar{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  border:3px solid rgba(255,255,255,.6);
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  object-fit:cover;
+  margin:16px 0 24px;
 }
 .intro p{
   font-size:18px;
@@ -112,7 +135,6 @@ h2{font-size:22px;margin-bottom:14px}
   gap:12px;
   margin-top:18px;
 }
-
 .skill-pill{
   display:flex;
   align-items:center;
@@ -122,11 +144,8 @@ h2{font-size:22px;margin-bottom:14px}
   font-size:14px;
   background:rgba(255,255,255,.08);
   border:1px solid var(--border);
-  color:var(--ink);
-  transition:transform .2s ease, box-shadow .2s ease;
+  transition:.2s ease;
 }
-
-/* Glow variants */
 .skill-pill.blue:hover{
   box-shadow:0 0 0 1px var(--glow-blue),0 0 18px var(--glow-blue);
 }
@@ -136,24 +155,8 @@ h2{font-size:22px;margin-bottom:14px}
 .skill-pill.yellow:hover{
   box-shadow:0 0 0 1px var(--glow-yellow),0 0 18px var(--glow-yellow);
 }
-.skill-pill:hover{transform:translateY(-2px)}
-
-/* Visual */
-.about-visual{
-  margin:56px 0;
-  text-align:center;
-}
-.about-visual img{
-  width:100%;
-  max-width:900px;
-  border-radius:16px;
-  border:1px solid var(--border);
-  box-shadow:0 18px 40px rgba(0,0,0,.35);
-}
-.about-visual .caption{
-  margin-top:14px;
-  font-size:14px;
-  color:var(--muted);
+.skill-pill:hover{
+  transform:translateY(-2px);
 }
 
 /* Footer */
@@ -183,10 +186,20 @@ footer{
   </nav>
 </header>
 
+<section class="about-hero-visual">
+  <img src="Website%20Photo%20.png"
+       alt="Then, Now, Next – Evolution of investigator-first AI for financial crime">
+</section>
+
 <a href="index.html" class="back-link">← Back to home</a>
 
 <section class="intro">
   <h1>About Me</h1>
+
+  <img src="Profile%20Picture.png"
+       alt="Kim Anderson"
+       class="about-avatar">
+
   <p>
     I work at the intersection of financial crime investigations, risk systems, and practical AI.
     My focus is building tools investigators actually trust — especially in high-noise,
@@ -215,13 +228,6 @@ footer{
   </div>
 </section>
 
-<section class="about-visual">
-  <img src="Website%20Photo%202.png" alt="Evolution of investigator-first AI for financial crime">
-  <p class="caption">
-    Built on experience. Focused on the future — where investigative judgment meets intelligent systems.
-  </p>
-</section>
-
 <section>
   <h2>How I Think About the Problem</h2>
   <div class="card">
@@ -245,6 +251,7 @@ document.getElementById("y").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
+
 
 
 
