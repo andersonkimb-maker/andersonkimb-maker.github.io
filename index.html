@@ -159,9 +159,10 @@
       margin-bottom:48px;
     }
 
+    /* Buttons with glow */
     .btn{
       position:relative;
-      padding:11px 18px;
+      padding:11px 20px;
       border-radius:14px;
       font-size:14px;
       font-weight:650;
@@ -176,16 +177,18 @@
     .btn::after{
       content:"";
       position:absolute;
-      inset:0;
-      background:radial-gradient(circle at center,rgba(255,255,255,.35),transparent 60%);
+      inset:-6px;
+      background:radial-gradient(circle,rgba(255,255,255,.45),transparent 65%);
       opacity:0;
       transition:opacity .25s ease;
     }
 
-    .btn:hover::after{opacity:.6}
+    .btn:hover::after{opacity:.9}
     .btn:hover{
-      transform:scale(1.05);
-      box-shadow:0 8px 24px rgba(0,0,0,.35);
+      transform:scale(1.06);
+      box-shadow:
+        0 0 22px rgba(255,255,255,.25),
+        0 10px 28px rgba(0,0,0,.45);
     }
 
     /* Skill bubbles */
@@ -238,7 +241,7 @@
 
     .project-inner{
       position:relative;
-      height:280px;
+      height:300px;
       transform-style:preserve-3d;
       transition:transform .6s ease;
     }
@@ -268,6 +271,19 @@
       display:inline-block;
     }
 
+    .project-front .meta{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    .project-front ul{
+      margin:0;
+      padding-left:18px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
     .project-back{
       transform:rotateY(180deg);
       color:var(--muted);
@@ -292,8 +308,7 @@
       color:var(--muted);
     }
 
-    .contactBox a{
-      font-size:18px;
+    .contactBox strong{
       color:var(--ink);
     }
 
@@ -376,7 +391,12 @@
           <div class="project-front">
             <h3>SAR Assist</h3>
             <span class="status">● Complete</span>
-            <p>Investigator workflow tool for SAR decisioning.</p>
+            <div class="meta">Excel + VBA · Investigator Workflow Tool</div>
+            <ul>
+              <li>Centralized investigative inputs</li>
+              <li>Guided validation & fraud classification</li>
+              <li>Automated SAR narrative generation</li>
+            </ul>
           </div>
           <div class="project-back">
             <p>
@@ -410,12 +430,8 @@
   <section id="contact">
     <h2>Contact</h2>
     <div class="contactBox">
-      <p>
-        Email:<br>
-        <a href="mailto:andersonkimb@gmail.com"><strong>andersonkimb@gmail.com</strong></a>
-      </p>
-      <p>
-        LinkedIn:<br>
+      <p><strong>Email</strong><br>andersonkimb@gmail.com</p>
+      <p><strong>LinkedIn</strong><br>
         <a href="https://www.linkedin.com/in/andersonkimb" target="_blank" rel="noopener">
           www.linkedin.com/in/andersonkimb
         </a>
@@ -435,6 +451,7 @@
 </script>
 </body>
 </html>
+
 
 
 
