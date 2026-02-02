@@ -1,189 +1,173 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Me | Kim Anderson</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Me | Kim Anderson</title>
 
-  <style>
-    :root {
-      --ink:#f5f7fa;
-      --muted:#a8b2b8;
-      --border:rgba(255,255,255,.15);
-      --yellow:#eab308;
-      --radius:18px;
-      --bg:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
-    }
+<style>
+:root{
+  --ink:#f5f7fa;
+  --muted:#a8b2b8;
+  --border:rgba(255,255,255,.15);
+  --bg:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--ink);
-      line-height:1.6;
-    }
+  --glow-blue:rgba(56,189,248,.35);
+  --glow-green:rgba(34,197,94,.35);
+  --glow-yellow:rgba(234,179,8,.35);
+}
 
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:860px;margin:0 auto;padding:24px 20px 96px}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+}
 
-    /* Header */
-    header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      border-bottom:1px solid var(--border);
-      padding-bottom:16px;
-    }
+a{color:inherit;text-decoration:none}
+.wrap{max-width:900px;margin:0 auto;padding:24px 20px 96px}
 
-    .construction{
-      background:rgba(234,179,8,.25);
-      border:1px solid rgba(234,179,8,.5);
-      color:#fde68a;
-      padding:8px 14px;
-      border-radius:999px;
-      font-size:14px;
-      font-weight:600;
-    }
+/* Header */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+  padding-bottom:16px;
+}
 
-    nav{
-      display:flex;
-      gap:18px;
-    }
+.construction{
+  background:rgba(234,179,8,.25);
+  border:1px solid rgba(234,179,8,.5);
+  color:#fde68a;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:600;
+}
 
-    nav a{
-      font-size:13px;
-      color:var(--muted);
-      position:relative;
-      padding-bottom:4px;
-    }
+nav{display:flex;gap:18px}
+nav a{
+  font-size:13px;
+  color:var(--muted);
+  position:relative;
+  padding-bottom:4px;
+}
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:-4px;
+  width:100%;height:2px;
+  background:rgba(255,255,255,.6);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:.2s ease;
+}
+nav a:hover{color:var(--ink)}
+nav a:hover::after{transform:scaleX(1)}
 
-    nav a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-4px;
-      width:100%;
-      height:2px;
-      background:rgba(255,255,255,.6);
-      transform:scaleX(0);
-      transform-origin:left;
-      transition:transform .2s ease;
-    }
+.back-link{
+  display:inline-block;
+  margin-top:18px;
+  font-size:14px;
+  color:var(--muted);
+}
+.back-link:hover{
+  color:var(--ink);
+  text-decoration:underline;
+}
 
-    nav a:hover{
-      color:var(--ink);
-    }
+/* Intro */
+.intro{
+  margin-top:48px;
+  margin-bottom:48px;
+}
+.intro h1{
+  font-size:40px;
+  margin-bottom:14px;
+}
+.intro p{
+  font-size:18px;
+  color:var(--muted);
+  max-width:720px;
+}
 
-    nav a:hover::after{
-      transform:scaleX(1);
-    }
+/* Sections */
+section{margin-top:56px}
+h2{font-size:22px;margin-bottom:14px}
 
-    /* Intro */
-    .intro{
-      margin-top:48px;
-      margin-bottom:56px;
-    }
+.card{
+  background:rgba(255,255,255,.08);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+}
 
-    .intro h1{
-      font-size:42px;
-      margin-bottom:16px;
-      letter-spacing:-.3px;
-    }
+/* Skills row */
+.skills-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
 
-    .intro p{
-      font-size:18px;
-      color:var(--muted);
-      max-width:720px;
-    }
+.skill-pill{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:14px;
+  background:rgba(255,255,255,.08);
+  border:1px solid var(--border);
+  color:var(--ink);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
 
-    section{
-      margin-top:56px;
-    }
+/* Glow variants */
+.skill-pill.blue:hover{
+  box-shadow:0 0 0 1px var(--glow-blue),0 0 18px var(--glow-blue);
+}
+.skill-pill.green:hover{
+  box-shadow:0 0 0 1px var(--glow-green),0 0 18px var(--glow-green);
+}
+.skill-pill.yellow:hover{
+  box-shadow:0 0 0 1px var(--glow-yellow),0 0 18px var(--glow-yellow);
+}
+.skill-pill:hover{transform:translateY(-2px)}
 
-    h2{
-      font-size:22px;
-      margin-bottom:14px;
-    }
+/* Visual */
+.about-visual{
+  margin:56px 0;
+  text-align:center;
+}
+.about-visual img{
+  width:100%;
+  max-width:900px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  box-shadow:0 18px 40px rgba(0,0,0,.35);
+}
+.about-visual .caption{
+  margin-top:14px;
+  font-size:14px;
+  color:var(--muted);
+}
 
-    .card{
-      background:rgba(255,255,255,.08);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:20px;
-    }
-
-    .card p{
-      color:var(--muted);
-      margin:0;
-    }
-
-    /* Visual section */
-    .about-visual{
-      margin:56px 0;
-      text-align:center;
-    }
-
-    .about-visual img{
-      width:100%;
-      max-width:900px;
-      border-radius:16px;
-      border:1px solid var(--border);
-      box-shadow:0 18px 40px rgba(0,0,0,.35);
-    }
-
-    .about-visual .caption{
-      margin-top:14px;
-      font-size:14px;
-      color:var(--muted);
-    }
-
-    /* Principles */
-    .principles ul{
-      margin:12px 0 0 18px;
-      color:var(--muted);
-    }
-
-    .principles li{
-      margin-bottom:10px;
-    }
-
-    /* Experience */
-    .experience-intro{
-      color:var(--muted);
-      max-width:680px;
-      margin-bottom:24px;
-    }
-
-    .skills{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:18px;
-    }
-
-    .skill-group h3{
-      font-size:16px;
-      margin-bottom:8px;
-    }
-
-    .skill-group ul{
-      margin:0;
-      padding-left:18px;
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    footer{
-      margin-top:72px;
-      border-top:1px solid var(--border);
-      padding-top:24px;
-      font-size:13px;
-      color:var(--muted);
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-    }
-  </style>
+/* Footer */
+footer{
+  margin-top:72px;
+  border-top:1px solid var(--border);
+  padding-top:24px;
+  font-size:13px;
+  color:var(--muted);
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+</style>
 </head>
 
 <body>
@@ -192,12 +176,14 @@
 <header>
   <div class="construction">🚧 Currently under construction</div>
   <nav>
-    <a href="index.html#projects">View Projects</a>
-    <a href="about.html">About Me</a>
+    <a href="index.html">Home</a>
+    <a href="about.html" style="color:#fff;">About Me</a>
     <a href="Kim%20Anderson%20Resume%202025.pdf" target="_blank">Resume</a>
     <a href="index.html#contact">Contact</a>
   </nav>
 </header>
+
+<a href="index.html" class="back-link">← Back to home</a>
 
 <section class="intro">
   <h1>About Me</h1>
@@ -209,18 +195,23 @@
 </section>
 
 <section>
-  <h2>How I Think About the Problem</h2>
+  <h2>What I Work On</h2>
   <div class="card">
-    <p>
-      Financial crime systems break down when they optimize for detection without supporting
-      investigation. Too many alerts, too little context, and opaque decisioning
-      slow teams down and increase risk.
+    <p style="color:var(--muted)">
+      My experience spans investigations, risk systems, and applied AI — with a consistent focus
+      on tools that scale judgment rather than overwhelm it.
     </p>
-    <p style="margin-top:12px">
-      I approach AI as a decision-support layer — one that reduces cognitive load,
-      surfaces meaningful risk earlier, and preserves the reasoning investigators
-      need to stand behind their conclusions.
-    </p>
+
+    <div class="skills-row">
+      <div class="skill-pill blue">🔍 AML Investigations</div>
+      <div class="skill-pill blue">📑 SAR Decisioning</div>
+      <div class="skill-pill green">🧠 Explainable AI</div>
+      <div class="skill-pill green">📊 Risk Scoring</div>
+      <div class="skill-pill yellow">🪙 Crypto Risk</div>
+      <div class="skill-pill blue">🕸️ Entity Analysis</div>
+      <div class="skill-pill green">⚙️ Process Automation</div>
+      <div class="skill-pill yellow">📋 OFAC / Sanctions</div>
+    </div>
   </div>
 </section>
 
@@ -231,77 +222,13 @@
   </p>
 </section>
 
-<section class="principles">
-  <h2>Design Principles</h2>
-  <div class="card">
-    <ul>
-      <li><strong>Experience comes first.</strong> Systems should reflect how investigations actually happen.</li>
-      <li><strong>Explainability enables trust.</strong> Outputs must stand up to review, audit, and challenge.</li>
-      <li><strong>Scale judgment, not just detection.</strong> Automation should amplify human decision-making.</li>
-    </ul>
-  </div>
-</section>
-
 <section>
-  <h2>Where I’ve Built and Led</h2>
-  <p class="experience-intro">
-    My experience spans investigations, risk systems, and applied AI — with a consistent focus
-    on tools that scale judgment rather than overwhelm it.
-  </p>
-
-  <div class="skills">
-    <div class="card skill-group">
-      <h3>Financial Crime & Investigations</h3>
-      <ul>
-        <li>AML & fraud investigations</li>
-        <li>SAR decisioning & narrative development</li>
-        <li>Transaction monitoring & QA</li>
-        <li>OFAC / sanctions review</li>
-      </ul>
-    </div>
-
-    <div class="card skill-group">
-      <h3>Risk Systems & Analysis</h3>
-      <ul>
-        <li>Risk scoring & prioritization</li>
-        <li>Entity & network analysis</li>
-        <li>False-positive reduction strategies</li>
-        <li>High-risk customer & behavior analysis</li>
-      </ul>
-    </div>
-
-    <div class="card skill-group">
-      <h3>AI, Automation & Data</h3>
-      <ul>
-        <li>Explainable AI & decision support</li>
-        <li>Process automation (Excel, VBA, SQL)</li>
-        <li>Prototype-driven development</li>
-        <li>SQL, Tableau & investigative analytics</li>
-      </ul>
-    </div>
-
-    <div class="card skill-group">
-      <h3>Emerging Risk</h3>
-      <ul>
-        <li>Crypto & digital asset investigations</li>
-        <li>Wallet behavior analysis</li>
-        <li>Cross-system risk signals</li>
-        <li>Evolving regulatory expectations</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>What I’m Building Toward</h2>
+  <h2>How I Think About the Problem</h2>
   <div class="card">
-    <p>
-      I’m focused on investigator-first systems that demonstrate how AI can reduce
-      complexity, surface risk earlier, and scale review capacity without scaling headcount.
-    </p>
-    <p style="margin-top:12px">
-      I’m especially interested in work that sits at the edge of emerging risk —
-      where patterns evolve quickly, data is imperfect, and explainability is critical.
+    <p style="color:var(--muted)">
+      Financial crime systems break down when they optimize for detection without supporting investigation.
+      I design AI as a decision-support layer — reducing complexity, surfacing meaningful risk earlier,
+      and preserving the reasoning investigators need to stand behind their conclusions.
     </p>
   </div>
 </section>
@@ -314,9 +241,10 @@
 </div>
 
 <script>
-  document.getElementById("y").textContent = new Date().getFullYear();
+document.getElementById("y").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
+
 
 
