@@ -40,14 +40,16 @@
       padding-bottom:16px;
     }
 
+    /* UPDATED construction badge */
     .statusBadge{
       font-size:15px;
       padding:10px 16px;
       border-radius:999px;
-      color:var(--muted);
-      background:rgba(255,255,255,.07);
-      border:1px dashed var(--border);
+      background:rgba(234,179,8,.25);
+      color:#fde68a;
+      border:1px solid rgba(234,179,8,.5);
       letter-spacing:.3px;
+      font-weight:600;
     }
 
     .topNav{
@@ -191,7 +193,7 @@
         0 10px 28px rgba(0,0,0,.45);
     }
 
-    /* Skill bubbles */
+    /* Skills */
     .skills{
       display:flex;
       flex-wrap:wrap;
@@ -308,9 +310,7 @@
       color:var(--muted);
     }
 
-    .contactBox strong{
-      color:var(--ink);
-    }
+    .contactBox strong{color:var(--ink)}
 
     footer{
       margin-top:72px;
@@ -389,7 +389,7 @@
       <div class="project-card">
         <div class="project-inner">
           <div class="project-front">
-            <h3>SAR Assist Prototype</h3>
+            <h3>SAR Assist</h3>
             <span class="status">● Complete</span>
             <div class="meta">Excel + VBA · Investigator Workflow Tool</div>
             <ul>
@@ -400,12 +400,11 @@
           </div>
           <div class="project-back">
             <p>
-              Designed in Excel with VBA to support scale, this 
-              tool streamlines investigations by consolidating 
-              multi source inputs into a single view. It guides 
-              validation and fraud classification, determines 
-              SAR requirements, and produces a complete, 
-              regulator ready SAR narrative when required.
+              Built in Excel + VBA to help investigators consolidate inputs from
+              multiple sources into a single working view. A second tab validates
+              and classifies activity, determines SAR requirement, and flags
+              outcomes visually. When required, a third tab generates a complete,
+              regulator-ready SAR narrative.
             </p>
           </div>
         </div>
@@ -431,8 +430,12 @@
   <section id="contact">
     <h2>Contact</h2>
     <div class="contactBox">
-      <p><strong>Email</strong><br>andersonkimb@gmail.com</p>
-      <p><strong>LinkedIn</strong><br>
+      <p>
+        <strong>Email</strong><br>
+        <a href="mailto:andersonkimb@gmail.com">andersonkimb@gmail.com</a>
+      </p>
+      <p>
+        <strong>LinkedIn</strong><br>
         <a href="https://www.linkedin.com/in/andersonkimb" target="_blank" rel="noopener">
           www.linkedin.com/in/andersonkimb
         </a>
@@ -452,6 +455,7 @@
 </script>
 </body>
 </html>
+
 
 
 
