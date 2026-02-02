@@ -31,6 +31,7 @@
     a{color:inherit;text-decoration:none}
     .wrap{max-width:960px;margin:0 auto;padding:24px 20px 96px}
 
+    /* Header */
     header{
       display:flex;
       justify-content:space-between;
@@ -68,6 +69,7 @@
       color:var(--ink);
     }
 
+    /* Banner */
     .banner{
       position:relative;
       margin-top:28px;
@@ -110,21 +112,19 @@
       margin-top:6px;
       font-size:18px;
       opacity:.9;
-      margin-bottom:60px;
     }
 
+    /* Profile overlap */
     .profileOverlap{
-      width:130px;
-      height:130px;
+      width:150px;
+      height:150px;
       border-radius:50%;
       overflow:hidden;
       border:3px solid rgba(255,255,255,.9);
       background:#fff;
       box-shadow:0 8px 24px rgba(0,0,0,.4);
-      position:absolute;
-      bottom:-65px;
-      left:50%;
-      transform:translateX(-50%);
+      margin:-120px 0 0 40px;
+      position:relative;
       z-index:3;
     }
 
@@ -134,20 +134,21 @@
       object-fit:cover;
     }
 
+    /* Hero */
     .hero{
       text-align:center;
-      padding-top:100px;
+      padding-top:40px;
     }
 
     .hero h1{
-      font-size:42px;
+      font-size:48px;
       line-height:1.25;
       margin-bottom:18px;
       letter-spacing:-.3px;
     }
 
     .heroLine{
-      font-size:18px;
+      font-size:20px;
       color:var(--muted);
       margin-bottom:36px;
       max-width:760px;
@@ -162,6 +163,7 @@
       margin-bottom:48px;
     }
 
+    /* Buttons with glow */
     .btn{
       position:relative;
       padding:11px 20px;
@@ -176,34 +178,141 @@
     .btn.primary{background:var(--green)}
     .btn.contact{background:var(--blue)}
 
-    .btn:hover{
-      transform:scale(1.06);
-      box-shadow:0 0 22px rgba(255,255,255,.25),0 10px 28px rgba(0,0,0,.45);
+    .btn::after{
+      content:"";
+      position:absolute;
+      inset:-6px;
+      background:radial-gradient(circle,rgba(255,255,255,.45),transparent 65%);
+      opacity:0;
+      transition:opacity .25s ease;
     }
 
+    .btn:hover::after{opacity:.9}
+    .btn:hover{
+      transform:scale(1.06);
+      box-shadow:
+        0 0 22px rgba(255,255,255,.25),
+        0 10px 28px rgba(0,0,0,.45);
+    }
+
+    /* Skills */
     .skills{
       display:flex;
       flex-wrap:wrap;
       justify-content:center;
-      gap:10px;
+      gap:18px;
       max-width:780px;
       margin:0 auto 72px;
     }
 
-    .skillTag{
+    .bubble{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      border-radius:50%;
+      padding:14px;
       font-size:13px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.06);
       border:1px solid var(--border);
-      color:var(--muted);
-      transition:background .2s ease;
+      transition:transform .2s ease;
     }
 
-    .skillTag:hover{
-      background:rgba(255,255,255,.12);
-      color:var(--ink);
+    .bubble:hover{transform:translateY(-4px)}
+
+    .xl{width:150px;height:150px;font-weight:700}
+    .lg{width:125px;height:125px}
+    .md{width:105px;height:105px}
+    .sm{width:85px;height:85px;font-size:12px}
+
+    .green{background:rgba(34,197,94,.18);color:#b7f3cd}
+    .blue{background:rgba(0,160,176,.18);color:#bfeef2}
+    .yellow{background:rgba(234,179,8,.18);color:#fde68a}
+
+    /* Projects */
+    section{margin-top:72px}
+    h2{font-size:20px;margin-bottom:14px}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:18px;
     }
+
+    .project-card{
+      grid-column:span 6;
+      perspective:1200px;
+    }
+
+    .project-inner{
+      position:relative;
+      height:300px;
+      transform-style:preserve-3d;
+      transition:transform .6s ease;
+    }
+
+    .project-card:hover .project-inner{
+      transform:rotateY(180deg);
+    }
+
+    .project-front,
+    .project-back{
+      position:absolute;
+      inset:0;
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--border);
+      padding:18px;
+      backface-visibility:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+
+    .project-front h3{margin:0 0 6px}
+
+    .status{
+      font-size:12px;
+      color:var(--green);
+      margin-bottom:10px;
+      display:inline-block;
+    }
+
+    .project-front .meta{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    .project-front ul{
+      margin:0;
+      padding-left:18px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .project-back{
+      transform:rotateY(180deg);
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* Contact box */
+    .contactBox{
+      max-width:520px;
+      margin:0 auto;
+      padding:22px 24px;
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.10);
+      border:1px solid var(--border);
+      box-shadow:0 12px 30px rgba(0,0,0,.25);
+      text-align:center;
+    }
+
+    .contactBox p{
+      margin:12px 0;
+      font-size:16px;
+      color:var(--muted);
+    }
+
+    .contactBox strong{color:var(--ink)}
 
     footer{
       margin-top:72px;
@@ -215,74 +324,143 @@
       justify-content:space-between;
       flex-wrap:wrap;
     }
+
+    @media(max-width:800px){
+      .grid .project-card{grid-column:span 12}
+      .profileOverlap{margin-left:auto;margin-right:auto}
+      .bannerText h1{font-size:38px}
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <div class="statusBadge">⚡ Currently under construction</div>
-      <nav class="topNav">
-        <a href="/about.html">About Me</a>
-        <a href="Kim%20Anderson%20Resume%202025.pdf" target="_blank">Resume</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+<div class="wrap">
 
-    <div class="banner">
-      <img src="Banner.png" alt="Banner">
-      <div class="bannerText">
-        <h1>Kim Anderson</h1>
-        <p>AI for Financial Crimes</p>
-        <div class="profileOverlap">
-          <img src="Profile%20Picture.png" alt="Profile photo">
-        </div>
-      </div>
+  <header>
+    <div class="statusBadge">🚧 Currently under construction</div>
+    <nav class="topNav">
+      <a href="/about.html">About Me</a>
+      <a href="Kim%20Anderson%20Resume%202025.pdf" target="_blank">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="Banner.png" alt="Banner">
+    <div class="bannerText">
+      <h1>Kim Anderson</h1>
+      <p>AI for Financial Crimes</p>
     </div>
-
-    <div class="hero">
-      <h1>Building investigator-first AI for complex financial crime.</h1>
-      <p class="heroLine">
-        Focused on high-risk, high-noise environments like crypto and digital assets — I build tools that support human decision-making in complex investigations.
-      </p>
-
-      <div class="ctaRow">
-        <a class="btn primary" href="#projects">View Projects</a>
-        <a class="btn contact" href="#contact">Contact</a>
-      </div>
-
-      <div class="skills">
-        <div class="skillTag">AML Investigations</div>
-        <div class="skillTag">Fraud Patterns</div>
-        <div class="skillTag">Crypto Risk</div>
-        <div class="skillTag">Risk Scoring</div>
-        <div class="skillTag">OFAC / Sanctions</div>
-        <div class="skillTag">Explainable AI</div>
-        <div class="skillTag">Process Automation</div>
-        <div class="skillTag">Entity Analysis</div>
-        <div class="skillTag">Investigator Training</div>
-        <div class="skillTag">SQL & Tableau</div>
-      </div>
-    </div>
-
-    <footer>
-      <div>© <span id="y"></span> Kim Anderson</div>
-      <div>Built with GitHub Pages</div>
-    </footer>
   </div>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  <div class="profileOverlap">
+    <img src="Profile%20Picture.png" alt="Profile photo">
+  </div>
+
+  <div class="hero">
+    <h1>Building investigator-first AI for the next era of financial crime.</h1>
+
+    <p class="heroLine">
+      As financial crime evolves toward AI — particularly with the growth of crypto and digital assets —
+      I am building investigator-first tools that help cut through complexity and support confident decision-making.
+    </p>
+
+    <div class="ctaRow">
+      <a class="btn primary" href="#projects">View Projects</a>
+      <a class="btn contact" href="#contact">Contact</a>
+    </div>
+
+    <div class="skills">
+      <div class="bubble xl green">AML & Fraud Investigations</div>
+      <div class="bubble xl green">Transaction Monitoring</div>
+      <div class="bubble lg green">Risk Mitigation</div>
+
+      <div class="bubble lg blue">Risk Scoring & QA</div>
+      <div class="bubble lg blue">SQL & Tableau</div>
+      <div class="bubble md blue">Explainable AI</div>
+      <div class="bubble md blue">Entity Analysis</div>
+
+      <div class="bubble sm yellow">Crypto Risk</div>
+      <div class="bubble sm yellow">OFAC / Sanctions</div>
+      <div class="bubble sm yellow">Process Automation</div>
+      <div class="bubble sm yellow">Investigator Training</div>
+    </div>
+  </div>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+
+      <div class="project-card">
+        <div class="project-inner">
+          <div class="project-front">
+            <h3>SAR Assist</h3>
+            <span class="status">● Complete</span>
+            <div class="meta">Excel + VBA · Investigator Workflow Tool</div>
+            <ul>
+              <li>Centralized investigative inputs</li>
+              <li>Guided validation & fraud classification</li>
+              <li>Automated SAR narrative generation</li>
+            </ul>
+          </div>
+          <div class="project-back">
+            <p>
+              Built in Excel + VBA to help investigators consolidate inputs from
+              multiple sources into a single working view. A second tab validates
+              and classifies activity, determines SAR requirement, and flags
+              outcomes visually. When required, a third tab generates a complete,
+              regulator-ready SAR narrative.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-inner">
+          <div class="project-front">
+            <h3>Second Project</h3>
+            <span class="status" style="color:var(--muted)">TBD</span>
+            <p>Next project currently in development.</p>
+          </div>
+          <div class="project-back">
+            <p>Details will be added once development is complete.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contactBox">
+      <p>
+        <strong>Email</strong><br>
+        <a href="mailto:andersonkimb@gmail.com">andersonkimb@gmail.com</a>
+      </p>
+      <p>
+        <strong>LinkedIn</strong><br>
+        <a href="https://www.linkedin.com/in/andersonkimb" target="_blank" rel="noopener">
+          www.linkedin.com/in/andersonkimb
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div>© <span id="y"></span> Kim Anderson</div>
+    <div>Built with GitHub Pages</div>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 
 
