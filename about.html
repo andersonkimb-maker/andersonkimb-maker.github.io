@@ -91,12 +91,23 @@ nav a:hover::after{
 }
 
 /* Back link */
+.back-link-wrap{
+  display:flex;
+  justify-content:center;
+  margin-top:36px;
+}
+
 .back-link{
-  display:inline-block;
-  margin-top:18px;
   font-size:14px;
   color:var(--muted);
-  transition:color .2s ease, text-shadow .2s ease;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .5s ease, transform .5s ease, color .2s ease, text-shadow .2s ease;
+}
+
+.back-link.visible{
+  opacity:1;
+  transform:none;
 }
 
 .back-link:hover{
@@ -149,13 +160,6 @@ nav a:hover::after{
   box-shadow:0 18px 42px rgba(0,0,0,.35);
 }
 
-.about-visual .caption{
-  margin-top:14px;
-  font-size:14px;
-  color:var(--muted);
-  padding:0 12px;
-}
-
 /* Sections */
 section{
   margin-top:64px;
@@ -173,7 +177,7 @@ h2{
   padding:26px;
 }
 
-/* Skills row */
+/* Skills */
 .skills-row{
   display:flex;
   flex-wrap:wrap;
@@ -193,9 +197,8 @@ h2{
   transition:transform .2s ease, box-shadow .2s ease;
 }
 
-/* UPDATED: subtle scale on hover */
 .skill-pill:hover{
-  transform: translateY(-2px) scale(1.02);
+  transform:translateY(-2px) scale(1.02);
   box-shadow:0 0 0 1px var(--glow-blue), 0 0 18px var(--glow-blue);
 }
 
@@ -226,20 +229,17 @@ footer{
   </nav>
 </header>
 
-<a href="index.html" class="back-link">← Back to home</a>
-
 <section class="intro reveal">
   <h1>About Me</h1>
   <p>
     I work at the intersection of financial crime investigations, risk systems,
     and practical AI. My focus is building <strong>investigator-first tools</strong>
-    that reduce complexity and support confident decision making in environments
-    where the stakes are real.
+    that reduce complexity and support confident decision making.
   </p>
 </section>
 
 <section class="about-visual reveal" style="animation-delay:.15s">
-  <img src="Website%20Photo%202.png" alt="Then, Now, Next – investigator-first AI evolution">
+  <img src="Website%20Photo%202.png" alt="Investigator-first AI evolution">
 </section>
 
 <section class="reveal" style="animation-delay:.25s">
@@ -247,20 +247,7 @@ footer{
   <div class="card">
     <p style="color:var(--muted)">
       I came to this work through financial crime investigations and regulatory environments
-      where decisions have to hold up long after they are made.
-    </p>
-
-    <p style="color:var(--muted); margin-top:12px">
-      Across investigations, remediation efforts, and compliance work, I spent years inside
-      systems designed to detect risk at scale but not to support the people responsible for
-      understanding it. Alerts piled up. Context lived in too many places. Investigators were
-      expected to move fast while defending every decision.
-    </p>
-
-    <p style="color:var(--muted); margin-top:12px">
-      That gap is what pulled me toward building investigator first tools. I focus on practical AI
-      and structured workflows that surface what matters earlier, preserve reasoning, and help
-      investigators stay confident in the decisions they are accountable for.
+      where decisions must hold up long after they are made.
     </p>
   </div>
 </section>
@@ -280,8 +267,9 @@ footer{
     </div>
   </div>
 
-  
-<a href="index.html" class="back-link">← Back to home</a>
+  <div class="back-link-wrap">
+    <a href="index.html" class="back-link">← Back to home</a>
+  </div>
 </section>
 
 <footer>
@@ -293,9 +281,24 @@ footer{
 
 <script>
 document.getElementById("y").textContent = new Date().getFullYear();
+
+const backLink = document.querySelector('.back-link');
+
+const observer = new IntersectionObserver(
+  ([entry]) => {
+    if (entry.isIntersecting) {
+      backLink.classList.add('visible');
+      observer.disconnect();
+    }
+  },
+  { threshold: 0.4 }
+);
+
+observer.observe(backLink);
 </script>
 </body>
 </html>
+
 
 
 
