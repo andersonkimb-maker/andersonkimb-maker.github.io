@@ -125,22 +125,49 @@
       opacity:.9;
     }
 
+    /* PROFILE FLIP + HALO */
     .profile{
       width:150px;
       height:150px;
-      border-radius:50%;
-      overflow:hidden;
-      border:3px solid #fff;
       margin:-70px auto 0;
-      box-shadow:0 10px 30px rgba(0,0,0,.4);
       position:relative;
       z-index:3;
+      perspective:1000px;
     }
 
-    .profile img{
+    .profile-inner{
       width:100%;
       height:100%;
+      border-radius:50%;
+      position:relative;
+      transform-style:preserve-3d;
+      transition:transform .7s ease, box-shadow .35s ease;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+      border:3px solid #fff;
+    }
+
+    .profile:hover .profile-inner{
+      transform:rotateY(180deg) translateY(-2px);
+      box-shadow:
+        0 0 0 6px rgba(255,255,255,.06),
+        0 0 28px rgba(56,189,248,.45);
+    }
+
+    .profile-face{
+      position:absolute;
+      inset:0;
+      backface-visibility:hidden;
+    }
+
+    .profile-face img{
+      width:100%;
+      height:100%;
+      border-radius:50%;
       object-fit:cover;
+    }
+
+    .profile-back{
+      transform:rotateY(180deg);
     }
 
     .hero{
@@ -201,11 +228,6 @@
       background:rgba(255,255,255,.08);
       border:1px solid var(--border);
       backface-visibility:hidden;
-      transition:box-shadow .3s ease;
-    }
-
-    .card:hover .front{
-      box-shadow:0 0 12px var(--blue-glow);
     }
 
     .back{
@@ -213,6 +235,7 @@
       color:var(--muted);
     }
 
+    /* STATUS DOT */
     .status{
       display:inline-flex;
       align-items:center;
@@ -235,6 +258,16 @@
       box-shadow:0 0 8px rgba(34,197,94,.6);
     }
 
+    .status.complete.pulse::before{
+      animation:pulse 1.4s ease-out 1;
+    }
+
+    @keyframes pulse{
+      0%{box-shadow:0 0 0 rgba(34,197,94,.6)}
+      50%{box-shadow:0 0 16px rgba(34,197,94,.9)}
+      100%{box-shadow:0 0 8px rgba(34,197,94,.6)}
+    }
+
     .status.tbd{color:var(--muted)}
     .status.tbd::before{background:#9ca3af}
 
@@ -246,29 +279,6 @@
       background:rgba(255,255,255,.10);
       border:1px solid var(--border);
       text-align:center;
-    }
-
-    .contact-item{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      margin:14px 0;
-    }
-
-    .contact-icon{
-      width:18px;
-      height:18px;
-      stroke:var(--ink);
-      opacity:.85;
-    }
-
-    .contact-link{
-      font-weight:600;
-    }
-
-    .contact-link:hover{
-      text-shadow:0 0 10px var(--blue-glow);
     }
 
     footer{
@@ -306,7 +316,14 @@
 </div>
 
 <div class="profile">
-  <img src="Profile%20Picture.png" alt="Profile">
+  <div class="profile-inner">
+    <div class="profile-face">
+      <img src="Profile%20Picture.png" alt="Profile">
+    </div>
+    <div class="profile-face profile-back">
+      <img src="Character.png" alt="Character">
+    </div>
+  </div>
 </div>
 
 <div class="hero">
@@ -325,7 +342,7 @@
       <div class="inner">
         <div class="front">
           <h4>SAR Assist <span style="font-size:12px;font-weight:500;color:var(--muted)">(Prototype)</span></h4>
-          <span class="status complete">Complete</span>
+          <span class="status complete" id="sarStatus">Complete</span>
           <ul>
             <li>Excel + VBA investigator workflow tool</li>
             <li>Centralized investigative inputs</li>
@@ -334,12 +351,7 @@
         </div>
         <div class="back">
           <p>
-            Built in Excel and VBA so teams can implement quickly without formal IT lift, while supporting work across fragmented systems.
-            The tool validates inputs, classifies fraud type, determines SAR requirements,
-            and generates a regulator-ready SAR narrative.
-          </p>
-          <p>
-            <i>This prototype is owned by my previous employer and is no longer in my possession.</i>
+            Built in Excel and VBA to support investigators across fragmented systems while enabling fast adoption.
           </p>
         </div>
       </div>
@@ -364,28 +376,14 @@
 <section id="contact">
   <h3>Contact</h3>
   <div class="contactBox">
-
-    <div class="contact-item">
-      <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
-        <path d="M4 4h16v16H4z"/>
-        <path d="M4 4l8 8 8-8"/>
-      </svg>
-      <a class="contact-link" href="mailto:andersonkimb@gmail.com">
-        andersonkimb@gmail.com
-      </a>
-    </div>
-
-    <div class="contact-item">
-      <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
-        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/>
-        <rect x="2" y="9" width="4" height="12"/>
-        <circle cx="4" cy="4" r="2"/>
-      </svg>
-      <a class="contact-link" href="https://www.linkedin.com/in/andersonkimb" target="_blank">
+    <p><strong>Email</strong><br>
+      <a href="mailto:andersonkimb@gmail.com">andersonkimb@gmail.com</a>
+    </p>
+    <p><strong>LinkedIn</strong><br>
+      <a href="https://www.linkedin.com/in/andersonkimb" target="_blank">
         linkedin.com/in/andersonkimb
       </a>
-    </div>
-
+    </p>
   </div>
 </section>
 
@@ -398,10 +396,19 @@
 
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
+
+  // pulse SAR status once on load
+  window.addEventListener("load", () => {
+    const status = document.getElementById("sarStatus");
+    if(status){
+      status.classList.add("pulse");
+    }
+  });
 </script>
 
 </body>
 </html>
+
 
 
 
