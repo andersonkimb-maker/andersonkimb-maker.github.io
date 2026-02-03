@@ -133,7 +133,7 @@ section{
   box-shadow:0 0 18px var(--blue-glow);
 }
 
-/* Projects (placeholder layout) */
+/* Projects */
 .projects{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -161,7 +161,7 @@ section{
   padding:32px;
 }
 
-/* About link (hidden until revealed) */
+/* About link */
 .about-link-wrap{
   margin-top:32px;
   opacity:0;
@@ -292,7 +292,6 @@ footer{
 <script>
 document.getElementById("y").textContent = new Date().getFullYear();
 
-// Reveal About link when Contact is in view
 const aboutLink = document.getElementById("aboutLink");
 const contactSection = document.getElementById("contact");
 
@@ -309,6 +308,7 @@ observer.observe(contactSection);
 </script>
 </body>
 </html>
+
 
 
 
