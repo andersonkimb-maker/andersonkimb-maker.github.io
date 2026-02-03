@@ -17,6 +17,7 @@
       --bg:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
       --overlay:linear-gradient(to bottom,rgba(14,36,49,.6),rgba(14,36,49,.2));
       --blue-glow:rgba(56,189,248,.35);
+      --yellow:#eab308;
     }
 
     *{box-sizing:border-box}
@@ -122,7 +123,7 @@
     }
 
     .bannerText p{
-      margin-top:1px; /* ✅ spacing control */
+      margin-top:1px;
       font-size:24px;
       opacity:.9;
     }
@@ -267,8 +268,18 @@
       100%{box-shadow:0 0 6px rgba(34,197,94,.5)}
     }
 
-    .status.tbd{color:var(--muted)}
-    .status.tbd::before{background:#9ca3af}
+    /* 🔹 NEW: Slow pulse for In Progress */
+    .status.in-progress{color:var(--yellow)}
+    .status.in-progress::before{
+      background:var(--yellow);
+      animation:slowPulse 4.5s ease-in-out infinite;
+    }
+
+    @keyframes slowPulse{
+      0%{box-shadow:0 0 4px rgba(234,179,8,.45)}
+      50%{box-shadow:0 0 14px rgba(234,179,8,.85)}
+      100%{box-shadow:0 0 6px rgba(234,179,8,.55)}
+    }
 
     .contactBox{
       max-width:520px;
@@ -364,8 +375,10 @@
         <div class="front">
           <h4>Investigator Decision Support Framework</h4>
           <span class="status in-progress">In Progress</span>
-          <p>A decision-stage framework that models how investigators interpret signals, 
-            weigh alternatives, and reach defensible conclusions. </p>
+          <p>
+            A decision-stage framework that models how investigators interpret signals,
+            weigh alternatives, and reach defensible conclusions.
+          </p>
         </div>
         <div class="back">
           <p>Details will be added once development is complete.</p>
