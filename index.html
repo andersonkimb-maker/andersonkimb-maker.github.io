@@ -212,6 +212,40 @@
       color:var(--muted);
     }
 
+    /* Status dots */
+    .status{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:12px;
+      font-weight:600;
+      margin-bottom:12px;
+    }
+
+    .status::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+    }
+
+    .status.complete{
+      color:var(--green);
+    }
+
+    .status.complete::before{
+      background:var(--green);
+      box-shadow:0 0 8px rgba(34,197,94,.6);
+    }
+
+    .status.tbd{
+      color:var(--muted);
+    }
+
+    .status.tbd::before{
+      background:#9ca3af;
+    }
+
     /* Contact */
     .contactBox{
       max-width:520px;
@@ -223,7 +257,7 @@
       text-align:center;
     }
 
-    /* 🔹 NEW: Animated About link */
+    /* Animated About link */
     .about-link-wrap{
       text-align:center;
       margin-top:28px;
@@ -317,7 +351,7 @@
       <div class="inner">
         <div class="front">
           <h4>SAR Assist <span style="font-size:12px;font-weight:500;color:var(--muted)">(Prototype)</span></h4>
-          <span class="status">● Complete</span>
+          <span class="status complete">Complete</span>
           <ul>
             <li>Excel + VBA investigator workflow tool</li>
             <li>Centralizes fragmented investigative inputs</li>
@@ -341,7 +375,7 @@
       <div class="inner">
         <div class="front">
           <h4>Second Project</h4>
-          <span class="status" style="color:var(--muted)">TBD</span>
+          <span class="status tbd">TBD</span>
           <p>Next project currently in development.</p>
         </div>
         <div class="back">
@@ -366,7 +400,6 @@
     </p>
   </div>
 
-  <!-- 🔹 NEW: About link -->
   <div class="about-link-wrap" id="aboutLink">
     <a href="/about.html" class="about-link">
       More about my experience and approach →
@@ -384,7 +417,6 @@
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
 
-  /* 🔹 NEW: Reveal About link when Contact enters view */
   const aboutLink = document.getElementById("aboutLink");
   const contactSection = document.getElementById("contact");
 
@@ -402,6 +434,7 @@
 </script>
 </body>
 </html>
+
 
 
 
