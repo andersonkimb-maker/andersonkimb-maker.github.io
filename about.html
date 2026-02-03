@@ -5,13 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>About Me | Kim Anderson</title>
 
+<!-- Open Graph / Smart Preview Tags -->
+<meta property="og:title" content="About Me | Kim Anderson">
+<meta property="og:description" content="Investigations. AI. Risk systems. Building tools for real-world decisions.">
+<meta property="og:image" content="https://yourdomain.com/Website%20Photo%202.png">
+<meta property="og:type" content="website">
+
 <style>
 :root{
   --ink:#f5f7fa;
   --muted:#a8b2b8;
   --border:rgba(255,255,255,.14);
   --bg:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
-
   --glow-blue:rgba(56,189,248,.45);
 }
 
@@ -188,8 +193,9 @@ h2{
   transition:transform .2s ease, box-shadow .2s ease;
 }
 
+/* UPDATED: subtle scale on hover */
 .skill-pill:hover{
-  transform:translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
   box-shadow:0 0 0 1px var(--glow-blue), 0 0 18px var(--glow-blue);
 }
 
@@ -226,7 +232,7 @@ footer{
   <h1>About Me</h1>
   <p>
     I work at the intersection of financial crime investigations, risk systems,
-    and practical AI. My focus is building <strong>investigator-first</strong> tools
+    and practical AI. My focus is building <strong>investigator first tools</strong>
     that reduce complexity and support confident decision making in environments
     where the stakes are real.
   </p>
@@ -234,6 +240,9 @@ footer{
 
 <section class="about-visual reveal" style="animation-delay:.15s">
   <img src="Website%20Photo%202.png" alt="Then, Now, Next – investigator-first AI evolution">
+  <p class="caption">
+    Built on experience. Focused on the future where investigative judgment meets intelligent systems.
+  </p>
 </section>
 
 <section class="reveal" style="animation-delay:.25s">
@@ -260,7 +269,7 @@ footer{
 </section>
 
 <section class="reveal" style="animation-delay:.35s">
-  <h2>Where I Focus</h2>
+  <h2>What I Work On</h2>
   <div class="card">
     <div class="skills-row">
       <div class="skill-pill">🔍 AML Investigations</div>
@@ -287,6 +296,7 @@ document.getElementById("y").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
+
 
 
 
