@@ -87,7 +87,7 @@ nav a:hover::after{
   transform:scaleX(1);
 }
 
-/* Scroll reveal */
+/* Reveal animation */
 .reveal{
   opacity:0;
   transform:translateY(18px);
@@ -116,6 +116,7 @@ nav a:hover::after{
   font-size:18px;
   color:var(--muted);
   max-width:760px;
+  text-align:left;
 }
 
 /* Visual */
@@ -136,6 +137,7 @@ nav a:hover::after{
   margin-top:14px;
   font-size:14px;
   color:var(--muted);
+  padding:0 12px;
 }
 
 /* Sections */
@@ -229,33 +231,34 @@ footer{
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html" style="color:#fff;">About Me</a>
-    <a href="Kim%20Anderson%20Resume%202025.pdf" target="_blank">Resume</a>
-    <a href="index.html#contact">Contact</a>
+    <a href="#what">What I Work On</a>
+    <a href="#approach">My Approach</a>
   </nav>
 </header>
 
-<section class="intro reveal">
+<section class="intro reveal" style="animation-delay:.1s">
   <h1>About Me</h1>
   <p>
     I work at the intersection of financial crime investigations, risk systems, and applied AI.
-    My focus is building investigator-first tools that reduce complexity, preserve judgment,
-    and scale decision-making in high-noise environments.
+    My focus is building <strong>investigator-first tools</strong> that reduce complexity,
+    preserve judgment, and scale decision-making in high-noise environments.
   </p>
 </section>
 
-<section class="about-visual reveal">
+<section class="about-visual reveal" style="animation-delay:.25s">
   <img src="Website%20Photo%202.png" alt="Evolution of investigator-first AI for financial crime">
   <p class="caption">
-    Built on experience. Focused on the future — where investigative judgment meets intelligent systems.
+    Built on experience and focused on the future, where investigative judgment meets intelligent systems.
   </p>
 </section>
 
-<section class="reveal">
+<section id="what" class="reveal" style="animation-delay:.4s">
   <h2>What I Work On</h2>
   <div class="card">
     <p style="color:var(--muted)">
-      My work spans investigations, risk modeling, and applied AI — with an emphasis on explainability,
-      operational reality, and tools investigators actually trust.
+      My work spans investigations, risk modeling, and applied AI, with a 
+      strong emphasis on explainability, operational reality, and tools 
+      investigators actually trust.
     </p>
 
     <div class="skills-row">
@@ -274,14 +277,13 @@ footer{
   </div>
 </section>
 
-<section class="reveal">
+<section id="approach" class="reveal" style="animation-delay:.55s">
   <h2>How I Approach the Work</h2>
   <div class="card">
     <p style="color:var(--muted)">
-      I don’t start with models — I start with investigators.  
-      My approach centers on decision pressure, regulatory constraints,
-      and where systems either support or obstruct good judgment.
-      AI should reduce cognitive load, not add another layer to manage.
+    I start with investigators, not models. My approach centers on decision pressure, 
+    regulatory constraints, and how systems support or obstruct good judgment. 
+    AI should reduce cognitive load, not create more work to manage.
     </p>
   </div>
 </section>
@@ -298,6 +300,7 @@ document.getElementById("y").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
+
 
 
 
