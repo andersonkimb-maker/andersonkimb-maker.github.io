@@ -38,7 +38,6 @@ a{color:inherit;text-decoration:none}
   padding:28px 20px 96px;
 }
 
-/* Header */
 header{
   display:flex;
   justify-content:space-between;
@@ -90,7 +89,6 @@ nav a:hover::after{
   transform:scaleX(1);
 }
 
-/* Back link */
 .back-link-wrap{
   display:flex;
   justify-content:center;
@@ -115,7 +113,6 @@ nav a:hover::after{
   text-shadow:0 0 12px var(--glow-blue);
 }
 
-/* Reveal animation */
 .reveal{
   opacity:0;
   transform:translateY(14px);
@@ -129,7 +126,6 @@ nav a:hover::after{
   }
 }
 
-/* Intro */
 .intro{
   margin-top:56px;
 }
@@ -146,7 +142,6 @@ nav a:hover::after{
   text-align:left;
 }
 
-/* Visual */
 .about-visual{
   margin:56px auto 64px;
   text-align:center;
@@ -160,7 +155,6 @@ nav a:hover::after{
   box-shadow:0 18px 42px rgba(0,0,0,.35);
 }
 
-/* Sections */
 section{
   margin-top:64px;
 }
@@ -177,7 +171,6 @@ h2{
   padding:26px;
 }
 
-/* Skills */
 .skills-row{
   display:flex;
   flex-wrap:wrap;
@@ -202,7 +195,6 @@ h2{
   box-shadow:0 0 0 1px var(--glow-blue), 0 0 18px var(--glow-blue);
 }
 
-/* Footer */
 footer{
   margin-top:72px;
   border-top:1px solid var(--border);
@@ -232,9 +224,7 @@ footer{
 <section class="intro reveal">
   <h1>About Me</h1>
   <p>
-    I work at the intersection of financial crime investigations, risk systems,
-    and practical AI. My focus is building <strong>investigator-first tools</strong>
-    that reduce complexity and support confident decision making.
+    I’m working at the intersection of financial crime investigations, risk systems, and practical AI. My focus is on building <strong>investigator-first tools</strong> that reduce complexity and support confident decision making.
   </p>
 </section>
 
@@ -242,13 +232,47 @@ footer{
   <img src="Website%20Photo%202.png" alt="Investigator-first AI evolution">
 </section>
 
-<section class="reveal" style="animation-delay:.25s">
+<section>
   <h2>How My Experience Shaped My Work</h2>
   <div class="card">
-    <p style="color:var(--muted)">
-      I came to this work through financial crime investigations and regulatory environments
-      where decisions must hold up long after they are made.
+
+    <p style="color:var(--muted); margin-top:18px">
+      I joined PwC’s Columbia Acceleration Center in 2019 as an analyst, after more than 14 years of experience across industries including insurance, healthcare, online education, client management, and large national banks.
     </p>
+
+    <p style="color:var(--muted); margin-top:12px">
+      That background shaped how I think about systems — not in theory, but in practice. I saw where tools helped, where they got in the way, and how much invisible work sat between policy and execution.
+    </p>
+
+    <p style="color:var(--muted); margin-top:12px">
+      At PwC, I worked on data investigations, remediation efforts, and compliance projects involving PII breaches, consent orders, and organizational restructuring. I supported process mapping, AML investigations, transaction monitoring, and fraud investigations with experience both above and below the line.
+    </p>
+
+    <p style="color:var(--muted); margin-top:12px">
+      Over time I saw how much faster and clearer investigations became with the right tools in place. That realization sparked my interest in building better systems. I’m still deeply committed to AML and fraud investigations — and I’m also developing tools that make that work faster, smarter, and more effective.
+    </p>
+
+    <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
+      <li style="margin-bottom:16px;">
+        <strong>Investigation-first foundations.</strong><br>
+        Hands-on work where ambiguity, incomplete data, and regulatory pressure shaped how decisions actually get made.
+      </li>
+
+      <li style="margin-bottom:16px;">
+        <strong>Friction with existing systems.</strong><br>
+        Seeing how alert-heavy, opaque tools slowed investigations and increased risk instead of reducing it.
+      </li>
+
+      <li>
+        <strong>Shift toward investigator-first systems.</strong><br>
+        Moving from working around tools to designing ones that organize complexity, surface meaningful risk, and support defensible decisions.
+      </li>
+    </ul>
+
+    <p style="color:var(--muted); margin-top:16px">
+      I remain actively interested in AML and fraud investigation roles. As financial crime systems evolve toward AI, especially across crypto and digital assets, I’m developing skills and tools that align with where the field is headed, while staying grounded in investigative practice.
+    </p>
+
   </div>
 </section>
 
@@ -283,7 +307,6 @@ footer{
 document.getElementById("y").textContent = new Date().getFullYear();
 
 const backLink = document.querySelector('.back-link');
-
 const observer = new IntersectionObserver(
   ([entry]) => {
     if (entry.isIntersecting) {
@@ -293,7 +316,6 @@ const observer = new IntersectionObserver(
   },
   { threshold: 0.4 }
 );
-
 observer.observe(backLink);
 </script>
 </body>
