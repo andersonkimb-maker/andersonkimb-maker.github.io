@@ -31,7 +31,6 @@
     a{color:inherit;text-decoration:none}
     .wrap{max-width:980px;margin:0 auto;padding:24px 20px 96px}
 
-    /* Header */
     header{
       display:flex;
       justify-content:space-between;
@@ -78,7 +77,6 @@
     nav a:hover{color:var(--ink)}
     nav a:hover::after{transform:scaleX(1)}
 
-    /* Banner */
     .banner{
       margin-top:28px;
       position:relative;
@@ -121,7 +119,6 @@
       opacity:.9;
     }
 
-    /* Profile image */
     .profile{
       width:150px;
       height:150px;
@@ -140,7 +137,6 @@
       object-fit:cover;
     }
 
-    /* Hero */
     .hero{
       text-align:center;
       padding-top:36px;
@@ -174,7 +170,6 @@
 
     section{margin-top:56px}
 
-    /* Projects */
     h3{font-size:20px;margin-bottom:14px}
 
     .grid{
@@ -212,7 +207,6 @@
       color:var(--muted);
     }
 
-    /* Status dots */
     .status{
       display:inline-flex;
       align-items:center;
@@ -229,24 +223,12 @@
       border-radius:50%;
     }
 
-    .status.complete{
-      color:var(--green);
-    }
+    .status.complete{color:var(--green)}
+    .status.complete::before{background:var(--green);box-shadow:0 0 8px rgba(34,197,94,.6)}
 
-    .status.complete::before{
-      background:var(--green);
-      box-shadow:0 0 8px rgba(34,197,94,.6);
-    }
+    .status.tbd{color:var(--muted)}
+    .status.tbd::before{background:#9ca3af}
 
-    .status.tbd{
-      color:var(--muted);
-    }
-
-    .status.tbd::before{
-      background:#9ca3af;
-    }
-
-    /* Contact */
     .contactBox{
       max-width:520px;
       margin:0 auto;
@@ -257,7 +239,6 @@
       text-align:center;
     }
 
-    /* Animated About link */
     .about-link-wrap{
       text-align:center;
       margin-top:28px;
@@ -337,9 +318,10 @@
 
 <div class="hero">
   <h2>Building investigator-first AI for complex financial crime.</h2>
-  <p> As financial crime grows more complex, especially with the rise of crypto and digital assets, I focus on building tools that support investigators. 
-    This site highlights projects I'm building as I develop skills aligned with where the field is headed. 
-    I'm actively exploring roles in AML and fraud investigations, and remain grounded in that work while growing toward this future.
+  <p>
+    As financial crime grows more complex — especially with the rise of crypto and digital assets — I’m building tools that support investigators navigating these changes.
+    This site highlights the projects I'm developing to build skills aligned with where the field is headed.
+    I remain actively interested in roles focused on AML and fraud investigations, and I created this site to show how I’m growing toward the future of financial crime work.
   </p>
 </div>
 
