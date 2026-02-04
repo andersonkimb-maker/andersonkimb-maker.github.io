@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>About Me | Kim Anderson</title>
 
-<!-- Open Graph / Smart Preview Tags -->
 <meta property="og:title" content="About Me | Kim Anderson">
 <meta property="og:description" content="Senior investigator with a focus on AML, fraud, and investigator-first AI tools.">
 <meta property="og:image" content="Website%20Photo%202.png">
@@ -22,7 +21,6 @@
 }
 
 *{box-sizing:border-box}
-
 html{scroll-behavior:smooth}
 
 body{
@@ -80,7 +78,6 @@ nav a::after{
   height:2px;
   background:rgba(255,255,255,.6);
   transform:scaleX(0);
-  transform-origin:left;
   transition:.2s ease;
 }
 
@@ -121,38 +118,13 @@ h2{
   padding:26px;
 }
 
-/* Emphasis line */
+/* Emphasis */
 .key-line{
   margin:16px 0 18px;
   padding-left:14px;
   border-left:2px solid rgba(255,255,255,.35);
   font-style:italic;
   color:#e5e7eb;
-}
-
-/* Skills */
-.skills-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:18px;
-}
-
-.skill-pill{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:10px 14px;
-  border-radius:999px;
-  font-size:14px;
-  background:rgba(255,255,255,.08);
-  border:1px solid var(--border);
-  transition:transform .2s ease, box-shadow .2s ease;
-}
-
-.skill-pill:hover{
-  transform:translateY(-2px) scale(1.02);
-  box-shadow:0 0 0 1px var(--glow-blue), 0 0 18px var(--glow-blue);
 }
 
 /* Certifications */
@@ -171,7 +143,7 @@ h2{
   color:#fde68a;
 }
 
-/* Floating navigation */
+/* Floating nav */
 .bottom-nav{
   position:fixed;
   right:20px;
@@ -192,14 +164,7 @@ h2{
   background:rgba(255,255,255,.12);
   border:1px solid var(--border);
   font-size:18px;
-  color:var(--ink);
   backdrop-filter:blur(6px);
-  transition:.2s ease;
-}
-
-.bottom-nav a:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 0 1px var(--glow-blue), 0 0 18px var(--glow-blue);
 }
 
 footer{
@@ -210,7 +175,6 @@ footer{
   color:var(--muted);
   display:flex;
   justify-content:space-between;
-  flex-wrap:wrap;
 }
 </style>
 </head>
@@ -235,12 +199,47 @@ footer{
   <img src="Website%20Photo%202.png" alt="Investigator-first AI for financial crime">
 </section>
 
+<!-- RESTORED SECTIONS -->
+
 <section>
   <div class="card">
     <h2>About Me</h2>
-    <p style="color:var(--muted); margin-top:18px">I joined PwC in 2019 as an analyst, bringing more than 14 years of prior experience across insurance, healthcare, online education, client management, and large national banks.</p>
-    <p class="key-line">That background shaped how I think about systems — not in theory, but in practice.</p>
-    <p style="color:var(--muted); margin-top:12px">At PwC, I contributed to data investigations, remediation efforts, and compliance projects involving PII breaches, consent orders, and organizational restructuring.</p>
+    <p style="color:var(--muted); margin-top:18px">
+      I joined PwC in 2019 as an analyst, bringing more than 14 years of prior experience across insurance, healthcare, online education, client management, and large national banks.
+    </p>
+    <p class="key-line">
+      That background shaped how I think about systems — not in theory, but in practice.
+    </p>
+    <p style="color:var(--muted); margin-top:12px">
+      Before working directly in financial crime, my work focused on cross-functional delivery, operational readiness, and regulatory support.
+    </p>
+    <p style="color:var(--muted); margin-top:12px">
+      At PwC, I contributed to data investigations, remediation efforts, and compliance projects involving PII breaches, consent orders, and organizational restructuring.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <h2>How My Experience Shaped My Direction</h2>
+    <p class="key-line">
+      I design for the moment when an investigator has to stand behind a decision.
+    </p>
+    <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
+      <li style="margin-bottom:16px;"><strong>Then.</strong><br>Hands-on investigative and compliance work.</li>
+      <li style="margin-bottom:16px;"><strong>Now.</strong><br>Building investigator-first tools.</li>
+      <li><strong>Next.</strong><br>Explainable AI systems investigators trust.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Why This Matters</h2>
+  <div class="card">
+    <p class="key-line">Financial crime systems fail when criminals outpace investigations.</p>
+    <p style="color:var(--muted); margin-top:12px">
+      I remain deeply interested in AML and fraud investigation roles while developing tools aligned with where the field is headed.
+    </p>
   </div>
 </section>
 
@@ -284,6 +283,7 @@ document.getElementById("y").textContent = new Date().getFullYear();
 
 </body>
 </html>
+
 
 
 
