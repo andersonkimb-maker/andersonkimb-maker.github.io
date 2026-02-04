@@ -23,6 +23,8 @@
 
 *{box-sizing:border-box}
 
+html{scroll-behavior:smooth}
+
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -90,6 +92,7 @@ nav a:hover::after{
   transform:scaleX(1);
 }
 
+/* Visual */
 .about-visual{
   margin:56px auto 64px;
   text-align:center;
@@ -103,8 +106,13 @@ nav a:hover::after{
   box-shadow:0 18px 42px rgba(0,0,0,.35);
 }
 
-section{margin-top:64px;}
-h2{font-size:24px;margin-bottom:16px;}
+/* Sections */
+section{margin-top:64px}
+
+h2{
+  font-size:24px;
+  margin-bottom:16px;
+}
 
 .card{
   background:rgba(255,255,255,.07);
@@ -113,6 +121,7 @@ h2{font-size:24px;margin-bottom:16px;}
   padding:26px;
 }
 
+/* Emphasis line */
 .key-line{
   margin:16px 0 18px;
   padding-left:14px;
@@ -121,6 +130,7 @@ h2{font-size:24px;margin-bottom:16px;}
   color:#e5e7eb;
 }
 
+/* Skills */
 .skills-row{
   display:flex;
   flex-wrap:wrap;
@@ -145,19 +155,51 @@ h2{font-size:24px;margin-bottom:16px;}
   box-shadow:0 0 0 1px var(--glow-blue), 0 0 18px var(--glow-blue);
 }
 
-.cert-card {
-  background: rgba(255,255,255,.07);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 16px;
-  margin-bottom: 12px;
-  color: var(--muted);
+/* Certifications */
+.cert-card{
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+  margin-bottom:14px;
+  color:var(--muted);
 }
 
-.cert-card.in-progress {
-  border-left: 4px solid var(--yellow);
-  background: rgba(234, 179, 8, 0.08);
-  color: #fde68a;
+.cert-card.in-progress{
+  border-left:4px solid var(--yellow);
+  background:rgba(234,179,8,.08);
+  color:#fde68a;
+}
+
+/* Floating navigation */
+.bottom-nav{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:999;
+}
+
+.bottom-nav a{
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:rgba(255,255,255,.12);
+  border:1px solid var(--border);
+  font-size:18px;
+  color:var(--ink);
+  backdrop-filter:blur(6px);
+  transition:.2s ease;
+}
+
+.bottom-nav a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 0 1px var(--glow-blue), 0 0 18px var(--glow-blue);
 }
 
 footer{
@@ -174,12 +216,15 @@ footer{
 </head>
 
 <body>
+<a id="top"></a>
+
 <div class="wrap">
 
 <header>
   <div class="construction">🚧 Currently under construction</div>
   <nav>
     <a href="index.html">Home</a>
+    <a href="#certifications">Certifications</a>
     <a href="about.html" style="color:#fff;">About Me</a>
     <a href="Kim%20Anderson%20Resume%202025.pdf" target="_blank">Resume</a>
     <a href="index.html#contact">Contact</a>
@@ -190,32 +235,35 @@ footer{
   <img src="Website%20Photo%202.png" alt="Investigator-first AI for financial crime">
 </section>
 
-<!-- Previous sections remain unchanged -->
+<section>
+  <div class="card">
+    <h2>About Me</h2>
+    <p style="color:var(--muted); margin-top:18px">I joined PwC in 2019 as an analyst, bringing more than 14 years of prior experience across insurance, healthcare, online education, client management, and large national banks.</p>
+    <p class="key-line">That background shaped how I think about systems — not in theory, but in practice.</p>
+    <p style="color:var(--muted); margin-top:12px">At PwC, I contributed to data investigations, remediation efforts, and compliance projects involving PII breaches, consent orders, and organizational restructuring.</p>
+  </div>
+</section>
 
 <section>
   <h2 id="certifications">Certifications</h2>
 
-  <div class="cert-card in-progress">
-    <div class="cert-card in-progress"><strong>📘 In Progress:</strong> Digital Assets Fundamentals - Chainalysis </div>
-<div class="cert-card in-progress"><strong>📘 In Progress:</strong> Blockchain Council – Certified Cryptocurrency Auditor</div>
-<div class="cert-card in-progress"><strong>📘 In Progress:</strong> SQL – Coursera</div>
-  </div>
+  <div class="cert-card in-progress">📘 In Progress: Certified Cryptocurrency Auditor – Blockchain Council</div>
+  <div class="cert-card in-progress">📘 In Progress: SQL – Coursera</div>
+  <div class="cert-card in-progress">📘 In Progress: Foundational Digital Assets Program – Chainalysis</div>
 
-  <div class="cert-card">✅ edX Verified Certificate – Exercising Leadership (Sep 2023)</div>
-  <div class="cert-card">✅ Executive Presence Certificate – Canvas Credentials (Jul 2023)</div>
-  <div class="cert-card">✅ USF Lean Six Sigma Yellow Belt – USF CTPE (Jul 2023, Expires Jul 2026)</div>
-  <div class="cert-card">✅ Sustainability: Climate Impact – PwC (Jun 2023)</div>
-  <div class="cert-card">✅ Inclusive Mindset – PwC (May 2023)</div>
-  <div class="cert-card">✅ Inclusive & Ethical Leadership – USF CTPE (Jan 2023)</div>
-  <div class="cert-card">✅ USF Modern Management Tools – USF CTPE (May 2022)</div>
-  <div class="cert-card">✅ Diversity, Equity & Inclusion in the Workplace – USF CTPE (Mar 2022)</div>
-  <div class="cert-card">✅ Data Tools & Visualisation – PwC (Feb 2020)</div>
-  <div class="cert-card">✅ Cybersecurity Essentials – USF CTPE (Apr 2022)</div>
-  <div class="cert-card">✅ Digital Acumen Badge – PwC Acceleration Centers</div>
-  <div class="cert-card">✅ Human Centered Design Badge – PwC Acceleration Centers</div>
-
-  <p style="text-align:right; margin-top:24px;"><a href="#top" style="font-size:14px; color:var(--muted); text-decoration:underline">Back to Top ↑</a></p>
-   <p style="text-align:right; margin-top:24px;"><a href="#index" style="font-size:14px; color:var(--muted); text-decoration:underline">Back Home</a></p>
+  <div class="cert-card">Exercising Leadership: Foundational Principles – edX (2023)</div>
+  <div class="cert-card">Executive Presence Certificate – Canvas Credentials (2023)</div>
+  <div class="cert-card">Lean Six Sigma Yellow Belt – USF (2023)</div>
+  <div class="cert-card">Sustainability: Climate Impact – PwC (2023)</div>
+  <div class="cert-card">Inclusive Mindset – PwC (2023)</div>
+  <div class="cert-card">Inclusive and Ethical Leadership – USF (2023)</div>
+  <div class="cert-card">Modern Management Tools – USF (2022)</div>
+  <div class="cert-card">Cybersecurity Essentials – USF (2022)</div>
+  <div class="cert-card">Diversity, Equity and Inclusion in the Workplace – USF (2022)</div>
+  <div class="cert-card">Business Analytics Nanodegree – Udacity (2021)</div>
+  <div class="cert-card">Data Tools and Visualisation – PwC (2020)</div>
+  <div class="cert-card">Digital Acumen Badge – PwC Acceleration Centers</div>
+  <div class="cert-card">Human Centered Design Badge – PwC Acceleration Centers</div>
 </section>
 
 <footer>
@@ -225,11 +273,19 @@ footer{
 
 </div>
 
+<div class="bottom-nav">
+  <a href="#top" title="Back to top">⬆</a>
+  <a href="index.html" title="Home">🏠</a>
+</div>
+
 <script>
 document.getElementById("y").textContent = new Date().getFullYear();
 </script>
+
 </body>
 </html>
+
+
 
 
 
