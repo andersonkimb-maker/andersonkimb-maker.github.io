@@ -1,4 +1,4 @@
-<!doctype html> 
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -7,8 +7,8 @@
 
 <!-- Open Graph / Smart Preview Tags -->
 <meta property="og:title" content="About Me | Kim Anderson">
-<meta property="og:description" content="Investigations. AI. Risk systems. Building tools for real-world decisions.">
-<meta property="og:image" content="https://yourdomain.com/Website%20Photo%202.png">
+<meta property="og:description" content="Senior investigator with a focus on AML, fraud, and investigator-first AI tools.">
+<meta property="og:image" content="Website%20Photo%202.png">
 <meta property="og:type" content="website">
 
 <style>
@@ -89,59 +89,7 @@ nav a:hover::after{
   transform:scaleX(1);
 }
 
-.back-link-wrap{
-  display:flex;
-  justify-content:center;
-  margin-top:36px;
-}
-
-.back-link{
-  font-size:14px;
-  color:var(--muted);
-  opacity:0;
-  transform:translateY(12px);
-  transition:opacity .5s ease, transform .5s ease, color .2s ease, text-shadow .2s ease;
-}
-
-.back-link.visible{
-  opacity:1;
-  transform:none;
-}
-
-.back-link:hover{
-  color:var(--ink);
-  text-shadow:0 0 12px var(--glow-blue);
-}
-
-.reveal{
-  opacity:0;
-  transform:translateY(14px);
-  animation:fadeUp .6s ease forwards;
-}
-
-@keyframes fadeUp{
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-.intro{
-  margin-top:56px;
-}
-
-.intro h1{
-  font-size:42px;
-  margin-bottom:18px;
-}
-
-.intro p{
-  font-size:18px;
-  color:var(--muted);
-  max-width:760px;
-  text-align:left;
-}
-
+/* Visual */
 .about-visual{
   margin:56px auto 64px;
   text-align:center;
@@ -155,6 +103,7 @@ nav a:hover::after{
   box-shadow:0 18px 42px rgba(0,0,0,.35);
 }
 
+/* Sections */
 section{
   margin-top:64px;
 }
@@ -171,6 +120,16 @@ h2{
   padding:26px;
 }
 
+/* Emphasis line */
+.key-line{
+  margin:16px 0 18px;
+  padding-left:14px;
+  border-left:2px solid rgba(255,255,255,.35);
+  font-style:italic;
+  color:#e5e7eb;
+}
+
+/* Skills */
 .skills-row{
   display:flex;
   flex-wrap:wrap;
@@ -221,69 +180,86 @@ footer{
   </nav>
 </header>
 
-<section class="about-visual reveal" style="animation-delay:.15s">
-  <img src="Website%20Photo%202.png" alt="Investigator-first AI evolution">
+<section class="about-visual">
+  <img src="Website%20Photo%202.png" alt="Investigator-first AI for financial crime">
 </section>
 
 <section>
   <div class="card">
-     <h2>About Me</h2>
+    <h2>About Me</h2>
 
     <p style="color:var(--muted); margin-top:18px">
-      I joined PwC in 2019 as an analyst, after more than 14 years across insurance, healthcare, online education, client management, and large national banks.
+      I joined PwC in 2019 as an analyst, bringing more than 14 years of prior experience
+      across insurance, healthcare, online education, client management, and large national banks.
+    </p>
+
+    <p class="key-line">
+      That background shaped how I think about systems — not in theory, but in practice.
     </p>
 
     <p style="color:var(--muted); margin-top:12px">
-      That background shaped how I think about systems—not in theory, but in practice. I saw where tools helped, where they got in the way, and how much invisible work sat between policy and execution.
+      Before working directly in financial crime, my work focused on cross-functional delivery,
+      operational readiness, and regulatory support. I saw firsthand how policies translate
+      into execution, and where systems either support people or create friction.
     </p>
 
     <p style="color:var(--muted); margin-top:12px">
-      At PwC, I worked on data investigations, remediation efforts, and compliance projects involving PII breaches, consent orders, and organizational restructuring. My roles spanned process mapping, AML investigations, transaction monitoring, and fraud investigations, with experience both above and below the line testing.
+      At PwC, I contributed to data investigations, remediation efforts, and compliance projects
+      involving PII breaches, consent orders, and organizational restructuring. My work included
+      process mapping, AML investigations, transaction monitoring BAU and lookback, and fraud investigations,
+      with experience both above and below the line testing.
     </p>
-
-    <p style="color:var(--muted); margin-top:12px">
-<p style="color:var(--muted); margin-top:12px">
-  After my role at PwC ended, I took the opportunity to reassess how the field was changing. 
-  I remain committed to AML and fraud work, and I’m also focused on developing tools that make that work faster, smarter, and more defensible.
-</p>
-    
   </div>
 </section>
 
-  <section>
+<section>
   <div class="card">
-  <h2>What’s Guided My Approach</h2>
+    <h2>How My Experience Shaped My Direction</h2>
+
+    <p class="key-line">
+      I design for the moment when an investigator has to stand behind a decision.
+    </p>
+
     <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
       <li style="margin-bottom:16px;">
-        <strong>Investigation-first foundations.</strong><br>
-        I’ve worked where ambiguity, incomplete data, and regulatory pressure shape how decisions actually get made.
+        <strong>Then.</strong><br>
+        Hands-on investigative and compliance work in high-pressure, high-ambiguity environments.
       </li>
 
       <li style="margin-bottom:16px;">
-        <strong>Friction with existing systems.</strong><br>
-        I’ve seen how alert-heavy, opaque tools slow investigations and increase risk instead of reducing it.
+        <strong>Now.</strong><br>
+        Building investigator-first tools and frameworks that reduce cognitive load
+        and surface meaningful risk.
       </li>
 
       <li>
-        <strong>A shift toward investigator-first systems.</strong><br>
-        I’m focused on designing tools that organize complexity, surface meaningful risk, and support confident, defensible decisions.
+        <strong>Next.</strong><br>
+        Applying AI thoughtfully in financial crime systems while preserving explainability,
+        judgment, and defensibility.
       </li>
     </ul>
-  </section>
-  
-  <section>
-    <h2>TL/DR </h2>
-      <div class="card">
-       <p style="color:var(--muted); margin-top:12px">
-        I remain actively interested in AML and fraud investigation roles.
-  As financial crime systems evolve toward AI, especially across crypto and
-  digital assets, I am intentionally developing skills and tools that align
-  with where the field is headed while staying grounded in investigative practice.
-</p>
   </div>
 </section>
 
-<section class="reveal" style="animation-delay:.35s">
+<section>
+  <h2>Why This Matters</h2>
+  <div class="card">
+    <p class="key-line">
+     Financial crime systems fail when criminals outpace investigations.
+    </p>
+
+    <p style="color:var(--muted); margin-top:12px">
+      As financial crime evolves toward AI — particularly across crypto and digital assets —
+      I remain deeply interested in AML and fraud investigation roles while intentionally
+      developing the skills and tools needed for where the industry is headed.
+      My goal is to stay grounded in investigative practice while helping shape
+      systems investigators can trust. I’m not leaving investigations behind. 
+      I’m building toward what they’re becoming.
+    </p>
+  </div>
+</section>
+
+<section>
   <h2>What I Work On</h2>
   <div class="card">
     <div class="skills-row">
@@ -297,10 +273,6 @@ footer{
       <div class="skill-pill">📋 OFAC / Sanctions</div>
     </div>
   </div>
-
-  <div class="back-link-wrap">
-    <a href="index.html" class="back-link">← Back to home</a>
-  </div>
 </section>
 
 <footer>
@@ -312,21 +284,10 @@ footer{
 
 <script>
 document.getElementById("y").textContent = new Date().getFullYear();
-
-const backLink = document.querySelector('.back-link');
-const observer = new IntersectionObserver(
-  ([entry]) => {
-    if (entry.isIntersecting) {
-      backLink.classList.add('visible');
-      observer.disconnect();
-    }
-  },
-  { threshold: 0.4 }
-);
-observer.observe(backLink);
 </script>
 </body>
 </html>
+
 
 
 
