@@ -268,7 +268,6 @@
       100%{box-shadow:0 0 6px rgba(34,197,94,.5)}
     }
 
-    /* 🔹 NEW: Slow pulse for In Progress */
     .status.in-progress{color:var(--yellow)}
     .status.in-progress::before{
       background:var(--yellow);
@@ -300,6 +299,22 @@
       display:flex;
       justify-content:space-between;
       flex-wrap:wrap;
+    }
+
+    /* 🔹 Added: About Me CTA glow */
+    .about-link{
+      font-size:1.05rem;
+      text-shadow:0 0 6px var(--blue-glow);
+    }
+
+    .about-link:hover{
+      text-shadow:0 0 10px var(--blue-glow);
+    }
+
+    .about-icon{
+      font-size:1.25rem;
+      margin-right:6px;
+      text-shadow:0 0 8px var(--blue-glow);
     }
   </style>
 </head>
@@ -404,12 +419,11 @@
 </section>
 
 <div class="cert-links">
-  <a href="about.html">
-    <span class="material-icons" aria-hidden="true">account_circle</span>
-    Continue to About Me
+  <a href="about.html" class="about-link">
+    <span class="about-icon">🙋‍♀️</span> Continue to About Me
   </a>
 </div>
-  
+
 <footer>
   <div>© <span id="y"></span> Kim Anderson</div>
   <div>Built with GitHub Pages</div>
@@ -423,6 +437,7 @@
 
 </body>
 </html>
+
 
 
 
