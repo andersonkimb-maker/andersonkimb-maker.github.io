@@ -65,11 +65,27 @@ nav{
 nav a{
   font-size:13px;
   color:var(--muted);
+  position:relative;
   padding-bottom:4px;
 }
 
 nav a:hover{color:var(--ink)}
 
+/* Visual */
+.about-visual{
+  margin:56px auto 64px;
+  text-align:center;
+}
+
+.about-visual img{
+  width:100%;
+  max-width:760px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  box-shadow:0 18px 42px rgba(0,0,0,.35);
+}
+
+/* Sections */
 section{margin-top:64px}
 
 h2{
@@ -84,6 +100,7 @@ h2{
   padding:26px;
 }
 
+/* Emphasis */
 .key-line{
   margin:16px 0 18px;
   padding-left:14px;
@@ -92,7 +109,7 @@ h2{
   color:#e5e7eb;
 }
 
-/* CERTIFICATIONS — OPTION 1 (Credential List) */
+/* CERTIFICATIONS — Credential List */
 .cert-list{
   list-style:none;
   padding:0;
@@ -104,7 +121,6 @@ h2{
 
 .cert-item{
   display:flex;
-  align-items:flex-start;
   gap:10px;
   font-size:14px;
   color:var(--muted);
@@ -121,10 +137,6 @@ h2{
   color:var(--yellow);
 }
 
-.cert-item span{
-  line-height:1.4;
-}
-
 /* Bottom links */
 .cert-links{
   margin-top:56px;
@@ -139,7 +151,7 @@ h2{
 .cert-links a:hover{color:var(--ink)}
 
 footer{
-  margin-top:64px;
+  margin-top:72px;
   border-top:1px solid var(--border);
   padding-top:24px;
   font-size:13px;
@@ -166,11 +178,26 @@ footer{
   </nav>
 </header>
 
+<section class="about-visual">
+  <img src="Website%20Photo%202.png" alt="Investigator-first AI for financial crime">
+</section>
+
 <section>
   <div class="card">
     <h2>About Me</h2>
-    <p style="color:var(--muted)">
-      Senior investigator focused on AML, fraud, and investigator-first AI tools.
+
+    <p style="color:var(--muted); margin-top:18px">
+      I joined PwC in 2019 as an analyst, bringing more than 14 years of prior experience
+      across insurance, healthcare, online education, client management, and large national banks.
+    </p>
+
+    <p class="key-line">
+      That background shaped how I think about systems — not in theory, but in practice.
+    </p>
+
+    <p style="color:var(--muted); margin-top:12px">
+      Before working directly in financial crime, my work focused on cross-functional delivery,
+      operational readiness, and regulatory support.
     </p>
   </div>
 </section>
@@ -179,22 +206,22 @@ footer{
   <h2>Certifications</h2>
 
   <ul class="cert-list">
-    <li class="cert-item in-progress"><span>Certified Cryptocurrency Auditor — Blockchain Council</span></li>
-    <li class="cert-item in-progress"><span>SQL — Coursera</span></li>
-    <li class="cert-item in-progress"><span>Foundational Digital Assets Program — Chainalysis</span></li>
+    <li class="cert-item in-progress">Certified Cryptocurrency Auditor — Blockchain Council</li>
+    <li class="cert-item in-progress">SQL — Coursera</li>
+    <li class="cert-item in-progress">Foundational Digital Assets Program — Chainalysis</li>
 
-    <li class="cert-item completed"><span>Exercising Leadership: Foundational Principles — edX (2023)</span></li>
-    <li class="cert-item completed"><span>Executive Presence Certificate — Canvas Credentials (2023)</span></li>
-    <li class="cert-item completed"><span>Lean Six Sigma Yellow Belt — USF (2023)</span></li>
-    <li class="cert-item completed"><span>Sustainability: Climate Impact — PwC (2023)</span></li>
-    <li class="cert-item completed"><span>Inclusive Mindset — PwC (2023)</span></li>
-    <li class="cert-item completed"><span>Inclusive & Ethical Leadership — USF (2023)</span></li>
-    <li class="cert-item completed"><span>Modern Management Tools — USF (2022)</span></li>
-    <li class="cert-item completed"><span>Cybersecurity Essentials — USF (2022)</span></li>
-    <li class="cert-item completed"><span>Business Analytics Nanodegree — Udacity (2021)</span></li>
-    <li class="cert-item completed"><span>Data Tools & Visualisation — PwC (2020)</span></li>
-    <li class="cert-item completed"><span>Digital Acumen Badge — PwC Acceleration Centers</span></li>
-    <li class="cert-item completed"><span>Human Centered Design Badge — PwC Acceleration Centers</span></li>
+    <li class="cert-item completed">Exercising Leadership: Foundational Principles — edX (2023)</li>
+    <li class="cert-item completed">Executive Presence Certificate — Canvas Credentials (2023)</li>
+    <li class="cert-item completed">Lean Six Sigma Yellow Belt — USF (2023)</li>
+    <li class="cert-item completed">Sustainability: Climate Impact — PwC (2023)</li>
+    <li class="cert-item completed">Inclusive Mindset — PwC (2023)</li>
+    <li class="cert-item completed">Inclusive and Ethical Leadership — USF (2023)</li>
+    <li class="cert-item completed">Modern Management Tools — USF (2022)</li>
+    <li class="cert-item completed">Cybersecurity Essentials — USF (2022)</li>
+    <li class="cert-item completed">Business Analytics Nanodegree — Udacity (2021)</li>
+    <li class="cert-item completed">Data Tools and Visualisation — PwC (2020)</li>
+    <li class="cert-item completed">Digital Acumen Badge — PwC Acceleration Centers</li>
+    <li class="cert-item completed">Human Centered Design Badge — PwC Acceleration Centers</li>
   </ul>
 </section>
 
@@ -205,7 +232,7 @@ footer{
 
 <footer>
   <div>© <span id="y"></span> Kim Anderson</div>
-  <div>Built with GitHub Pages and Curiosity</div>
+  <div>Built with GitHub Pages and curiosity</div>
 </footer>
 
 </div>
@@ -216,6 +243,7 @@ document.getElementById("y").textContent = new Date().getFullYear();
 
 </body>
 </html>
+
 
 
 
