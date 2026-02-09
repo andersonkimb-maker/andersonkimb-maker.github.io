@@ -83,22 +83,20 @@
     nav a:hover{color:var(--ink)}
     nav a:hover::after{transform:scaleX(1)}
 
-    /* FOOTER FIX */
+    /* FOOTER — HARD FIX */
     footer{
       display:flex;
+      flex-wrap:nowrap;
       justify-content:space-between;
       align-items:center;
-      gap:12px;
+      gap:16px;
       margin-top:48px;
       font-size:13px;
       color:var(--muted);
     }
 
-    @media (max-width:600px){
-      footer{
-        flex-direction:column;
-        text-align:center;
-      }
+    footer div{
+      white-space:nowrap;
     }
 
     .banner{
@@ -352,7 +350,6 @@
 <section id="projects">
   <h3>Projects</h3>
   <div class="grid">
-
     <div class="card">
       <div class="inner">
         <div class="front">
@@ -389,7 +386,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
