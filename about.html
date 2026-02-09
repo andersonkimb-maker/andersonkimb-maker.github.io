@@ -18,6 +18,8 @@
   --bg:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
   --glow-blue:rgba(56,189,248,.45);
   --yellow:#eab308;
+  --green:#22c55e;
+  --green-bg:rgba(34,197,94,.12);
 }
 
 *{box-sizing:border-box}
@@ -69,39 +71,7 @@ nav a{
   padding-bottom:4px;
 }
 
-nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-4px;
-  width:100%;
-  height:2px;
-  background:rgba(255,255,255,.6);
-  transform:scaleX(0);
-  transition:.2s ease;
-}
-
-nav a:hover{
-  color:var(--ink);
-}
-
-nav a:hover::after{
-  transform:scaleX(1);
-}
-
-/* Visual */
-.about-visual{
-  margin:56px auto 64px;
-  text-align:center;
-}
-
-.about-visual img{
-  width:100%;
-  max-width:760px;
-  border-radius:18px;
-  border:1px solid var(--border);
-  box-shadow:0 18px 42px rgba(0,0,0,.35);
-}
+nav a:hover{color:var(--ink)}
 
 /* Sections */
 section{margin-top:64px}
@@ -127,48 +97,66 @@ h2{
   color:#e5e7eb;
 }
 
-/* Certifications */
+/* CERTIFICATIONS */
 .cert-card{
-  background:rgba(255,255,255,.07);
+  background:rgba(255,255,255,.06);
   border:1px solid var(--border);
-  border-radius:14px;
-  padding:18px;
-  margin-bottom:14px;
+  border-radius:12px;
+  padding:12px 16px;          /* smaller */
+  margin-bottom:10px;
+  font-size:14px;
   color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
+/* completed */
+.cert-card.completed{
+  background:var(--green-bg);
+  border-left:4px solid var(--green);
+  color:#d1fae5;
+}
+
+.cert-card.completed::before{
+  content:"✓";
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:var(--green);
+  color:#052e16;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:800;
+}
+
+/* in progress */
 .cert-card.in-progress{
   border-left:4px solid var(--yellow);
   background:rgba(234,179,8,.08);
   color:#fde68a;
 }
 
-/* Floating nav */
-.bottom-nav{
-  position:fixed;
-  right:20px;
-  bottom:20px;
+/* Bottom links */
+.cert-links{
+  margin-top:56px;
+  padding-top:24px;
+  border-top:1px solid var(--border);
   display:flex;
-  flex-direction:column;
-  gap:12px;
-  z-index:999;
+  justify-content:space-between;
+  font-size:14px;
+  color:var(--muted);
 }
 
-.bottom-nav a{
-  width:44px;
-  height:44px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  background:rgba(255,255,255,.12);
-  border:1px solid var(--border);
-  font-size:18px;
-  backdrop-filter:blur(6px);
+.cert-links a:hover{
+  color:var(--ink);
 }
 
+/* Footer */
 footer{
-  margin-top:72px;
+  margin-top:64px;
   border-top:1px solid var(--border);
   padding-top:24px;
   font-size:13px;
@@ -195,129 +183,36 @@ footer{
   </nav>
 </header>
 
-<section class="about-visual">
-  <img src="Website%20Photo%202.png" alt="Investigator-first AI for financial crime">
-</section>
-
-<!-- RESTORED SECTIONS -->
-
 <section>
   <div class="card">
     <h2>About Me</h2>
-
-    <p style="color:var(--muted); margin-top:18px">
-      I joined PwC in 2019 as an analyst, bringing more than 14 years of prior experience
-      across insurance, healthcare, online education, client management, and large national banks.
-    </p>
-
-    <p class="key-line">
-      That background shaped how I think about systems — not in theory, but in practice.
-    </p>
-
-    <p style="color:var(--muted); margin-top:12px">
-      Before working directly in financial crime, my work focused on cross-functional delivery,
-      operational readiness, and regulatory support. I saw firsthand how policies translate
-      into execution, and where systems either support people or create friction.
-    </p>
-
-    <p style="color:var(--muted); margin-top:12px">
-      At PwC, I contributed to data investigations, remediation efforts, and compliance projects
-      involving PII breaches, consent orders, and organizational restructuring. My work included
-      process mapping, AML investigations, transaction monitoring (BAU and lookback), and fraud investigations,
-      with experience both above and below the line testing.
-    </p>
+    <p style="color:var(--muted)">Senior investigator focused on AML, fraud, and investigator-first AI tools.</p>
   </div>
 </section>
 
-<section>
-  <div class="card">
-    <h2>How My Experience Shaped My Direction</h2>
+<section id="certifications">
+  <h2>Certifications</h2>
 
-    <p class="key-line">
-      I design for the moment when an investigator has to stand behind a decision.
-    </p>
+  <div class="cert-card in-progress">In Progress: Certified Cryptocurrency Auditor – Blockchain Council</div>
+  <div class="cert-card in-progress">In Progress: SQL – Coursera</div>
+  <div class="cert-card in-progress">In Progress: Foundational Digital Assets Program – Chainalysis</div>
 
-    <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
-      <li style="margin-bottom:16px;">
-        <strong>Then.</strong><br>
-        Hands-on investigative and compliance work in high-pressure, high-ambiguity environments.
-      </li>
-
-      <li style="margin-bottom:16px;">
-        <strong>Now.</strong><br>
-        Building investigator-first tools and frameworks that reduce cognitive load
-        and surface meaningful risk.
-      </li>
-
-      <li>
-        <strong>Next.</strong><br>
-        Applying AI thoughtfully in financial crime systems while preserving explainability,
-        judgment, and defensibility.
-      </li>
-    </ul>
-  </div>
+  <div class="cert-card completed">Exercising Leadership – edX (2023)</div>
+  <div class="cert-card completed">Executive Presence – Canvas Credentials (2023)</div>
+  <div class="cert-card completed">Lean Six Sigma Yellow Belt – USF (2023)</div>
+  <div class="cert-card completed">Sustainability: Climate Impact – PwC (2023)</div>
+  <div class="cert-card completed">Inclusive Mindset – PwC (2023)</div>
+  <div class="cert-card completed">Inclusive & Ethical Leadership – USF (2023)</div>
+  <div class="cert-card completed">Modern Management Tools – USF (2022)</div>
+  <div class="cert-card completed">Cybersecurity Essentials – USF (2022)</div>
+  <div class="cert-card completed">Business Analytics Nanodegree – Udacity (2021)</div>
 </section>
 
-<section>
-  <h2>Why This Matters</h2>
-  <div class="card">
-    <p class="key-line">
-      Financial crime systems fail when criminals outpace Financial Crime Teams.
-    </p>
+<div class="cert-links">
+  <a href="#top">⬆ Back to top</a>
+  <a href="index.html">🏠 Home</a>
+</div>
 
-    <p style="color:var(--muted); margin-top:12px">
-      As financial crime evolves toward AI — particularly across crypto and digital assets —
-      I remain deeply interested in AML and fraud investigation roles while intentionally
-      developing the skills and tools needed for where the industry is headed. 
-
-    </p>
-  </div>
-</section>
-  
-<section>
-  <h2>What I Work On</h2>
-  <div class="card">
-    <div class="skills-row">
-      <div class="skill-pill">🔍 AML Investigations</div>
-      <div class="skill-pill">📑 SAR Decisioning</div>
-      <div class="skill-pill">🧠 Explainable AI</div>
-      <div class="skill-pill">📊 Risk Scoring</div>
-      <div class="skill-pill">🪙 Crypto Risk</div>
-      <div class="skill-pill">🕸️ Entity Analysis</div>
-      <div class="skill-pill">⚙️ Process Automation</div>
-      <div class="skill-pill">📋 OFAC / Sanctions</div>
-    </div>
-  </div>
-</section>
-  
-<section>
-  <h2 id="certifications">Certifications</h2>
-
-  <div class="cert-card in-progress">📘 In Progress: Certified Cryptocurrency Auditor – Blockchain Council</div>
-  <div class="cert-card in-progress">📘 In Progress: SQL – Coursera</div>
-  <div class="cert-card in-progress">📘 In Progress: Foundational Digital Assets Program – Chainalysis</div>
-
-  <div class="cert-card">Exercising Leadership: Foundational Principles – edX (2023)</div>
-  <div class="cert-card">Executive Presence Certificate – Canvas Credentials (2023)</div>
-  <div class="cert-card">Lean Six Sigma Yellow Belt – USF (2023)</div>
-  <div class="cert-card">Sustainability: Climate Impact – PwC (2023)</div>
-  <div class="cert-card">Inclusive Mindset – PwC (2023)</div>
-  <div class="cert-card">Inclusive and Ethical Leadership – USF (2023)</div>
-  <div class="cert-card">Modern Management Tools – USF (2022)</div>
-  <div class="cert-card">Cybersecurity Essentials – USF (2022)</div>
-  <div class="cert-card">Diversity, Equity and Inclusion in the Workplace – USF (2022)</div>
-  <div class="cert-card">Business Analytics Nanodegree – Udacity (2021)</div>
-  <div class="cert-card">Data Tools and Visualisation – PwC (2020)</div>
-  <div class="cert-card">Digital Acumen Badge – PwC Acceleration Centers</div>
-  <div class="cert-card">Human Centered Design Badge – PwC Acceleration Centers</div>
-</section>
-
-  <div class="cert-links">
-      <a href="#top">⬆ Back to top</a>
-      <a href="index.html">🏠 Home</a>
-    </div>
-
-  
 <footer>
   <div>© <span id="y"></span> Kim Anderson</div>
   <div>Built with GitHub Pages and curiosity</div>
