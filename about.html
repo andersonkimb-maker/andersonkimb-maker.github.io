@@ -16,10 +16,8 @@
   --muted:#a8b2b8;
   --border:rgba(255,255,255,.14);
   --bg:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
-  --glow-blue:rgba(56,189,248,.45);
   --yellow:#eab308;
   --green:#22c55e;
-  --green-bg:rgba(34,197,94,.12);
 }
 
 *{box-sizing:border-box}
@@ -67,13 +65,11 @@ nav{
 nav a{
   font-size:13px;
   color:var(--muted);
-  position:relative;
   padding-bottom:4px;
 }
 
 nav a:hover{color:var(--ink)}
 
-/* Sections */
 section{margin-top:64px}
 
 h2{
@@ -88,7 +84,6 @@ h2{
   padding:26px;
 }
 
-/* Emphasis */
 .key-line{
   margin:16px 0 18px;
   padding-left:14px;
@@ -97,46 +92,37 @@ h2{
   color:#e5e7eb;
 }
 
-/* CERTIFICATIONS */
-.cert-card{
-  background:rgba(255,255,255,.06);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:12px 16px;          /* smaller */
-  margin-bottom:10px;
-  font-size:14px;
-  color:var(--muted);
+/* CERTIFICATIONS — OPTION 1 (Credential List) */
+.cert-list{
+  list-style:none;
+  padding:0;
+  margin:0;
   display:flex;
-  align-items:center;
+  flex-direction:column;
   gap:10px;
 }
 
-/* completed */
-.cert-card.completed{
-  background:var(--green-bg);
-  border-left:4px solid var(--green);
-  color:#d1fae5;
-}
-
-.cert-card.completed::before{
-  content:"✓";
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  background:var(--green);
-  color:#052e16;
+.cert-item{
   display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:12px;
-  font-weight:800;
+  align-items:flex-start;
+  gap:10px;
+  font-size:14px;
+  color:var(--muted);
 }
 
-/* in progress */
-.cert-card.in-progress{
-  border-left:4px solid var(--yellow);
-  background:rgba(234,179,8,.08);
-  color:#fde68a;
+.cert-item.completed::before{
+  content:"✓";
+  color:var(--green);
+  font-weight:700;
+}
+
+.cert-item.in-progress::before{
+  content:"⏳";
+  color:var(--yellow);
+}
+
+.cert-item span{
+  line-height:1.4;
 }
 
 /* Bottom links */
@@ -150,11 +136,8 @@ h2{
   color:var(--muted);
 }
 
-.cert-links a:hover{
-  color:var(--ink);
-}
+.cert-links a:hover{color:var(--ink)}
 
-/* Footer */
 footer{
   margin-top:64px;
   border-top:1px solid var(--border);
@@ -186,26 +169,33 @@ footer{
 <section>
   <div class="card">
     <h2>About Me</h2>
-    <p style="color:var(--muted)">Senior investigator focused on AML, fraud, and investigator-first AI tools.</p>
+    <p style="color:var(--muted)">
+      Senior investigator focused on AML, fraud, and investigator-first AI tools.
+    </p>
   </div>
 </section>
 
 <section id="certifications">
   <h2>Certifications</h2>
 
-  <div class="cert-card in-progress">In Progress: Certified Cryptocurrency Auditor – Blockchain Council</div>
-  <div class="cert-card in-progress">In Progress: SQL – Coursera</div>
-  <div class="cert-card in-progress">In Progress: Foundational Digital Assets Program – Chainalysis</div>
+  <ul class="cert-list">
+    <li class="cert-item in-progress"><span>Certified Cryptocurrency Auditor — Blockchain Council</span></li>
+    <li class="cert-item in-progress"><span>SQL — Coursera</span></li>
+    <li class="cert-item in-progress"><span>Foundational Digital Assets Program — Chainalysis</span></li>
 
-  <div class="cert-card completed">Exercising Leadership – edX (2023)</div>
-  <div class="cert-card completed">Executive Presence – Canvas Credentials (2023)</div>
-  <div class="cert-card completed">Lean Six Sigma Yellow Belt – USF (2023)</div>
-  <div class="cert-card completed">Sustainability: Climate Impact – PwC (2023)</div>
-  <div class="cert-card completed">Inclusive Mindset – PwC (2023)</div>
-  <div class="cert-card completed">Inclusive & Ethical Leadership – USF (2023)</div>
-  <div class="cert-card completed">Modern Management Tools – USF (2022)</div>
-  <div class="cert-card completed">Cybersecurity Essentials – USF (2022)</div>
-  <div class="cert-card completed">Business Analytics Nanodegree – Udacity (2021)</div>
+    <li class="cert-item completed"><span>Exercising Leadership: Foundational Principles — edX (2023)</span></li>
+    <li class="cert-item completed"><span>Executive Presence Certificate — Canvas Credentials (2023)</span></li>
+    <li class="cert-item completed"><span>Lean Six Sigma Yellow Belt — USF (2023)</span></li>
+    <li class="cert-item completed"><span>Sustainability: Climate Impact — PwC (2023)</span></li>
+    <li class="cert-item completed"><span>Inclusive Mindset — PwC (2023)</span></li>
+    <li class="cert-item completed"><span>Inclusive & Ethical Leadership — USF (2023)</span></li>
+    <li class="cert-item completed"><span>Modern Management Tools — USF (2022)</span></li>
+    <li class="cert-item completed"><span>Cybersecurity Essentials — USF (2022)</span></li>
+    <li class="cert-item completed"><span>Business Analytics Nanodegree — Udacity (2021)</span></li>
+    <li class="cert-item completed"><span>Data Tools & Visualisation — PwC (2020)</span></li>
+    <li class="cert-item completed"><span>Digital Acumen Badge — PwC Acceleration Centers</span></li>
+    <li class="cert-item completed"><span>Human Centered Design Badge — PwC Acceleration Centers</span></li>
+  </ul>
 </section>
 
 <div class="cert-links">
@@ -215,7 +205,7 @@ footer{
 
 <footer>
   <div>© <span id="y"></span> Kim Anderson</div>
-  <div>Built with GitHub Pages and curiosity</div>
+  <div>Built with GitHub Pages and Curiosity</div>
 </footer>
 
 </div>
@@ -226,6 +216,7 @@ document.getElementById("y").textContent = new Date().getFullYear();
 
 </body>
 </html>
+
 
 
 
