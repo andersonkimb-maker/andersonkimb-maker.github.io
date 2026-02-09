@@ -1,401 +1,336 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kim Anderson | Senior Investigator + AI for Financial Crime</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Me | Kim Anderson</title>
 
-  <meta name="description" content="AI tools for financial crime" />
+<meta property="og:title" content="About Me | Kim Anderson">
+<meta property="og:description" content="Senior investigator with a focus on AML, fraud, and investigator-first AI tools.">
+<meta property="og:image" content="Website%20Photo%202.png">
+<meta property="og:type" content="website">
 
-  <style>
-    :root {
-      --ink:#f5f7fa;
-      --muted:#a8b2b8;
-      --border:rgba(255,255,255,.15);
-      --green:#22c55e;
-      --radius:18px;
-      --bg:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
-      --overlay:linear-gradient(to bottom,rgba(14,36,49,.6),rgba(14,36,49,.2));
-      --yellow:#eab308;
-    }
+<style>
+:root{
+  --ink:#f5f7fa;
+  --muted:#a8b2b8;
+  --border:rgba(255,255,255,.14);
+  --bg:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
+  --glow-blue:rgba(56,189,248,.45);
+  --yellow:#eab308;
+}
 
-    *{box-sizing:border-box}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--ink);
-      line-height:1.6;
-    }
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.65;
+}
 
-    a{color:inherit;text-decoration:none}
+a{color:inherit;text-decoration:none}
 
-    .wrap{
-      max-width:980px;
-      margin:0 auto;
-      padding:24px 20px 96px;
-    }
+.wrap{
+  max-width:980px;
+  margin:0 auto;
+  padding:28px 20px 96px;
+}
 
-    header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      border-bottom:1px solid var(--border);
-      padding-bottom:16px;
-    }
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+  padding-bottom:16px;
+}
 
-    .construction{
-      background:rgba(234,179,8,.25);
-      border:1px solid rgba(234,179,8,.5);
-      color:#fde68a;
-      padding:8px 14px;
-      border-radius:999px;
-      font-size:14px;
-      font-weight:600;
-    }
+.construction{
+  background:rgba(234,179,8,.22);
+  border:1px solid rgba(234,179,8,.55);
+  color:#fde68a;
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:600;
+}
 
-    nav{
-      display:flex;
-      gap:18px;
-    }
+nav{
+  display:flex;
+  gap:20px;
+}
 
-    nav a{
-      font-size:13px;
-      color:var(--muted);
-      position:relative;
-      padding-bottom:4px;
-    }
+nav a{
+  font-size:13px;
+  color:var(--muted);
+  position:relative;
+  padding-bottom:4px;
+}
 
-    nav a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-4px;
-      width:100%;
-      height:2px;
-      background:rgba(255,255,255,.6);
-      transform:scaleX(0);
-      transform-origin:left;
-      transition:.2s ease;
-    }
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:100%;
+  height:2px;
+  background:rgba(255,255,255,.6);
+  transform:scaleX(0);
+  transition:.2s ease;
+}
 
-    nav a:hover{color:var(--ink)}
-    nav a:hover::after{transform:scaleX(1)}
+nav a:hover{
+  color:var(--ink);
+}
 
-    .banner{
-      margin-top:28px;
-      position:relative;
-      border-radius:14px;
-      overflow:hidden;
-    }
+nav a:hover::after{
+  transform:scaleX(1);
+}
 
-    .banner img{
-      width:100%;
-      height:260px;
-      object-fit:cover;
-    }
+/* Visual */
+.about-visual{
+  margin:56px auto 64px;
+  text-align:center;
+}
 
-    .banner::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:var(--overlay);
-    }
+.about-visual img{
+  width:100%;
+  max-width:760px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  box-shadow:0 18px 42px rgba(0,0,0,.35);
+}
 
-    .bannerText{
-      position:absolute;
-      inset:0;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      z-index:2;
-      text-align:center;
-    }
+/* Sections */
+section{margin-top:64px}
 
-    .bannerText h1{
-      font-size:56px;
-      margin:0;
-      text-shadow:0 4px 18px rgba(0,0,0,.35);
-    }
+h2{
+  font-size:24px;
+  margin-bottom:16px;
+}
 
-    .bannerText p{
-      margin-top:1px;
-      font-size:24px;
-      opacity:.9;
-    }
+.card{
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:26px;
+}
 
-    .profile{
-      width:150px;
-      height:150px;
-      margin:-70px auto 0;
-      position:relative;
-      z-index:3;
-      perspective:1000px;
-    }
+/* Emphasis */
+.key-line{
+  margin:16px 0 18px;
+  padding-left:14px;
+  border-left:2px solid rgba(255,255,255,.35);
+  font-style:italic;
+  color:#e5e7eb;
+}
 
-    .profile-inner{
-      width:100%;
-      height:100%;
-      border-radius:50%;
-      position:relative;
-      transform-style:preserve-3d;
-      transition:transform .7s ease, box-shadow .35s ease;
-      box-shadow:0 10px 30px rgba(0,0,0,.4);
-      border:3px solid #fff;
-    }
+/* Certifications */
+.cert-card{
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+  margin-bottom:14px;
+  color:var(--muted);
+}
 
-    .profile:hover .profile-inner{
-      transform:rotateY(180deg) translateY(-2px);
-      box-shadow:
-        0 0 0 6px rgba(255,255,255,.06),
-        0 0 28px rgba(255,255,255,.25);
-    }
+.cert-card.in-progress{
+  border-left:4px solid var(--yellow);
+  background:rgba(234,179,8,.08);
+  color:#fde68a;
+}
 
-    .profile-face{
-      position:absolute;
-      inset:0;
-      backface-visibility:hidden;
-    }
+/* Floating nav */
+.bottom-nav{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:999;
+}
 
-    .profile-face img{
-      width:100%;
-      height:100%;
-      border-radius:50%;
-      object-fit:cover;
-    }
+.bottom-nav a{
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:rgba(255,255,255,.12);
+  border:1px solid var(--border);
+  font-size:18px;
+  backdrop-filter:blur(6px);
+}
 
-    .profile-back{
-      transform:rotateY(180deg);
-    }
-
-    .hero{
-      text-align:center;
-      padding-top:36px;
-      margin-bottom:40px;
-    }
-
-    .hero h2{
-      font-size:40px;
-      margin-bottom:14px;
-    }
-
-    .hero p{
-      max-width:680px;
-      margin:0 auto;
-      font-size:18px;
-      color:var(--muted);
-    }
-
-    section{margin-top:56px}
-    h3{font-size:20px;margin-bottom:14px}
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:18px;
-    }
-
-    .card{
-      grid-column:span 6;
-      perspective:1200px;
-      cursor:pointer;
-    }
-
-    .inner{
-      position:relative;
-      min-height:260px;
-      transform-style:preserve-3d;
-      transition:transform .6s ease;
-    }
-
-    .card:hover .inner{
-      transform:rotateY(180deg);
-    }
-
-    .front,.back{
-      position:absolute;
-      inset:0;
-      padding:18px;
-      border-radius:var(--radius);
-      background:rgba(255,255,255,.08);
-      border:1px solid var(--border);
-      backface-visibility:hidden;
-    }
-
-    .back{
-      transform:rotateY(180deg);
-      color:var(--muted);
-    }
-
-    .status{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      font-size:12px;
-      font-weight:600;
-      margin-bottom:12px;
-    }
-
-    .status::before{
-      content:"";
-      width:8px;
-      height:8px;
-      border-radius:50%;
-    }
-
-    .status.complete{color:var(--green)}
-    .status.complete::before{
-      background:var(--green);
-      box-shadow:0 0 8px rgba(34,197,94,.6);
-      animation:pulse 2.8s ease-in-out infinite;
-    }
-
-    @keyframes pulse{
-      0%{box-shadow:0 0 6px rgba(34,197,94,.5)}
-      50%{box-shadow:0 0 16px rgba(34,197,94,.9)}
-      100%{box-shadow:0 0 6px rgba(34,197,94,.5)}
-    }
-
-    .status.in-progress{color:var(--yellow)}
-    .status.in-progress::before{
-      background:var(--yellow);
-      animation:slowPulse 4.5s ease-in-out infinite;
-    }
-
-    @keyframes slowPulse{
-      0%{box-shadow:0 0 4px rgba(234,179,8,.45)}
-      50%{box-shadow:0 0 14px rgba(234,179,8,.85)}
-      100%{box-shadow:0 0 6px rgba(234,179,8,.55)}
-    }
-
-    /* Bottom continuation link (intentionally small) */
-    .cert-links{
-      display:flex;
-      justify-content:center;
-      margin-top:40px;
-    }
-
-    .about-link{
-      font-size:0.95rem;
-      color:var(--muted);
-      font-weight:500;
-      transition:color .2s ease, transform .2s ease;
-    }
-
-    .about-link:hover{
-      color:var(--ink);
-      transform:translateX(2px);
-    }
-  </style>
+footer{
+  margin-top:72px;
+  border-top:1px solid var(--border);
+  padding-top:24px;
+  font-size:13px;
+  color:var(--muted);
+  display:flex;
+  justify-content:space-between;
+}
+</style>
 </head>
 
 <body>
+<a id="top"></a>
+
 <div class="wrap">
 
 <header>
   <div class="construction">🚧 Currently under construction</div>
   <nav>
-    <a href="#projects">View Projects</a>
-    <a href="/about.html">About Me</a>
+    <a href="index.html">Home</a>
+    <a href="#certifications">Certifications</a>
+    <a href="about.html" style="color:#fff;">About Me</a>
     <a href="Kim%20Anderson%20Resume%202025.pdf" target="_blank">Resume</a>
-    <a href="#contact">Contact</a>
+    <a href="index.html#contact">Contact</a>
   </nav>
 </header>
 
-<div class="banner">
-  <img src="Banner.png" alt="Banner">
-  <div class="bannerText">
-    <h1>Kim Anderson</h1>
-    <p>Senior Investigator + AI for Financial Crime</p>
-  </div>
-</div>
+<section class="about-visual">
+  <img src="Website%20Photo%202.png" alt="Investigator-first AI for financial crime">
+</section>
 
-<div class="profile">
-  <div class="profile-inner">
-    <div class="profile-face">
-      <img src="Profile%20Picture.png" alt="Profile">
-    </div>
-    <div class="profile-face profile-back">
-      <img src="Character.png" alt="Character">
-    </div>
-  </div>
-</div>
+<!-- RESTORED SECTIONS -->
 
-<div class="hero">
-  <h2>Designing AI for the next era of financial crimes.</h2>
-  <p>
-    As financial crime grows more complex, especially with crypto and digital assets,
-    I’m building tools that help investigators cut through complexity while continuing
-    to pursue AML and fraud investigation roles.
-  </p>
-</div>
+<section>
+  <div class="card">
+    <h2>About Me</h2>
 
-<section id="projects">
-  <h3>Projects</h3>
-  <div class="grid">
+    <p style="color:var(--muted); margin-top:18px">
+      I joined PwC in 2019 as an analyst, bringing more than 14 years of prior experience
+      across insurance, healthcare, online education, client management, and large national banks.
+    </p>
 
-    <div class="card">
-      <div class="inner">
-        <div class="front">
-          <h4>SAR Assist <span style="font-size:12px;font-weight:500;color:var(--muted)">(Prototype)</span></h4>
-          <span class="status complete">Complete</span>
-          <ul>
-            <li>Excel + VBA investigator workflow tool</li>
-            <li>Centralized investigative inputs</li>
-            <li>Automated SAR decisioning and drafting</li>
-          </ul>
-        </div>
-        <div class="back">
-          <p>
-            Built in Excel and VBA so teams can implement quickly without formal IT lift,
-            while supporting work across fragmented systems.
-          </p>
-          <p><i>This prototype is owned by my previous employer.</i></p>
-        </div>
-      </div>
-    </div>
+    <p class="key-line">
+      That background shaped how I think about systems — not in theory, but in practice.
+    </p>
 
-    <div class="card">
-      <div class="inner">
-        <div class="front">
-          <h4>Investigator Decision Support Framework</h4>
-          <span class="status in-progress">In Progress</span>
-          <p>
-            A decision-stage framework that models how investigators interpret signals,
-            weigh alternatives, and reach defensible conclusions.
-          </p>
-        </div>
-        <div class="back">
-          <p>Details will be added once development is complete.</p>
-        </div>
-      </div>
-    </div>
+    <p style="color:var(--muted); margin-top:12px">
+      Before working directly in financial crime, my work focused on cross-functional delivery,
+      operational readiness, and regulatory support. I saw firsthand how policies translate
+      into execution, and where systems either support people or create friction.
+    </p>
 
+    <p style="color:var(--muted); margin-top:12px">
+      At PwC, I contributed to data investigations, remediation efforts, and compliance projects
+      involving PII breaches, consent orders, and organizational restructuring. My work included
+      process mapping, AML investigations, transaction monitoring (BAU and lookback), and fraud investigations,
+      with experience both above and below the line testing.
+    </p>
   </div>
 </section>
 
-<div class="cert-links">
-  <a href="about.html" class="about-link">Continue to About Me →</a>
-</div>
+<section>
+  <div class="card">
+    <h2>How My Experience Shaped My Direction</h2>
 
+    <p class="key-line">
+      I design for the moment when an investigator has to stand behind a decision.
+    </p>
+
+    <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
+      <li style="margin-bottom:16px;">
+        <strong>Then.</strong><br>
+        Hands-on investigative and compliance work in high-pressure, high-ambiguity environments.
+      </li>
+
+      <li style="margin-bottom:16px;">
+        <strong>Now.</strong><br>
+        Building investigator-first tools and frameworks that reduce cognitive load
+        and surface meaningful risk.
+      </li>
+
+      <li>
+        <strong>Next.</strong><br>
+        Applying AI thoughtfully in financial crime systems while preserving explainability,
+        judgment, and defensibility.
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Why This Matters</h2>
+  <div class="card">
+    <p class="key-line">
+      Financial crime systems fail when criminals outpace Financial Crime Teams.
+    </p>
+
+    <p style="color:var(--muted); margin-top:12px">
+      As financial crime evolves toward AI — particularly across crypto and digital assets —
+      I remain deeply interested in AML and fraud investigation roles while intentionally
+      developing the skills and tools needed for where the industry is headed. 
+
+    </p>
+  </div>
+</section>
+  
+<section>
+  <h2>What I Work On</h2>
+  <div class="card">
+    <div class="skills-row">
+      <div class="skill-pill">🔍 AML Investigations</div>
+      <div class="skill-pill">📑 SAR Decisioning</div>
+      <div class="skill-pill">🧠 Explainable AI</div>
+      <div class="skill-pill">📊 Risk Scoring</div>
+      <div class="skill-pill">🪙 Crypto Risk</div>
+      <div class="skill-pill">🕸️ Entity Analysis</div>
+      <div class="skill-pill">⚙️ Process Automation</div>
+      <div class="skill-pill">📋 OFAC / Sanctions</div>
+    </div>
+  </div>
+</section>
+  
+<section>
+  <h2 id="certifications">Certifications</h2>
+
+  <div class="cert-card in-progress">📘 In Progress: Certified Cryptocurrency Auditor – Blockchain Council</div>
+  <div class="cert-card in-progress">📘 In Progress: SQL – Coursera</div>
+  <div class="cert-card in-progress">📘 In Progress: Foundational Digital Assets Program – Chainalysis</div>
+
+  <div class="cert-card">Exercising Leadership: Foundational Principles – edX (2023)</div>
+  <div class="cert-card">Executive Presence Certificate – Canvas Credentials (2023)</div>
+  <div class="cert-card">Lean Six Sigma Yellow Belt – USF (2023)</div>
+  <div class="cert-card">Sustainability: Climate Impact – PwC (2023)</div>
+  <div class="cert-card">Inclusive Mindset – PwC (2023)</div>
+  <div class="cert-card">Inclusive and Ethical Leadership – USF (2023)</div>
+  <div class="cert-card">Modern Management Tools – USF (2022)</div>
+  <div class="cert-card">Cybersecurity Essentials – USF (2022)</div>
+  <div class="cert-card">Diversity, Equity and Inclusion in the Workplace – USF (2022)</div>
+  <div class="cert-card">Business Analytics Nanodegree – Udacity (2021)</div>
+  <div class="cert-card">Data Tools and Visualisation – PwC (2020)</div>
+  <div class="cert-card">Digital Acumen Badge – PwC Acceleration Centers</div>
+  <div class="cert-card">Human Centered Design Badge – PwC Acceleration Centers</div>
+</section>
+
+  <div class="cert-links">
+      <a href="#top">⬆ Back to top</a>
+      <a href="index.html">🏠 Home</a>
+    </div>
+
+  
 <footer>
   <div>© <span id="y"></span> Kim Anderson</div>
-  <div>Built with GitHub Pages and Curiosity</div>
+  <div>Built with GitHub Pages and curiosity</div>
 </footer>
 
 </div>
 
 <script>
-  document.getElementById("y").textContent = new Date().getFullYear();
+document.getElementById("y").textContent = new Date().getFullYear();
 </script>
 
 </body>
 </html>
-
-
-
 
 
 
