@@ -271,7 +271,7 @@
       100%{box-shadow:0 0 6px rgba(234,179,8,.55)}
     }
 
-    /* CTA pulse */
+    /* CTA (refined) */
     .cert-links{
       display:flex;
       justify-content:center;
@@ -279,21 +279,20 @@
     }
 
     .about-link{
-      font-size:1.2rem;
-      padding:12px 22px;
+      font-size:1rem;
+      padding:9px 18px;
       border-radius:999px;
-      animation:aboutPulse 3.8s ease-in-out infinite;
+      transition:box-shadow .3s ease, transform .2s ease;
+    }
+
+    .about-link:hover{
+      box-shadow:0 0 18px rgba(56,189,248,.4);
+      transform:translateY(-1px);
     }
 
     .about-icon{
-      font-size:1.45rem;
-      margin-right:8px;
-    }
-
-    @keyframes aboutPulse{
-      0%{box-shadow:0 0 10px var(--blue-glow)}
-      50%{box-shadow:0 0 26px var(--blue-glow)}
-      100%{box-shadow:0 0 12px var(--blue-glow)}
+      font-size:1.25rem;
+      margin-right:6px;
     }
   </style>
 </head>
