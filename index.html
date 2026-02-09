@@ -16,7 +16,6 @@
       --radius:18px;
       --bg:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
       --overlay:linear-gradient(to bottom,rgba(14,36,49,.6),rgba(14,36,49,.2));
-      --blue-glow:rgba(56,189,248,.35);
       --yellow:#eab308;
     }
 
@@ -83,6 +82,22 @@
 
     nav a:hover{color:var(--ink)}
     nav a:hover::after{transform:scaleX(1)}
+
+    /* FOOTER — HARD FIX */
+    footer{
+      display:flex;
+      flex-wrap:nowrap;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-top:48px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    footer div{
+      white-space:nowrap;
+    }
 
     .banner{
       margin-top:28px;
@@ -151,7 +166,7 @@
       transform:rotateY(180deg) translateY(-2px);
       box-shadow:
         0 0 0 6px rgba(255,255,255,.06),
-        0 0 28px rgba(56,189,248,.45);
+        0 0 28px rgba(255,255,255,.25);
     }
 
     .profile-face{
@@ -271,28 +286,22 @@
       100%{box-shadow:0 0 6px rgba(234,179,8,.55)}
     }
 
-    /* CTA (refined) */
     .cert-links{
       display:flex;
       justify-content:center;
-      margin-top:56px;
+      margin-top:40px;
     }
 
     .about-link{
-      font-size:1rem;
-      padding:9px 18px;
-      border-radius:999px;
-      transition:box-shadow .3s ease, transform .2s ease;
+      font-size:0.95rem;
+      color:var(--muted);
+      font-weight:500;
+      transition:color .2s ease, transform .2s ease;
     }
 
     .about-link:hover{
-      box-shadow:0 0 18px rgba(56,189,248,.4);
-      transform:translateY(-1px);
-    }
-
-    .about-icon{
-      font-size:1.25rem;
-      margin-right:6px;
+      color:var(--ink);
+      transform:translateX(2px);
     }
   </style>
 </head>
@@ -341,7 +350,6 @@
 <section id="projects">
   <h3>Projects</h3>
   <div class="grid">
-
     <div class="card">
       <div class="inner">
         <div class="front">
@@ -378,14 +386,11 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
 <div class="cert-links">
-  <a href="about.html" class="about-link">
-    <span class="about-icon">🙋‍♀️</span> Continue to About Me
-  </a>
+  <a href="about.html" class="about-link">Continue to About Me →</a>
 </div>
 
 <footer>
@@ -401,6 +406,7 @@
 
 </body>
 </html>
+
 
 
 
