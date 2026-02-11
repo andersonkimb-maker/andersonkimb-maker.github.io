@@ -71,7 +71,6 @@ nav a{
 
 nav a:hover{color:var(--ink)}
 
-/* Visual */
 .about-visual{
   margin:56px auto 64px;
   text-align:center;
@@ -85,12 +84,16 @@ nav a:hover{color:var(--ink)}
   box-shadow:0 18px 42px rgba(0,0,0,.35);
 }
 
-/* Sections */
 section{margin-top:64px}
 
 h2{
   font-size:24px;
   margin-bottom:16px;
+}
+
+h3{
+  font-size:18px;
+  margin-bottom:12px;
 }
 
 .card{
@@ -100,7 +103,6 @@ h2{
   padding:26px;
 }
 
-/* Emphasis */
 .key-line{
   margin:16px 0 18px;
   padding-left:14px;
@@ -109,7 +111,7 @@ h2{
   color:#e5e7eb;
 }
 
-/* CERTIFICATIONS — Credential List */
+/* CERTIFICATIONS */
 .cert-list{
   list-style:none;
   padding:0;
@@ -135,6 +137,20 @@ h2{
 .cert-item.in-progress::before{
   content:"⏳";
   color:var(--yellow);
+}
+
+/* Dropdown Polish */
+details summary {
+  color: var(--muted);
+  transition: color .2s ease;
+}
+
+details summary:hover {
+  color: var(--ink);
+}
+
+details[open] summary {
+  color: var(--ink);
 }
 
 /* Bottom links */
@@ -182,7 +198,7 @@ footer{
   <img src="Website%20Photo%202.png" alt="Investigator-first AI for financial crime">
 </section>
 
-<!-- ABOUT ME -->
+  <!-- ABOUT ME -->
 <section>
   <div class="card">
     <h2>About Me</h2>
@@ -274,28 +290,59 @@ footer{
   </div>
 </section>
 
+
+
+  
 <!-- CERTIFICATIONS -->
 <section id="certifications">
   <h2>Certifications</h2>
 
+  <h3>In Progress</h3>
   <ul class="cert-list">
     <li class="cert-item in-progress">Certified Cryptocurrency Auditor — Blockchain Council</li>
     <li class="cert-item in-progress">SQL — Coursera</li>
     <li class="cert-item in-progress">Foundational Digital Assets Program — Chainalysis</li>
-
-    <li class="cert-item completed">Exercising Leadership: Foundational Principles — edX (2023)</li>
-    <li class="cert-item completed">Executive Presence Certificate — Canvas Credentials (2023)</li>
-    <li class="cert-item completed">Lean Six Sigma Yellow Belt — USF (2023)</li>
-    <li class="cert-item completed">Sustainability: Climate Impact — PwC (2023)</li>
-    <li class="cert-item completed">Inclusive Mindset — PwC (2023)</li>
-    <li class="cert-item completed">Inclusive and Ethical Leadership — USF (2023)</li>
-    <li class="cert-item completed">Modern Management Tools — USF (2022)</li>
-    <li class="cert-item completed">Cybersecurity Essentials — USF (2022)</li>
-    <li class="cert-item completed">Business Analytics Nanodegree — Udacity (2021)</li>
-    <li class="cert-item completed">Data Tools and Visualisation — PwC (2020)</li>
-    <li class="cert-item completed">Digital Acumen Badge — PwC Acceleration Centers</li>
-    <li class="cert-item completed">Human Centered Design Badge — PwC Acceleration Centers</li>
   </ul>
+
+  <h3 style="margin-top:40px;">2025</h3>
+  <ul class="cert-list">
+    <li class="cert-item completed">PwC AI Champion (2024–2025)</li>
+    <li class="cert-item completed">Microsoft Copilot for Productivity — Microsoft & LinkedIn</li>
+    <li class="cert-item completed">Career Essentials in Project Management — Microsoft & LinkedIn</li>
+    <li class="cert-item completed">Career Essentials in Business Analysis — Microsoft & LinkedIn</li>
+    <li class="cert-item completed">Build Your Generative AI Productivity Skills — Microsoft & LinkedIn</li>
+    <li class="cert-item completed">AI for Managers — Microsoft & LinkedIn</li>
+  </ul>
+
+  <h3 style="margin-top:40px;">2024</h3>
+  <ul class="cert-list">
+    <li class="cert-item completed">Human Skills in the Age of AI — Microsoft & LinkedIn</li>
+    <li class="cert-item completed">Aha! Product Management Professional Certificate</li>
+    <li class="cert-item completed">Change Management Professional Certificate — LinkedIn Learning</li>
+    <li class="cert-item completed">Microsoft Security Essentials Professional Certificate — Microsoft & LinkedIn</li>
+  </ul>
+
+  <details style="margin-top:40px;">
+    <summary style="cursor:pointer; font-weight:600;">
+      Earlier Certifications
+    </summary>
+
+    <ul class="cert-list" style="margin-top:20px;">
+      <li class="cert-item completed">Exercising Leadership: Foundational Principles — edX (2023)</li>
+      <li class="cert-item completed">Executive Presence Certificate — Canvas Credentials (2023)</li>
+      <li class="cert-item completed">Lean Six Sigma Yellow Belt — USF (2023)</li>
+      <li class="cert-item completed">Sustainability: Climate Impact — PwC (2023)</li>
+      <li class="cert-item completed">Inclusive Mindset — PwC (2023)</li>
+      <li class="cert-item completed">Inclusive and Ethical Leadership — USF (2023)</li>
+      <li class="cert-item completed">Modern Management Tools — USF (2022)</li>
+      <li class="cert-item completed">Cybersecurity Essentials — USF (2022)</li>
+      <li class="cert-item completed">Business Analytics Nanodegree — Udacity (2021)</li>
+      <li class="cert-item completed">Data Tools and Visualisation — PwC (2020)</li>
+      <li class="cert-item completed">Digital Acumen Badge — PwC Acceleration Centers</li>
+      <li class="cert-item completed">Human Centered Design Badge — PwC Acceleration Centers</li>
+    </ul>
+  </details>
+
 </section>
 
 <div class="cert-links">
@@ -316,6 +363,7 @@ document.getElementById("y").textContent = new Date().getFullYear();
 
 </body>
 </html>
+
 
 
 
