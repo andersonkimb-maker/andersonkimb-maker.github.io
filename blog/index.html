@@ -3,66 +3,100 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blog | Kim Anderson</title>
+<title>Kim Anderson | Financial Crime & Digital Asset Investigation</title>
 
 <style>
 :root{
   --ink:#f5f7fa;
   --muted:#a8b2b8;
   --border:rgba(255,255,255,.15);
-  --bg:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
+  --bg:linear-gradient(-45deg,#0e2431,#173b4d,#264a53,#102a43);
+}
+
+*{
+  box-sizing:border-box;
 }
 
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   background:var(--bg);
+  background-size:400% 400%;
+  animation:gradientShift 18s ease infinite;
   color:var(--ink);
   line-height:1.7;
 }
 
+@keyframes gradientShift{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
 .wrap{
-  max-width:860px;
-  margin:60px auto;
-  padding:0 20px 80px;
+  max-width:1000px;
+  margin:0 auto;
+  padding:0 24px 80px;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+/* HERO */
+
+.hero{
+  height:420px;
+  border-radius:28px;
+  margin:60px 0 80px;
+  display:flex;
+  align-items:center;
+  padding:60px;
+  background:
+    linear-gradient(rgba(10,20,30,.78), rgba(10,20,30,.78)),
+    url('images/cryptoblog.jpg') center/cover no-repeat;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
-a:hover{
-  text-decoration:underline;
+.hero-content{
+  max-width:650px;
 }
 
-.back{
-  margin-bottom:40px;
-  color:var(--muted);
+.hero h1{
+  font-size:44px;
+  margin:0 0 20px 0;
 }
 
-h1{
-  font-size:42px;
-  margin-bottom:32px;
+.hero p{
+  font-size:18px;
+  color:#c3ccd2;
+  margin:0;
 }
+
+/* SECTION HEADINGS */
+
+h2.section-title{
+  font-size:28px;
+  margin-bottom:30px;
+}
+
+/* BLOG CARD */
 
 .post{
   padding:28px;
   border:1px solid var(--border);
-  border-radius:18px;
+  border-radius:20px;
   margin-bottom:28px;
   background:rgba(255,255,255,.05);
-  transition:.2s ease;
+  transition:.25s ease;
+  backdrop-filter:blur(6px);
 }
 
 .post:hover{
   background:rgba(255,255,255,.08);
-  transform:translateY(-2px);
+  transform:translateY(-4px);
+  box-shadow:0 15px 40px rgba(0,0,0,.35);
 }
 
-.post h2{
+.post h3{
   margin:0 0 8px 0;
-  font-size:24px;
+  font-size:22px;
 }
 
 .date{
@@ -75,6 +109,33 @@ h1{
   color:var(--muted);
   margin-bottom:16px;
 }
+
+.post a{
+  display:inline-block;
+  font-weight:600;
+  text-decoration:none;
+  color:var(--ink);
+  position:relative;
+}
+
+.post a::after{
+  content:" →";
+  transition:.2s ease;
+}
+
+.post a:hover::after{
+  margin-left:6px;
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:100px;
+  padding-top:40px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  font-size:14px;
+}
 </style>
 </head>
 
@@ -82,23 +143,40 @@ h1{
 
 <div class="wrap">
 
-<div class="back">
-  <a href="/">← Back to Home</a>
-</div>
+  <!-- HERO SECTION -->
 
-<h1>Blog</h1>
-
-<div class="post">
-  <h2>Crypto Explained Without the Hype</h2>
-  <div class="date">February 2026</div>
-  <div class="excerpt">
-    A plain-language explanation of what crypto actually is — without buzzwords,
-    hype, speculation, or social media noise.
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Kim Anderson</h1>
+      <p>
+        Investigating financial crime in an era of crypto and AI.
+        Building tools that help cut through digital asset complexity
+        while pursuing AML and fraud investigation roles.
+      </p>
+    </div>
   </div>
-  <a href="crypto-explained-without-the-hype.html">Read →</a>
-</div>
+
+  <!-- RESEARCH SECTION -->
+
+  <h2 class="section-title">Research & Writing</h2>
+
+  <div class="post">
+    <h3>Crypto Explained Without the Hype</h3>
+    <div class="date">February 2026</div>
+    <div class="excerpt">
+      A plain-language explanation of crypto fundamentals,
+      blockchain mechanics, and investigative considerations —
+      without speculation or buzzwords.
+    </div>
+    <a href="crypto-explained-without-the-hype.html">Read</a>
+  </div>
+
+  <footer>
+    © 2026 Kim Anderson · AML · Fraud Investigation · Digital Assets · AI Tools
+  </footer>
 
 </div>
 
 </body>
 </html>
+
