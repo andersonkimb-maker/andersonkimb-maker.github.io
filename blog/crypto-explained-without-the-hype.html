@@ -13,6 +13,10 @@
   --bg:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -74,8 +78,27 @@ li{
   margin-bottom:8px;
 }
 
-footer{
+/* ADDED BOTTOM NAV */
+.bottom-nav{
   margin-top:80px;
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.bottom-nav a{
+  color:var(--muted);
+  text-decoration:none;
+  transition:.2s ease;
+}
+
+.bottom-nav a:hover{
+  color:var(--ink);
+}
+
+footer{
+  margin-top:40px;
   padding-top:30px;
   border-top:1px solid var(--border);
   font-size:13px;
@@ -90,7 +113,7 @@ footer{
 
 <body>
 
-<div class="wrap">
+<div class="wrap" id="top">
 
 <div class="back">
   <a href="/blog/">← Back to Blog</a>
@@ -300,18 +323,21 @@ Understanding the system at a structural level is the first step toward effectiv
 And that begins with stripping away the hype and focusing on how the ledger actually works.
 </p>
 
-<div class="back">
+<!-- ADDED NAVIGATION -->
+<div class="bottom-nav">
   <a href="/blog/">← Back to Blog</a>
+  <a href="#top">↑ Back to Top</a>
 </div>
-  
+
 <footer>
   © 2026 Kim Anderson · AML · Fraud Investigation · Digital Assets · AI Tools
   <div>Built with GitHub Pages and Curiosity</div>
 </footer>
-  
+
 </div>
 
 </body>
 </html>
+
 
 
