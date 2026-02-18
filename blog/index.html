@@ -32,35 +32,50 @@ body{
   padding:0 20px 80px;
 }
 
-/* SMALL HEADER BOX */
+/* SLIM HEADER BAR */
 
-.header-box{
+.header-bar{
   display:inline-block;
-  padding:14px 28px;
-  border-radius:14px;
+  padding:10px 26px;
+  border-radius:999px;
   background:rgba(255,255,255,.06);
   border:1px solid var(--border);
-  font-size:28px;
-  font-weight:600;
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:.5px;
   margin-bottom:50px;
-  backdrop-filter:blur(6px);
 }
 
 /* POST CARD */
 
 .post{
-  padding:28px;
   border:1px solid var(--border);
-  border-radius:18px;
-  margin-bottom:30px;
+  border-radius:20px;
+  overflow:hidden;
   background:rgba(255,255,255,.04);
   transition:.25s ease;
+  margin-bottom:40px;
 }
 
 .post:hover{
   background:rgba(255,255,255,.07);
   transform:translateY(-3px);
   box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+/* IMAGE */
+
+.post img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  display:block;
+}
+
+/* CONTENT */
+
+.post-content{
+  padding:28px;
 }
 
 .post h2{
@@ -79,7 +94,7 @@ body{
   margin-bottom:18px;
 }
 
-/* HIGHLIGHTED LINK STYLE */
+/* LINK HIGHLIGHT */
 
 .post a{
   text-decoration:none;
@@ -112,7 +127,7 @@ body{
 /* BACK HOME */
 
 .back-home{
-  margin-top:60px;
+  margin-top:40px;
 }
 
 .back-home a{
@@ -125,6 +140,17 @@ body{
 .back-home a:hover{
   color:var(--accent);
 }
+
+/* FOOTER */
+
+footer{
+  margin-top:80px;
+  padding-top:30px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  font-size:14px;
+  text-align:center;
+}
 </style>
 </head>
 
@@ -132,27 +158,36 @@ body{
 
 <div class="wrap">
 
-  <div class="header-box">
+  <div class="header-bar">
     Blog
   </div>
 
   <div class="post">
-    <h2>Crypto Explained Without the Hype</h2>
-    <div class="date">February 2026</div>
-    <div class="excerpt">
-      A straightforward look at how crypto actually works and what it means from an investigative perspective without hype or buzzwords.
+    <img src="images/cryptoblog.jpg" alt="Abstract digital network visualization">
+
+    <div class="post-content">
+      <h2>Crypto Explained Without the Hype</h2>
+      <div class="date">February 2026</div>
+      <div class="excerpt">
+        A straightforward look at how crypto actually works and what it means from an investigative perspective without hype or buzzwords.
+      </div>
+      <a href="crypto-explained-without-the-hype.html">Read article</a>
     </div>
-    <a href="crypto-explained-without-the-hype.html">Read article</a>
   </div>
 
   <div class="back-home">
     <a href="/">← Back to Home</a>
   </div>
 
+  <footer>
+    © 2026 Kim Anderson · AML · Fraud Investigation · Digital Assets · AI Tools
+  </footer>
+
 </div>
 
 </body>
 </html>
+
 
 
 
