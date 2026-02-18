@@ -9,8 +9,9 @@
 :root{
   --ink:#f5f7fa;
   --muted:#a8b2b8;
-  --border:rgba(255,255,255,.15);
-  --bg:linear-gradient(-45deg,#0e2431,#173b4d,#264a53,#102a43);
+  --accent:#4da3ff;
+  --border:rgba(255,255,255,.12);
+  --bg:linear-gradient(120deg,#0e2431,#173b4d,#264a53);
 }
 
 *{
@@ -21,80 +22,48 @@ body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   background:var(--bg);
-  background-size:400% 400%;
-  animation:gradientShift 18s ease infinite;
   color:var(--ink);
   line-height:1.7;
 }
 
-@keyframes gradientShift{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-
 .wrap{
-  max-width:1000px;
-  margin:0 auto;
-  padding:0 24px 80px;
+  max-width:820px;
+  margin:60px auto;
+  padding:0 20px 80px;
 }
 
-/* HERO */
+/* SMALL HEADER BOX */
 
-.hero{
-  height:380px;
-  border-radius:28px;
-  margin:60px 0 80px;
-  display:flex;
-  align-items:center;
-  padding:60px;
-  background:
-    linear-gradient(rgba(10,20,30,.78), rgba(10,20,30,.78)),
-    url('images/cryptoblog.jpg') center/cover no-repeat;
-  box-shadow:0 20px 60px rgba(0,0,0,.35);
-}
-
-.hero-content{
-  max-width:650px;
-}
-
-.hero h1{
-  font-size:42px;
-  margin:0 0 16px 0;
-}
-
-.hero p{
-  font-size:18px;
-  color:#c3ccd2;
-  margin:0;
-}
-
-/* SECTION TITLE */
-
-h2.section-title{
+.header-box{
+  display:inline-block;
+  padding:14px 28px;
+  border-radius:14px;
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--border);
   font-size:28px;
-  margin-bottom:30px;
+  font-weight:600;
+  margin-bottom:50px;
+  backdrop-filter:blur(6px);
 }
 
-/* BLOG CARD */
+/* POST CARD */
 
 .post{
   padding:28px;
   border:1px solid var(--border);
-  border-radius:20px;
-  margin-bottom:28px;
-  background:rgba(255,255,255,.05);
+  border-radius:18px;
+  margin-bottom:30px;
+  background:rgba(255,255,255,.04);
   transition:.25s ease;
-  backdrop-filter:blur(6px);
 }
 
 .post:hover{
-  background:rgba(255,255,255,.08);
-  transform:translateY(-4px);
-  box-shadow:0 15px 40px rgba(0,0,0,.35);
+  background:rgba(255,255,255,.07);
+  transform:translateY(-3px);
+  box-shadow:0 15px 40px rgba(0,0,0,.3);
 }
 
-.post h3{
+.post h2{
   margin:0 0 8px 0;
   font-size:22px;
 }
@@ -107,31 +76,43 @@ h2.section-title{
 
 .excerpt{
   color:var(--muted);
-  margin-bottom:16px;
+  margin-bottom:18px;
 }
 
+/* HIGHLIGHTED LINK STYLE */
+
 .post a{
-  display:inline-block;
-  font-weight:600;
   text-decoration:none;
+  font-weight:600;
   color:var(--ink);
   position:relative;
 }
 
 .post a::after{
-  content:" →";
-  transition:.2s ease;
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-3px;
+  width:100%;
+  height:2px;
+  background:var(--accent);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:.25s ease;
+}
+
+.post a:hover{
+  color:var(--accent);
 }
 
 .post a:hover::after{
-  margin-left:6px;
+  transform:scaleX(1);
 }
 
 /* BACK HOME */
 
 .back-home{
   margin-top:60px;
-  text-align:center;
 }
 
 .back-home a{
@@ -142,18 +123,7 @@ h2.section-title{
 }
 
 .back-home a:hover{
-  color:var(--ink);
-}
-
-/* FOOTER */
-
-footer{
-  margin-top:40px;
-  padding-top:30px;
-  border-top:1px solid var(--border);
-  color:var(--muted);
-  font-size:14px;
-  text-align:center;
+  color:var(--accent);
 }
 </style>
 </head>
@@ -162,47 +132,27 @@ footer{
 
 <div class="wrap">
 
-  <!-- HERO -->
-
-  <div class="hero">
-    <div class="hero-content">
-      <h1>Research & Insights</h1>
-      <p>
-        Exploring financial crime in an era of crypto and AI —
-        cutting through digital asset complexity while pursuing
-        AML and fraud investigation roles.
-      </p>
-    </div>
+  <div class="header-box">
+    Blog
   </div>
-
-  <!-- POSTS -->
-
-  <h2 class="section-title">Latest Writing</h2>
 
   <div class="post">
-    <h3>Crypto Explained Without the Hype</h3>
+    <h2>Crypto Explained Without the Hype</h2>
     <div class="date">February 2026</div>
     <div class="excerpt">
-      A plain-language explanation of crypto fundamentals,
-      blockchain mechanics, and investigative considerations —
-      without speculation or buzzwords.
+      A straightforward look at how crypto actually works and what it means from an investigative perspective without hype or buzzwords.
     </div>
-    <a href="crypto-explained-without-the-hype.html">Read</a>
+    <a href="crypto-explained-without-the-hype.html">Read article</a>
   </div>
-
-  <!-- BACK HOME -->
 
   <div class="back-home">
     <a href="/">← Back to Home</a>
   </div>
 
-  <footer>
-    © 2026 Kim Anderson · AML · Fraud Investigation · Digital Assets · AI Tools
-  </footer>
-
 </div>
 
 </body>
 </html>
+
 
 
