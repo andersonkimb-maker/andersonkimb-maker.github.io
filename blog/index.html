@@ -32,8 +32,15 @@ body{
   padding:0 20px 80px;
 }
 
-/* SLIM HEADER BAR */
+/* HEADER ROW (Blog + Back Home on same line) */
+.header-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:40px;
+}
 
+/* SLIM HEADER BAR */
 .header-bar{
   display:inline-block;
   padding:10px 26px;
@@ -43,7 +50,6 @@ body{
   font-size:24px;
   font-weight:700;
   letter-spacing:.5px;
-  margin-bottom:20px;
 }
 
 /* POST CARD */
@@ -126,10 +132,6 @@ body{
 
 /* BACK HOME */
 
-.back-home{
-  margin-top:40px;
-}
-
 .back-home a{
   color:var(--muted);
   text-decoration:none;
@@ -158,13 +160,15 @@ footer{
 
 <div class="wrap">
 
-  <div class="header-bar">
-    Blog  </div>
-  <!-- TOP BACK HOME LINK -->
-  <div class="back-home">
-    <a href="/">← Back to Home</a>
+  <!-- HEADER ROW -->
+  <div class="header-row">
+    <div class="header-bar">
+      Blog
+    </div>
+    <div class="back-home">
+      <a href="/">← Back to Home</a>
+    </div>
   </div>
-
 
   <!-- POST 1 -->
   <div class="post">
@@ -193,7 +197,7 @@ footer{
   </div>
 
   <!-- BOTTOM BACK HOME LINK -->
-  <div class="back-home">
+  <div class="back-home" style="margin-top:40px;">
     <a href="/">← Back to Home</a>
   </div>
 
@@ -206,6 +210,7 @@ footer{
 
 </body>
 </html>
+
 
 
 
