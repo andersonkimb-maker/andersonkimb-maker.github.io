@@ -83,7 +83,6 @@
     nav a:hover{color:var(--ink)}
     nav a:hover::after{transform:scaleX(1)}
 
-    /* FOOTER FIX */
     footer{
       display:flex;
       justify-content:space-between;
@@ -270,40 +269,22 @@
       animation:pulse 2.8s ease-in-out infinite;
     }
 
-    @keyframes pulse{
-      0%{box-shadow:0 0 6px rgba(34,197,94,.5)}
-      50%{box-shadow:0 0 16px rgba(34,197,94,.9)}
-      100%{box-shadow:0 0 6px rgba(34,197,94,.5)}
-    }
-
     .status.in-progress{color:var(--yellow)}
     .status.in-progress::before{
       background:var(--yellow);
       animation:slowPulse 4.5s ease-in-out infinite;
     }
 
+    @keyframes pulse{
+      0%{box-shadow:0 0 6px rgba(34,197,94,.5)}
+      50%{box-shadow:0 0 16px rgba(34,197,94,.9)}
+      100%{box-shadow:0 0 6px rgba(34,197,94,.5)}
+    }
+
     @keyframes slowPulse{
       0%{box-shadow:0 0 4px rgba(234,179,8,.45)}
       50%{box-shadow:0 0 14px rgba(234,179,8,.85)}
       100%{box-shadow:0 0 6px rgba(234,179,8,.55)}
-    }
-
-    .cert-links{
-      display:flex;
-      justify-content:center;
-      margin-top:40px;
-    }
-
-    .about-link{
-      font-size:0.95rem;
-      color:var(--muted);
-      font-weight:500;
-      transition:color .2s ease, transform .2s ease;
-    }
-
-    .about-link:hover{
-      color:var(--ink);
-      transform:translateX(2px);
     }
   </style>
 </head>
@@ -313,14 +294,13 @@
 
 <header>
   <div class="construction">🚧 Currently under construction</div>
- <nav>
-  <a href="#projects">View Projects</a>
- <a href="/blog/">Blog</a>
-  <a href="/about.html">About Me</a>
-  <a href="Kim%20Anderson%20Resume%202025.pdf" target="_blank">Resume</a>
-  <a href="#contact">Contact</a>
-</nav>
-
+  <nav>
+    <a href="#projects">View Projects</a>
+    <a href="/blog/">Blog</a>
+    <a href="/about.html">About Me</a>
+    <a href="Kim%20Anderson%20Resume%202025.pdf" target="_blank">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
 <div class="banner">
@@ -355,39 +335,80 @@
   <h3>Projects</h3>
   <div class="grid">
 
+    <!-- 1 -->
     <div class="card">
       <div class="inner">
         <div class="front">
-          <h4>SAR Assist <span style="font-size:12px;font-weight:500;color:var(--muted)">(Prototype)</span></h4>
+          <h4>SAR Assist (Prototype)</h4>
           <span class="status complete">Complete</span>
           <ul>
             <li>Excel + VBA investigator workflow tool</li>
             <li>Centralized investigative inputs</li>
-            <li>Automated SAR decisioning and drafting</li>
+            <li>Automated SAR drafting</li>
           </ul>
         </div>
         <div class="back">
-          <p>
-            Built in Excel and VBA so teams can implement quickly without formal IT lift,
-            while supporting work across fragmented systems.
-          </p>
-          <p><i>This prototype is owned by my previous employer.</i></p>
+          <p>Built for rapid internal adoption without IT lift.</p>
+          <p><i>Owned by previous employer.</i></p>
         </div>
       </div>
     </div>
 
+    <!-- 2 -->
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <h4>IP Attribution & Pivot Optimization</h4>
+          <span class="status complete">Complete</span>
+          <ul>
+            <li>Identified first third-party IP access</li>
+            <li>Mapped city, state, and carrier</li>
+            <li>Reduced 2 hrs → 20 mins</li>
+          </ul>
+        </div>
+        <div class="back">
+          <p>
+            Rebuilt a manual investigation process using advanced Excel pivot logic
+            to isolate first access events across multiple suspects.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <h4>Multi-System Automation Agent</h4>
+          <span class="status complete">Complete (My Contribution)</span>
+          <ul>
+            <li>Automated cross-platform case assembly</li>
+            <li>Triggered upon investigator login</li>
+            <li>Reduced manual file retrieval</li>
+          </ul>
+        </div>
+        <div class="back">
+          <p>
+            Contributed to development of an internal automation agent that accessed
+            multiple investigative systems and pre-assembled required data.
+          </p>
+          <p><i>Owned by employer.</i></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
     <div class="card">
       <div class="inner">
         <div class="front">
           <h4>Investigator Decision Support Framework</h4>
           <span class="status in-progress">In Progress</span>
           <p>
-            A decision-stage framework that models how investigators interpret signals,
-            weigh alternatives, and reach defensible conclusions.
+            Modeling how investigators interpret signals and reach defensible decisions.
           </p>
         </div>
         <div class="back">
-          <p>Details will be added once development is complete.</p>
+          <p>Details to be released upon completion.</p>
         </div>
       </div>
     </div>
@@ -395,49 +416,15 @@
   </div>
 </section>
 
-<div class="cert-links">
-  <a href="about.html" class="about-link">Continue to About Me →</a>
-</div>
- 
-  <!-- CONTACT -->
-<section id="contact">
-  <h2>Contact</h2>
-
- <div style="background:rgba(255,255,255,.08); border:1px solid var(--border); border-radius:18px; padding:26px;">
-    <p style="color:var(--muted); margin-bottom:20px;">
-      I’m open to AML, fraud investigation, and investigator-first AI opportunities.
-      If you’d like to connect or collaborate, feel free to reach out!
-    </p>
-
-   <div style="display:flex; justify-content:center; gap:32px; font-size:17px; font-weight:500; margin-top:10px; flex-wrap:wrap;">
-
-  <a href="mailto:andersonkimb@gmail.com" style="color:var(--muted);">
-    📧 andersonkimb@gmail.com
-  </a>
-
-  <a href="https://www.linkedin.com/in/andersonkimb" target="_blank" style="color:var(--muted);">
-    💼 LinkedIn
-  </a>
+<footer>
+  © 2026 Kim Anderson · AML · Fraud Investigation · Digital Assets · AI Tools
+  <div>Built with GitHub Pages and Curiosity</div>
+</footer>
 
 </div>
-
-</section>
-
-
- <footer>
-    © 2026 Kim Anderson · AML · Fraud Investigation · Digital Assets · AI Tools
-   <div>Built with GitHub Pages and Curiosity</div>
-  </footer>
-
-
-</div>
-
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
-</script>
-
 </body>
 </html>
+
 
 
 
