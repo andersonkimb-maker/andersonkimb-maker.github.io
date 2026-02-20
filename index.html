@@ -282,6 +282,25 @@
         text-align:center;
       }
     }
+
+    .secret-pi{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      font-size:140px;
+      text-decoration:none;
+      color:inherit;
+      cursor:pointer;
+      opacity:0.08;
+      transition:opacity .3s ease, transform .3s ease;
+      z-index:999;
+    }
+
+    .secret-pi:hover{
+      opacity:0.25;
+      transform:scale(1.05);
+    }
+
   </style>
 </head>
 
@@ -331,7 +350,6 @@
   <h3>Projects</h3>
   <div class="grid">
 
-    <!-- 1 -->
     <div class="card">
       <div class="inner">
         <div class="front">
@@ -353,7 +371,6 @@
       </div>
     </div>
 
-    <!-- 2 -->
     <div class="card">
       <div class="inner">
         <div class="front">
@@ -374,7 +391,6 @@
       </div>
     </div>
 
-    <!-- 3 -->
     <div class="card">
       <div class="inner">
         <div class="front">
@@ -396,7 +412,6 @@
       </div>
     </div>
 
-    <!-- 4 -->
     <div class="card">
       <div class="inner">
         <div class="front">
@@ -447,6 +462,9 @@
 </footer>
 
 </div>
+
+<a href="/secret.html" class="secret-pi">π</a>
+
 </body>
 </html>
 
