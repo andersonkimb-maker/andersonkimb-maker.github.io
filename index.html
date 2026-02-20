@@ -83,6 +83,108 @@
     nav a:hover{color:var(--ink)}
     nav a:hover::after{transform:scaleX(1)}
 
+    .banner{
+      margin-top:28px;
+      position:relative;
+      border-radius:14px;
+      overflow:hidden;
+    }
+
+    .banner img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+    }
+
+    .banner::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:var(--overlay);
+    }
+
+    .bannerText{
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      z-index:2;
+      text-align:center;
+    }
+
+    .bannerText h1{
+      font-size:56px;
+      margin:0;
+      text-shadow:0 4px 18px rgba(0,0,0,.35);
+    }
+
+    .bannerText p{
+      margin-top:1px;
+      font-size:24px;
+      opacity:.9;
+    }
+
+    .profile{
+      width:150px;
+      height:150px;
+      margin:-70px auto 0;
+      position:relative;
+      z-index:3;
+      perspective:1000px;
+    }
+
+    .profile-inner{
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      position:relative;
+      transform-style:preserve-3d;
+      transition:transform .7s ease;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+      border:3px solid #fff;
+    }
+
+    .profile:hover .profile-inner{
+      transform:rotateY(180deg);
+    }
+
+    .profile-face{
+      position:absolute;
+      inset:0;
+      backface-visibility:hidden;
+    }
+
+    .profile-face img{
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      object-fit:cover;
+    }
+
+    .profile-back{
+      transform:rotateY(180deg);
+    }
+
+    .hero{
+      text-align:center;
+      padding-top:36px;
+      margin-bottom:40px;
+    }
+
+    .hero h2{
+      font-size:40px;
+      margin-bottom:14px;
+    }
+
+    .hero p{
+      max-width:680px;
+      margin:0 auto;
+      font-size:18px;
+      color:var(--muted);
+    }
+
     section{margin-top:56px}
     h3{font-size:20px;margin-bottom:14px}
 
@@ -196,6 +298,34 @@
     <a href="#contact">Contact</a>
   </nav>
 </header>
+
+<div class="banner">
+  <img src="Banner.png" alt="Banner">
+  <div class="bannerText">
+    <h1>Kim Anderson</h1>
+    <p>Senior Investigator + AI for Financial Crime</p>
+  </div>
+</div>
+
+<div class="profile">
+  <div class="profile-inner">
+    <div class="profile-face">
+      <img src="Profile%20Picture.png" alt="Profile">
+    </div>
+    <div class="profile-face profile-back">
+      <img src="Character.png" alt="Character">
+    </div>
+  </div>
+</div>
+
+<div class="hero">
+  <h2>Designing AI for the next era of financial crimes.</h2>
+  <p>
+    As financial crime grows more complex, especially with crypto and digital assets,
+    I’m building tools that help investigators cut through complexity while continuing
+    to pursue AML and fraud investigation roles.
+  </p>
+</div>
 
 <section id="projects">
   <h3>Projects</h3>
