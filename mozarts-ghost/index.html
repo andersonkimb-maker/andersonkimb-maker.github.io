@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mozart Popup Experience</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,.3);
+  animation: fadeIn .5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #111;
+  color: white;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<div class="modal-overlay" id="overlay">
+  <div class="modal">
+    <h2>Welcome 🎼</h2>
+    <p>Click anywhere to begin the experience.</p>
+    <button onclick="closePopup()">Close</button>
+
+    <audio id="voiceMemo" src="Mozart Song.m4a" preload="auto"></audio>
+  </div>
+</div>
+
+<script>
+const audio = document.getElementById("voiceMemo");
+const overlay = document.getElementById("overlay");
+
+let hasStarted = false;
+
+// Elegant Fade-In Function
+function fadeInAudio(audioElement, duration = 3000) {
+  audioElement.volume = 0;
+  audioElement.play();
+
+  const stepTime = 50;
+  const steps = duration / stepTime;
+  const volumeStep = 1 / steps;
+
+  let currentStep = 0;
+
+  const fadeInterval = setInterval(() => {
+    currentStep++;
+    audioElement.volume = Math.min(currentStep * volumeStep, 1);
+
+    if (currentStep >= steps) {
+      clearInterval(fadeInterval);
+      audioElement.volume = 1;
+    }
+  }, stepTime);
+}
+
+// First click anywhere triggers audio
+function startExperience() {
+  if (!hasStarted) {
+    hasStarted = true;
+    fadeInAudio(audio, 4000); // 4 second smooth fade
+  }
+}
+
+document.addEventListener("click", startExperience, { once: true });
+
+function closePopup() {
+  overlay.style.display = "none";
+}
+</script>
+
+</body>
+</html>
