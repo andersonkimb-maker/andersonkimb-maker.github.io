@@ -7,102 +7,219 @@
 
   <style>
     :root{
-      --bg:#07070b;
-      --card:#0b0b10;
+      --bg0:#040406;
+      --bg1:#0a0a12;
       --text:#f5f5f7;
       --muted:rgba(255,255,255,.72);
       --muted2:rgba(255,255,255,.55);
+
       --overlay:rgba(0,0,0,.72);
-      --radius:16px;
+      --panel:#0f1020;
+
+      --radius:18px;
+      --shadow: 0 30px 90px rgba(0,0,0,.6);
+      --stroke: 1px solid rgba(255,255,255,.10);
     }
 
-    * { box-sizing: border-box; }
+    *{ box-sizing:border-box; }
     body{
       margin:0;
       min-height:100vh;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 700px at 50% 20%, #121224 0%, #07070b 60%, #040406 100%);
+      background: radial-gradient(1200px 700px at 50% 15%, #1a1a3a 0%, var(--bg1) 55%, var(--bg0) 100%);
       color: var(--text);
       overflow-x:hidden;
     }
 
-    /* ---------- GATE (hidden entry) ---------- */
+    /* ---------- GATE (Door screen) ---------- */
     .gate{
       min-height:100vh;
       display:grid;
       place-items:center;
       padding: 32px 16px;
     }
-    .gate-card{
-      width: min(760px, 100%);
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: 0 30px 90px rgba(0,0,0,.55);
-      padding: 26px;
-      position: relative;
-      overflow:hidden;
-    }
-    .gate-card::before{
-      content:"";
-      position:absolute;
-      inset:-80px;
-      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 50%),
-                  radial-gradient(circle at 80% 40%, rgba(255,255,255,.06), transparent 52%),
-                  radial-gradient(circle at 50% 90%, rgba(255,255,255,.05), transparent 55%);
-      filter: blur(8px);
-      pointer-events:none;
-    }
-    .gate-inner{ position: relative; }
 
-    .gate h1{
-      margin:0 0 8px;
-      font-size: clamp(28px, 3.5vw, 40px);
+    .gate-wrap{
+      width: min(980px, 100%);
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+      align-items:center;
+    }
+
+    @media (max-width: 900px){
+      .gate-wrap{ grid-template-columns: 1fr; }
+    }
+
+    .gate-copy{
+      border-radius: 20px;
+      border: var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .gate-copy h1{
+      margin:0 0 10px;
+      font-size: clamp(28px, 3.5vw, 42px);
       letter-spacing:.2px;
     }
-    .gate p{
-      margin: 0 0 18px;
+    .gate-copy p{
+      margin: 0 0 14px;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.6;
       max-width: 62ch;
     }
 
-    /* The "hidden" link: subtle, but discoverable */
-    .enter-link{
-      display:inline-flex;
-      align-items:center;
+    .gate-actions{
+      display:flex;
       gap:10px;
-      padding: 10px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.25);
-      color: rgba(255,255,255,.78);
-      text-decoration: none;
-      font-weight: 650;
-      cursor: pointer;
-      user-select: none;
-      transition: .18s ease;
-      outline: none;
-      position: relative;
-    }
-    .enter-link:hover,
-    .enter-link:focus-visible{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.20);
-      background: rgba(0,0,0,.35);
-      color: rgba(255,255,255,.92);
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      flex-wrap:wrap;
+      margin-top: 12px;
     }
 
-    .hint{
+    .enter-btn{
+      border:0;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-weight: 750;
+      cursor: pointer;
+      background: #fff;
+      color: #0b0b10;
+      transition: .18s ease;
+    }
+    .enter-btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 34px rgba(0,0,0,.35); }
+    .enter-btn:active{ transform: translateY(0); }
+
+    .subhint{
       margin-top: 10px;
       font-size: 12px;
-      color: rgba(255,255,255,.38);
-    }
-    .tiny{
-      font-size: 12px;
       color: rgba(255,255,255,.45);
-      margin-top: 14px;
+    }
+
+    /* Door scene */
+    .door-scene{
+      border-radius: 20px;
+      border: var(--stroke);
+      background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.45));
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display:grid;
+      place-items:center;
+      min-height: 360px;
+      position: relative;
+      overflow:hidden;
+    }
+
+    .door-stage{
+      width: min(360px, 90%);
+      aspect-ratio: 3 / 4.2;
+      position: relative;
+      perspective: 1200px;
+    }
+
+    .door-frame{
+      position:absolute;
+      inset:0;
+      border-radius: 18px;
+      background:
+        radial-gradient(120px 120px at 50% 12%, rgba(255,255,255,.10), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)),
+        #0b0b14;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow:
+        inset 0 0 0 12px rgba(0,0,0,.25),
+        inset 0 0 60px rgba(0,0,0,.45);
+      overflow:hidden;
+    }
+
+    /* "Inside" glow behind the door */
+    .door-glow{
+      position:absolute;
+      inset: 18px 18px 18px 18px;
+      border-radius: 12px;
+      background: radial-gradient(220px 260px at 60% 50%, rgba(140,120,255,.32), rgba(0,0,0,0) 65%);
+      opacity: .25;
+      filter: blur(2px);
+      transition: opacity .6s ease;
+      pointer-events:none;
+    }
+
+    .door{
+      position:absolute;
+      left: 18px;
+      top: 18px;
+      bottom: 18px;
+      width: calc(100% - 36px);
+      border-radius: 12px;
+      transform-origin: left center;
+      transform: rotateY(0deg);
+      transition: transform .85s cubic-bezier(.2,.8,.2,1);
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.08), rgba(0,0,0,.15) 14%, rgba(0,0,0,.25) 85%, rgba(255,255,255,.05)),
+        repeating-linear-gradient(180deg, rgba(255,255,255,.06) 0 6px, rgba(0,0,0,.0) 6px 20px),
+        #3a2c1f;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow:
+        inset 0 0 0 2px rgba(0,0,0,.20),
+        0 18px 50px rgba(0,0,0,.45);
+    }
+
+    /* Door panels */
+    .door::before{
+      content:"";
+      position:absolute;
+      inset: 18px;
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.18));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: inset 0 0 0 10px rgba(0,0,0,.16);
+    }
+
+    /* Door handle */
+    .knob{
+      position:absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffe7a8, #b98d2d 60%, #6a4f10 100%);
+      box-shadow: 0 8px 20px rgba(0,0,0,.35);
+    }
+    .knob::after{
+      content:"";
+      position:absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 10px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #ffd889, #9a7420);
+      box-shadow: 0 6px 16px rgba(0,0,0,.25);
+    }
+
+    /* OPEN STATE */
+    .door-stage.open .door{
+      transform: rotateY(-70deg);
+    }
+    .door-stage.open .door-glow{
+      opacity: .75;
+    }
+
+    .door-caption{
+      position:absolute;
+      bottom: 14px;
+      left: 0;
+      right: 0;
+      text-align:center;
+      font-size: 12px;
+      color: rgba(255,255,255,.55);
+      padding: 0 10px;
+      pointer-events:none;
     }
 
     /* ---------- MODAL (popup) ---------- */
@@ -119,12 +236,12 @@
     .modal-overlay.is-open{ display:flex; }
 
     .modal{
-      width:min(820px, 100%);
+      width:min(860px, 100%);
       background: linear-gradient(180deg, #12121a, #07070c);
       border-radius: var(--radius);
-      box-shadow: 0 30px 90px rgba(0,0,0,.6);
+      box-shadow: var(--shadow);
       overflow:hidden;
-      border: 1px solid rgba(255,255,255,.10);
+      border: var(--stroke);
       transform: translateY(10px);
       animation: pop .22s ease-out forwards;
     }
@@ -189,7 +306,7 @@
       min-height: 1.2em;
     }
 
-    /* ---------- STORY PAGE (after close) ---------- */
+    /* ---------- STORY PAGE ---------- */
     .story{
       display:none;
       min-height:100vh;
@@ -198,12 +315,12 @@
     .story.is-visible{ display:block; }
 
     .story-wrap{
-      width:min(860px, 100%);
+      width:min(960px, 100%);
       margin: 0 auto;
     }
     .story h1{
       margin:0 0 12px;
-      font-size: clamp(30px, 3.8vw, 46px);
+      font-size: clamp(30px, 3.8vw, 48px);
       letter-spacing:.2px;
     }
     .story .lead{
@@ -216,7 +333,7 @@
 
     .story-card{
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.10);
+      border: var(--stroke);
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       box-shadow: 0 20px 70px rgba(0,0,0,.45);
       padding: 22px;
@@ -228,6 +345,26 @@
       max-width: 78ch;
     }
 
+    .hero-img{
+      width: 100%;
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+      margin: 4px 0 18px;
+    }
+    .hero-img img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+    .caption{
+      margin-top: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,.55);
+      text-align:center;
+    }
+
     .quote{
       margin: 18px 0 0;
       padding: 14px 16px;
@@ -235,11 +372,32 @@
       background: rgba(0,0,0,.20);
       border-radius: 12px;
       color: rgba(255,255,255,.78);
+      line-height: 1.65;
     }
 
-    /* Footer appears only on story page */
-    .site-footer{
+    /* Back home link (before footer) */
+    .back-home{
       margin-top: 26px;
+      text-align: center;
+    }
+    .back-home a{
+      display:inline-block;
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(0,0,0,.25);
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      font-weight: 650;
+      transition: .2s ease;
+    }
+    .back-home a:hover{
+      background: rgba(255,255,255,.08);
+      transform: translateY(-2px);
+    }
+
+    .site-footer{
+      margin-top: 18px;
       font-size: 12px;
       color: var(--muted2);
       text-align: center;
@@ -249,9 +407,9 @@
       margin-top: 6px;
       color: rgba(255,255,255,.45);
       font-size: 11px;
+      line-height: 1.5;
     }
 
-    /* Utility */
     .sr-only{
       position:absolute;
       width:1px;height:1px;
@@ -265,22 +423,33 @@
 
   <!-- GATE PAGE -->
   <section class="gate" id="gate">
-    <div class="gate-card">
-      <div class="gate-inner">
-        <h1>There’s a door here.</h1>
+    <div class="gate-wrap">
+      <div class="gate-copy">
+        <h1>Welcome.</h1>
         <p>
-          Some sites invite you in loudly. This one waits for you to notice it.
-          If you’re curious… you’ll find the entrance.
+          There is a door here. If you want in, click enter.
+        </p>
+        <p>
+          Tip: audio might not start until your first click. That is a browser rule.
         </p>
 
-        <!-- "Hidden" link (subtle but present). Also supports keyboard Enter. -->
-        <a class="enter-link" id="enterLink" href="#" aria-describedby="enterHint">
-          Click + Enter this site
-          <span aria-hidden="true">↵</span>
-        </a>
-        <div class="hint" id="enterHint">Tip: You can click it, or focus it and press Enter.</div>
+        <div class="gate-actions">
+          <button class="enter-btn" id="enterBtn" type="button">Enter</button>
+        </div>
 
-        <div class="tiny">Some experiences begin with a single click.</div>
+        <div class="subhint">You can also press Enter after clicking the button.</div>
+      </div>
+
+      <div class="door-scene" aria-hidden="true">
+        <div class="door-stage" id="doorStage">
+          <div class="door-frame">
+            <div class="door-glow"></div>
+            <div class="door">
+              <div class="knob"></div>
+            </div>
+          </div>
+        </div>
+        <div class="door-caption">Click Enter to open the door.</div>
       </div>
     </div>
   </section>
@@ -290,8 +459,8 @@
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <div class="modal-top">
         <div>
-          <h2 id="modalTitle">Welcome…</h2>
-          <div class="sub">Click anywhere to start the music (smooth fade-in).</div>
+          <h2 id="modalTitle">Welcome...</h2>
+          <div class="sub">Click anywhere to start the music with a smooth fade-in.</div>
         </div>
         <button class="close" id="closeBtn" aria-label="Close">×</button>
       </div>
@@ -310,8 +479,8 @@
       </div>
 
       <div class="actions">
-        <button class="btn btn-primary" id="startBtn">Start Music</button>
-        <button class="btn btn-ghost" id="stopBtn">Stop</button>
+        <button class="btn btn-primary" id="startBtn" type="button">Start Music</button>
+        <button class="btn btn-ghost" id="stopBtn" type="button">Stop</button>
       </div>
 
       <div class="status" id="status"></div>
@@ -320,40 +489,45 @@
     </div>
   </div>
 
-  <!-- STORY PAGE (shows only AFTER closing popup) -->
+  <!-- STORY PAGE -->
   <section class="story" id="story">
     <div class="story-wrap">
       <h1>How I Fell in Love With AI</h1>
       <p class="lead">
-        Long before “AI tools” were a normal thing, I saw a tiny glimpse of the future in a movie…
-        and it stuck with me.
+        Long before “AI tools” were normal, I got my first taste of the future from a movie scene that stayed with me.
       </p>
 
       <div class="story-card">
+        <div class="hero-img">
+          <img src="thenet.jpg" alt="The Net (1995) inspiration image" />
+        </div>
+        <div class="caption">Inspiration: The Net (1995)</div>
+
         <p>
-          In 1995, I watched <em>The Net</em>. There’s a moment where she clicks, orders pizza,
-          and it felt like magic — not the pizza, the <em>idea</em>.
+          In 1995, I watched <em>The Net</em>. There is a moment where she clicks and orders pizza.
+          It felt like magic. Not the pizza. The idea.
         </p>
         <p>
-          It was the first time I remember thinking: “One day, we’ll really be able to do things like that —
-          instantly, from anywhere — like the computer understands what you want.”
+          I remember thinking, “One day we will do everyday things instantly, from anywhere, like the computer understands what we want.”
         </p>
         <p>
-          That little scene became a quiet promise to myself. I didn’t know what the technology would be called,
-          or how it would work. I just knew I wanted to live long enough to see it.
+          That scene became a quiet goal. I did not know what the technology would be called.
+          I just knew I wanted to live long enough to see it.
         </p>
 
         <div class="quote">
-          And now here we are: tools that can write, search, reason, build — and sometimes surprise you.
-          Not because they’re perfect, but because they make the future feel close enough to touch.
+          Now we have tools that can write, search, reason, and build. The future is not perfect, but it is here.
+        </div>
+
+        <div class="back-home">
+          <a href="#" id="backHomeLink">← Back to Home</a>
         </div>
 
         <footer class="site-footer">
           <div>© 2026 Kim Anderson · AML · Fraud Investigation · Digital Assets · AI Tools</div>
           <div>Built with GitHub Pages and Curiosity</div>
           <div class="small">
-            This site is not affiliated with or endorsed by any rights holders. All trademarks and copyrighted
-            materials belong to their respective owners.
+            This site is not affiliated with or endorsed by any rights holders. All trademarks and copyrighted materials belong to their respective owners.
           </div>
         </footer>
       </div>
@@ -361,18 +535,24 @@
   </section>
 
 <script>
-  // Elements
+  // Sections
   const gate = document.getElementById("gate");
   const story = document.getElementById("story");
 
-  const enterLink = document.getElementById("enterLink");
+  // Door + entry
+  const enterBtn = document.getElementById("enterBtn");
+  const doorStage = document.getElementById("doorStage");
 
+  // Modal
   const overlay = document.getElementById("overlay");
   const closeBtn = document.getElementById("closeBtn");
   const startBtn = document.getElementById("startBtn");
   const stopBtn = document.getElementById("stopBtn");
   const statusEl = document.getElementById("status");
   const audio = document.getElementById("mozartAudio");
+
+  // Back home
+  const backHomeLink = document.getElementById("backHomeLink");
 
   // Audio fade-in state
   let started = false;
@@ -392,14 +572,14 @@
     audio.volume = 0;
 
     try {
-      await audio.play();
+      await audio.play(); // may be blocked until user gesture
     } catch (err) {
       started = false;
-      setStatus("Tap/click anywhere to start the music.");
+      setStatus("Tap or click anywhere to start the music.");
       return;
     }
 
-    setStatus("♫ Playing…");
+    setStatus("♫ Playing...");
 
     const stepMs = 50;
     const steps = Math.max(1, Math.floor(durationMs / stepMs));
@@ -425,31 +605,26 @@
   function openPopup() {
     overlay.classList.add("is-open");
     overlay.setAttribute("aria-hidden", "false");
-    setStatus("Loading…");
-
-    // Try to start immediately (may be blocked); fallback is first click handler
+    setStatus("Loading...");
+    // Try immediately; if blocked, the first-click handler will start it
     startWithFadeIn(4500, 1);
   }
 
   function showStoryPage() {
-    // Hide gate and show story
     gate.style.display = "none";
     story.classList.add("is-visible");
-
-    // Optional: update title
     document.title = "How I Fell in Love With AI";
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: "instant" });
   }
 
-  function closePopup() {
+  function closePopupToStory() {
     stopAudio();
     overlay.classList.remove("is-open");
     overlay.setAttribute("aria-hidden", "true");
     showStoryPage();
   }
 
-  // Guaranteed fallback: first user interaction anywhere starts music (once)
+  // Guaranteed fallback: first interaction anywhere starts music once
   function firstInteractionStart() {
     startWithFadeIn(4500, 1);
     document.removeEventListener("pointerdown", firstInteractionStart);
@@ -461,22 +636,50 @@
   document.addEventListener("pointerdown", firstInteractionStart, { passive: true });
   document.addEventListener("keydown", firstInteractionStartKey);
 
-  // Enter link triggers popup
-  enterLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    openPopup();
+  // Door opening then popup
+  function enterFlow() {
+    // open door animation
+    doorStage.classList.add("open");
+
+    // after door opens, show popup
+    setTimeout(() => {
+      openPopup();
+    }, 850);
+  }
+
+  enterBtn.addEventListener("click", enterFlow);
+
+  // Support pressing Enter when button focused
+  enterBtn.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") enterFlow();
   });
 
   // Modal controls
-  closeBtn.addEventListener("click", closePopup);
+  closeBtn.addEventListener("click", closePopupToStory);
   startBtn.addEventListener("click", () => startWithFadeIn(4500, 1));
   stopBtn.addEventListener("click", stopAudio);
 
   // ESC closes popup if open
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && overlay.classList.contains("is-open")) {
-      closePopup();
+      closePopupToStory();
     }
+  });
+
+  // Back to Home resets everything
+  backHomeLink.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Hide story, show gate
+    story.classList.remove("is-visible");
+    gate.style.display = "grid";
+
+    // Reset door state
+    doorStage.classList.remove("open");
+
+    // Reset title and scroll
+    document.title = "Enter";
+    window.scrollTo({ top: 0, behavior: "instant" });
   });
 </script>
 
