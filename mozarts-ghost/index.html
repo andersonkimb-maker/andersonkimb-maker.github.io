@@ -3,51 +3,131 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mozart Ghost Popup</title>
+  <title>Enter</title>
 
   <style>
     :root{
-      --overlay: rgba(0,0,0,.72);
-      --card: #0b0b10;
-      --text: #f5f5f7;
-      --muted: rgba(255,255,255,.72);
-      --btn: #ffffff;
-      --btnText: #0b0b10;
-      --radius: 16px;
+      --bg:#07070b;
+      --card:#0b0b10;
+      --text:#f5f5f7;
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.55);
+      --overlay:rgba(0,0,0,.72);
+      --radius:16px;
     }
 
+    * { box-sizing: border-box; }
     body{
       margin:0;
       min-height:100vh;
-      display:grid;
-      place-items:center;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:#111;
+      background: radial-gradient(1200px 700px at 50% 20%, #121224 0%, #07070b 60%, #040406 100%);
       color: var(--text);
+      overflow-x:hidden;
     }
 
+    /* ---------- GATE (hidden entry) ---------- */
+    .gate{
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding: 32px 16px;
+    }
+    .gate-card{
+      width: min(760px, 100%);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: 0 30px 90px rgba(0,0,0,.55);
+      padding: 26px;
+      position: relative;
+      overflow:hidden;
+    }
+    .gate-card::before{
+      content:"";
+      position:absolute;
+      inset:-80px;
+      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 50%),
+                  radial-gradient(circle at 80% 40%, rgba(255,255,255,.06), transparent 52%),
+                  radial-gradient(circle at 50% 90%, rgba(255,255,255,.05), transparent 55%);
+      filter: blur(8px);
+      pointer-events:none;
+    }
+    .gate-inner{ position: relative; }
+
+    .gate h1{
+      margin:0 0 8px;
+      font-size: clamp(28px, 3.5vw, 40px);
+      letter-spacing:.2px;
+    }
+    .gate p{
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 62ch;
+    }
+
+    /* The "hidden" link: subtle, but discoverable */
+    .enter-link{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+      color: rgba(255,255,255,.78);
+      text-decoration: none;
+      font-weight: 650;
+      cursor: pointer;
+      user-select: none;
+      transition: .18s ease;
+      outline: none;
+      position: relative;
+    }
+    .enter-link:hover,
+    .enter-link:focus-visible{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.20);
+      background: rgba(0,0,0,.35);
+      color: rgba(255,255,255,.92);
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+    }
+
+    .hint{
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,.38);
+    }
+    .tiny{
+      font-size: 12px;
+      color: rgba(255,255,255,.45);
+      margin-top: 14px;
+    }
+
+    /* ---------- MODAL (popup) ---------- */
     .modal-overlay{
       position:fixed;
       inset:0;
       background: var(--overlay);
-      display:flex;
+      display:none;
       align-items:center;
       justify-content:center;
       padding:18px;
       z-index:9999;
     }
+    .modal-overlay.is-open{ display:flex; }
 
     .modal{
-      width:min(720px, 100%);
+      width:min(820px, 100%);
       background: linear-gradient(180deg, #12121a, #07070c);
       border-radius: var(--radius);
       box-shadow: 0 30px 90px rgba(0,0,0,.6);
       overflow:hidden;
-      border: 1px solid rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
       transform: translateY(10px);
       animation: pop .22s ease-out forwards;
     }
-
     @keyframes pop { to { transform: translateY(0); } }
 
     .modal-top{
@@ -57,13 +137,15 @@
       justify-content:space-between;
       gap: 10px;
     }
-
-    h2{
-      margin: 0;
-      font-size: 1.15rem;
-      letter-spacing: .2px;
+    .modal-top h2{
+      margin:0;
+      font-size: 1.18rem;
     }
-
+    .modal-top .sub{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: .95rem;
+    }
     .close{
       border:0;
       background: transparent;
@@ -75,28 +157,14 @@
     }
     .close:hover{ background: rgba(255,255,255,.08); }
 
-    .content{
-      padding: 0 16px 16px 16px;
-      color: var(--muted);
-    }
-
-    .hint{
-      margin: 8px 0 12px;
-      font-size: .95rem;
-    }
-
+    .content{ padding: 0 16px 16px 16px; color: var(--muted); }
     .media-wrap{
       border-radius: 14px;
       overflow:hidden;
       border: 1px solid rgba(255,255,255,.10);
       background:#000;
     }
-
-    video{
-      width:100%;
-      height:auto;
-      display:block;
-    }
+    video{ width:100%; height:auto; display:block; }
 
     .actions{
       display:flex;
@@ -104,24 +172,15 @@
       flex-wrap:wrap;
       padding: 14px 16px 18px;
     }
-
     .btn{
       border:0;
       border-radius: 12px;
       padding: 10px 14px;
-      font-weight: 700;
+      font-weight: 750;
       cursor: pointer;
     }
-
-    .btn-primary{
-      background: var(--btn);
-      color: var(--btnText);
-    }
-
-    .btn-ghost{
-      background: rgba(255,255,255,.10);
-      color: var(--text);
-    }
+    .btn-primary{ background:#fff; color:#0b0b10; }
+    .btn-ghost{ background: rgba(255,255,255,.10); color: var(--text); }
 
     .status{
       padding: 0 16px 16px;
@@ -129,23 +188,116 @@
       color: rgba(255,255,255,.75);
       min-height: 1.2em;
     }
+
+    /* ---------- STORY PAGE (after close) ---------- */
+    .story{
+      display:none;
+      min-height:100vh;
+      padding: 56px 16px 96px;
+    }
+    .story.is-visible{ display:block; }
+
+    .story-wrap{
+      width:min(860px, 100%);
+      margin: 0 auto;
+    }
+    .story h1{
+      margin:0 0 12px;
+      font-size: clamp(30px, 3.8vw, 46px);
+      letter-spacing:.2px;
+    }
+    .story .lead{
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 70ch;
+    }
+
+    .story-card{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: 0 20px 70px rgba(0,0,0,.45);
+      padding: 22px;
+    }
+    .story-card p{
+      margin: 0 0 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,.82);
+      max-width: 78ch;
+    }
+
+    .quote{
+      margin: 18px 0 0;
+      padding: 14px 16px;
+      border-left: 3px solid rgba(255,255,255,.25);
+      background: rgba(0,0,0,.20);
+      border-radius: 12px;
+      color: rgba(255,255,255,.78);
+    }
+
+    /* Footer appears only on story page */
+    .site-footer{
+      margin-top: 26px;
+      font-size: 12px;
+      color: var(--muted2);
+      text-align: center;
+      padding: 14px 10px 0;
+    }
+    .site-footer .small{
+      margin-top: 6px;
+      color: rgba(255,255,255,.45);
+      font-size: 11px;
+    }
+
+    /* Utility */
+    .sr-only{
+      position:absolute;
+      width:1px;height:1px;
+      padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0,0,0,0);white-space:nowrap;border:0;
+    }
   </style>
 </head>
+
 <body>
 
-  <div class="modal-overlay" id="overlay" aria-hidden="false">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="title">
+  <!-- GATE PAGE -->
+  <section class="gate" id="gate">
+    <div class="gate-card">
+      <div class="gate-inner">
+        <h1>There’s a door here.</h1>
+        <p>
+          Some sites invite you in loudly. This one waits for you to notice it.
+          If you’re curious… you’ll find the entrance.
+        </p>
+
+        <!-- "Hidden" link (subtle but present). Also supports keyboard Enter. -->
+        <a class="enter-link" id="enterLink" href="#" aria-describedby="enterHint">
+          Click + Enter this site
+          <span aria-hidden="true">↵</span>
+        </a>
+        <div class="hint" id="enterHint">Tip: You can click it, or focus it and press Enter.</div>
+
+        <div class="tiny">Some experiences begin with a single click.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP / MODAL -->
+  <div class="modal-overlay" id="overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <div class="modal-top">
         <div>
-          <h2 id="title">Welcome…</h2>
-          <div class="hint">Click anywhere to start the music (smooth fade-in).</div>
+          <h2 id="modalTitle">Welcome…</h2>
+          <div class="sub">Click anywhere to start the music (smooth fade-in).</div>
         </div>
         <button class="close" id="closeBtn" aria-label="Close">×</button>
       </div>
 
       <div class="content">
         <div class="media-wrap">
-          <!-- Ghost “picture” (mp4 video). Autoplays muted (allowed), loops, no controls. -->
           <video
             id="ghostVideo"
             src="mozarts ghost.mp4"
@@ -164,36 +316,75 @@
 
       <div class="status" id="status"></div>
 
-      <!-- Audio (starts after first click) -->
       <audio id="mozartAudio" src="Mozart Song.m4a" preload="auto"></audio>
     </div>
   </div>
 
+  <!-- STORY PAGE (shows only AFTER closing popup) -->
+  <section class="story" id="story">
+    <div class="story-wrap">
+      <h1>How I Fell in Love With AI</h1>
+      <p class="lead">
+        Long before “AI tools” were a normal thing, I saw a tiny glimpse of the future in a movie…
+        and it stuck with me.
+      </p>
+
+      <div class="story-card">
+        <p>
+          In 1995, I watched <em>The Net</em>. There’s a moment where she clicks, orders pizza,
+          and it felt like magic — not the pizza, the <em>idea</em>.
+        </p>
+        <p>
+          It was the first time I remember thinking: “One day, we’ll really be able to do things like that —
+          instantly, from anywhere — like the computer understands what you want.”
+        </p>
+        <p>
+          That little scene became a quiet promise to myself. I didn’t know what the technology would be called,
+          or how it would work. I just knew I wanted to live long enough to see it.
+        </p>
+
+        <div class="quote">
+          And now here we are: tools that can write, search, reason, build — and sometimes surprise you.
+          Not because they’re perfect, but because they make the future feel close enough to touch.
+        </div>
+
+        <footer class="site-footer">
+          <div>© 2026 Kim Anderson · AML · Fraud Investigation · Digital Assets · AI Tools</div>
+          <div>Built with GitHub Pages and Curiosity</div>
+          <div class="small">
+            This site is not affiliated with or endorsed by any rights holders. All trademarks and copyrighted
+            materials belong to their respective owners.
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+
 <script>
+  // Elements
+  const gate = document.getElementById("gate");
+  const story = document.getElementById("story");
+
+  const enterLink = document.getElementById("enterLink");
+
   const overlay = document.getElementById("overlay");
   const closeBtn = document.getElementById("closeBtn");
   const startBtn = document.getElementById("startBtn");
   const stopBtn = document.getElementById("stopBtn");
   const statusEl = document.getElementById("status");
-
   const audio = document.getElementById("mozartAudio");
 
+  // Audio fade-in state
   let started = false;
   let fadeTimer = null;
 
-  function setStatus(msg) {
-    statusEl.textContent = msg || "";
-  }
+  function setStatus(msg) { statusEl.textContent = msg || ""; }
 
   function clearFade() {
-    if (fadeTimer) {
-      clearInterval(fadeTimer);
-      fadeTimer = null;
-    }
+    if (fadeTimer) { clearInterval(fadeTimer); fadeTimer = null; }
   }
 
-  // Smooth fade-in to target volume
-  async function startWithFadeIn(durationMs = 4000, targetVolume = 1) {
+  async function startWithFadeIn(durationMs = 4500, targetVolume = 1) {
     if (started) return;
     started = true;
 
@@ -201,10 +392,10 @@
     audio.volume = 0;
 
     try {
-      await audio.play(); // allowed after user interaction
+      await audio.play();
     } catch (err) {
       started = false;
-      setStatus("Audio couldn’t start. Try tapping “Start Music”.");
+      setStatus("Tap/click anywhere to start the music.");
       return;
     }
 
@@ -218,9 +409,7 @@
     fadeTimer = setInterval(() => {
       v = Math.min(targetVolume, v + step);
       audio.volume = v;
-      if (v >= targetVolume) {
-        clearFade();
-      }
+      if (v >= targetVolume) clearFade();
     }, stepMs);
   }
 
@@ -233,36 +422,63 @@
     setStatus("Stopped.");
   }
 
-  function closePopup() {
-    stopAudio();
-    overlay.style.display = "none";
-    overlay.setAttribute("aria-hidden", "true");
+  function openPopup() {
+    overlay.classList.add("is-open");
+    overlay.setAttribute("aria-hidden", "false");
+    setStatus("Loading…");
+
+    // Try to start immediately (may be blocked); fallback is first click handler
+    startWithFadeIn(4500, 1);
   }
 
-  // Browser-safe: first click anywhere triggers audio (one time)
+  function showStoryPage() {
+    // Hide gate and show story
+    gate.style.display = "none";
+    story.classList.add("is-visible");
+
+    // Optional: update title
+    document.title = "How I Fell in Love With AI";
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+
+  function closePopup() {
+    stopAudio();
+    overlay.classList.remove("is-open");
+    overlay.setAttribute("aria-hidden", "true");
+    showStoryPage();
+  }
+
+  // Guaranteed fallback: first user interaction anywhere starts music (once)
   function firstInteractionStart() {
     startWithFadeIn(4500, 1);
     document.removeEventListener("pointerdown", firstInteractionStart);
     document.removeEventListener("keydown", firstInteractionStartKey);
   }
-
   function firstInteractionStartKey(e) {
-    // allow Enter/Space too
     if (e.key === "Enter" || e.key === " ") firstInteractionStart();
   }
-
   document.addEventListener("pointerdown", firstInteractionStart, { passive: true });
   document.addEventListener("keydown", firstInteractionStartKey);
 
-  // Buttons
+  // Enter link triggers popup
+  enterLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    openPopup();
+  });
+
+  // Modal controls
+  closeBtn.addEventListener("click", closePopup);
   startBtn.addEventListener("click", () => startWithFadeIn(4500, 1));
   stopBtn.addEventListener("click", stopAudio);
-  closeBtn.addEventListener("click", closePopup);
 
-  // ESC closes popup
+  // ESC closes popup if open
   window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && overlay.style.display !== "none") closePopup();
+    if (e.key === "Escape" && overlay.classList.contains("is-open")) {
+      closePopup();
+    }
   });
 </script>
+
 </body>
 </html>
