@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Enter</title>
+  <title>Home</title>
 
   <style>
     :root{
@@ -14,7 +14,6 @@
       --muted2:rgba(255,255,255,.55);
 
       --overlay:rgba(0,0,0,.72);
-      --panel:#0f1020;
 
       --radius:18px;
       --shadow: 0 30px 90px rgba(0,0,0,.6);
@@ -31,7 +30,7 @@
       overflow-x:hidden;
     }
 
-    /* ---------- GATE (Door screen) ---------- */
+    /* ---------- HOME / DOOR ONLY ---------- */
     .gate{
       min-height:100vh;
       display:grid;
@@ -39,66 +38,8 @@
       padding: 32px 16px;
     }
 
-    .gate-wrap{
-      width: min(980px, 100%);
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 22px;
-      align-items:center;
-    }
-
-    @media (max-width: 900px){
-      .gate-wrap{ grid-template-columns: 1fr; }
-    }
-
-    .gate-copy{
-      border-radius: 20px;
-      border: var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: var(--shadow);
-      padding: 24px;
-    }
-
-    .gate-copy h1{
-      margin:0 0 10px;
-      font-size: clamp(28px, 3.5vw, 42px);
-      letter-spacing:.2px;
-    }
-    .gate-copy p{
-      margin: 0 0 14px;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 62ch;
-    }
-
-    .gate-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 12px;
-    }
-
-    .enter-btn{
-      border:0;
-      border-radius: 14px;
-      padding: 12px 16px;
-      font-weight: 750;
-      cursor: pointer;
-      background: #fff;
-      color: #0b0b10;
-      transition: .18s ease;
-    }
-    .enter-btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 34px rgba(0,0,0,.35); }
-    .enter-btn:active{ transform: translateY(0); }
-
-    .subhint{
-      margin-top: 10px;
-      font-size: 12px;
-      color: rgba(255,255,255,.45);
-    }
-
-    /* Door scene */
     .door-scene{
+      width: min(520px, 100%);
       border-radius: 20px;
       border: var(--stroke);
       background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.45));
@@ -106,16 +47,16 @@
       padding: 18px;
       display:grid;
       place-items:center;
-      min-height: 360px;
       position: relative;
       overflow:hidden;
     }
 
     .door-stage{
-      width: min(360px, 90%);
+      width: min(360px, 92%);
       aspect-ratio: 3 / 4.2;
       position: relative;
       perspective: 1200px;
+      outline: none;
     }
 
     .door-frame{
@@ -133,10 +74,9 @@
       overflow:hidden;
     }
 
-    /* "Inside" glow behind the door */
     .door-glow{
       position:absolute;
-      inset: 18px 18px 18px 18px;
+      inset: 18px;
       border-radius: 12px;
       background: radial-gradient(220px 260px at 60% 50%, rgba(140,120,255,.32), rgba(0,0,0,0) 65%);
       opacity: .25;
@@ -163,21 +103,20 @@
       box-shadow:
         inset 0 0 0 2px rgba(0,0,0,.20),
         0 18px 50px rgba(0,0,0,.45);
+      cursor: pointer;
     }
 
-    /* Door panels */
     .door::before{
       content:"";
       position:absolute;
       inset: 18px;
       border-radius: 10px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.18));
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.18));
       border: 1px solid rgba(255,255,255,.10);
       box-shadow: inset 0 0 0 10px rgba(0,0,0,.16);
+      pointer-events:none;
     }
 
-    /* Door handle */
     .knob{
       position:absolute;
       right: 18px;
@@ -188,6 +127,7 @@
       border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #ffe7a8, #b98d2d 60%, #6a4f10 100%);
       box-shadow: 0 8px 20px rgba(0,0,0,.35);
+      pointer-events:none;
     }
     .knob::after{
       content:"";
@@ -200,26 +140,17 @@
       border-radius: 10px;
       background: linear-gradient(180deg, #ffd889, #9a7420);
       box-shadow: 0 6px 16px rgba(0,0,0,.25);
+      pointer-events:none;
     }
 
-    /* OPEN STATE */
-    .door-stage.open .door{
-      transform: rotateY(-70deg);
-    }
-    .door-stage.open .door-glow{
-      opacity: .75;
-    }
+    .door-stage.open .door{ transform: rotateY(-70deg); }
+    .door-stage.open .door-glow{ opacity: .75; }
 
-    .door-caption{
-      position:absolute;
-      bottom: 14px;
-      left: 0;
-      right: 0;
+    .door-note{
+      margin-top: 12px;
       text-align:center;
       font-size: 12px;
-      color: rgba(255,255,255,.55);
-      padding: 0 10px;
-      pointer-events:none;
+      color: rgba(255,255,255,.45);
     }
 
     /* ---------- MODAL (popup) ---------- */
@@ -345,13 +276,14 @@
       max-width: 78ch;
     }
 
+    /* Smaller picture */
     .hero-img{
-      width: 100%;
+      width: min(420px, 100%);
+      margin: 6px auto 10px;
       border-radius: 14px;
       overflow:hidden;
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.25);
-      margin: 4px 0 18px;
     }
     .hero-img img{
       display:block;
@@ -359,7 +291,7 @@
       height:auto;
     }
     .caption{
-      margin-top: 8px;
+      margin: 0 0 18px;
       font-size: 12px;
       color: rgba(255,255,255,.55);
       text-align:center;
@@ -375,7 +307,6 @@
       line-height: 1.65;
     }
 
-    /* Back home link (before footer) */
     .back-home{
       margin-top: 26px;
       text-align: center;
@@ -409,48 +340,23 @@
       font-size: 11px;
       line-height: 1.5;
     }
-
-    .sr-only{
-      position:absolute;
-      width:1px;height:1px;
-      padding:0;margin:-1px;overflow:hidden;
-      clip:rect(0,0,0,0);white-space:nowrap;border:0;
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- GATE PAGE -->
+  <!-- HOME (just the door) -->
   <section class="gate" id="gate">
-    <div class="gate-wrap">
-      <div class="gate-copy">
-        <h1>Welcome.</h1>
-        <p>
-          There is a door here. If you want in, click enter.
-        </p>
-        <p>
-          Tip: audio might not start until your first click. That is a browser rule.
-        </p>
-
-        <div class="gate-actions">
-          <button class="enter-btn" id="enterBtn" type="button">Enter</button>
-        </div>
-
-        <div class="subhint">You can also press Enter after clicking the button.</div>
-      </div>
-
-      <div class="door-scene" aria-hidden="true">
-        <div class="door-stage" id="doorStage">
-          <div class="door-frame">
-            <div class="door-glow"></div>
-            <div class="door">
-              <div class="knob"></div>
-            </div>
+    <div class="door-scene">
+      <div class="door-stage" id="doorStage" tabindex="0" aria-label="Door. Click to open.">
+        <div class="door-frame">
+          <div class="door-glow"></div>
+          <div class="door" id="door">
+            <div class="knob"></div>
           </div>
         </div>
-        <div class="door-caption">Click Enter to open the door.</div>
       </div>
+      <div class="door-note">Click the door.</div>
     </div>
   </section>
 
@@ -459,7 +365,7 @@
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <div class="modal-top">
         <div>
-          <h2 id="modalTitle">Welcome...</h2>
+          <h2 id="modalTitle">Welcome</h2>
           <div class="sub">Click anywhere to start the music with a smooth fade-in.</div>
         </div>
         <button class="close" id="closeBtn" aria-label="Close">×</button>
@@ -484,7 +390,6 @@
       </div>
 
       <div class="status" id="status"></div>
-
       <audio id="mozartAudio" src="Mozart Song.m4a" preload="auto"></audio>
     </div>
   </div>
@@ -494,7 +399,7 @@
     <div class="story-wrap">
       <h1>How I Fell in Love With AI</h1>
       <p class="lead">
-        Long before “AI tools” were normal, I got my first taste of the future from a movie scene that stayed with me.
+        Long before AI tools were normal, I got my first taste of the future from a movie scene that stayed with me.
       </p>
 
       <div class="story-card">
@@ -539,9 +444,9 @@
   const gate = document.getElementById("gate");
   const story = document.getElementById("story");
 
-  // Door + entry
-  const enterBtn = document.getElementById("enterBtn");
+  // Door
   const doorStage = document.getElementById("doorStage");
+  const door = document.getElementById("door");
 
   // Modal
   const overlay = document.getElementById("overlay");
@@ -554,9 +459,9 @@
   // Back home
   const backHomeLink = document.getElementById("backHomeLink");
 
-  // Audio fade-in state
   let started = false;
   let fadeTimer = null;
+  let doorLocked = false;
 
   function setStatus(msg) { statusEl.textContent = msg || ""; }
 
@@ -572,7 +477,7 @@
     audio.volume = 0;
 
     try {
-      await audio.play(); // may be blocked until user gesture
+      await audio.play();
     } catch (err) {
       started = false;
       setStatus("Tap or click anywhere to start the music.");
@@ -606,7 +511,6 @@
     overlay.classList.add("is-open");
     overlay.setAttribute("aria-hidden", "false");
     setStatus("Loading...");
-    // Try immediately; if blocked, the first-click handler will start it
     startWithFadeIn(4500, 1);
   }
 
@@ -624,7 +528,7 @@
     showStoryPage();
   }
 
-  // Guaranteed fallback: first interaction anywhere starts music once
+  // Start music on first user interaction (once)
   function firstInteractionStart() {
     startWithFadeIn(4500, 1);
     document.removeEventListener("pointerdown", firstInteractionStart);
@@ -636,22 +540,18 @@
   document.addEventListener("pointerdown", firstInteractionStart, { passive: true });
   document.addEventListener("keydown", firstInteractionStartKey);
 
-  // Door opening then popup
-  function enterFlow() {
-    // open door animation
-    doorStage.classList.add("open");
+  // Door flow: click door -> open -> popup
+  function doorFlow() {
+    if (doorLocked) return;
+    doorLocked = true;
 
-    // after door opens, show popup
-    setTimeout(() => {
-      openPopup();
-    }, 850);
+    doorStage.classList.add("open");
+    setTimeout(() => openPopup(), 850);
   }
 
-  enterBtn.addEventListener("click", enterFlow);
-
-  // Support pressing Enter when button focused
-  enterBtn.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") enterFlow();
+  door.addEventListener("click", doorFlow);
+  doorStage.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") doorFlow();
   });
 
   // Modal controls
@@ -659,7 +559,6 @@
   startBtn.addEventListener("click", () => startWithFadeIn(4500, 1));
   stopBtn.addEventListener("click", stopAudio);
 
-  // ESC closes popup if open
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && overlay.classList.contains("is-open")) {
       closePopupToStory();
@@ -670,15 +569,14 @@
   backHomeLink.addEventListener("click", (e) => {
     e.preventDefault();
 
-    // Hide story, show gate
     story.classList.remove("is-visible");
     gate.style.display = "grid";
 
-    // Reset door state
+    // Reset door and lock
     doorStage.classList.remove("open");
+    doorLocked = false;
 
-    // Reset title and scroll
-    document.title = "Enter";
+    document.title = "Home";
     window.scrollTo({ top: 0, behavior: "instant" });
   });
 </script>
