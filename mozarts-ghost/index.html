@@ -1,111 +1,268 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mozart Popup Experience</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mozart Ghost Popup</title>
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
-  height: 100vh;
-  display: grid;
-  place-items: center;
-}
+  <style>
+    :root{
+      --overlay: rgba(0,0,0,.72);
+      --card: #0b0b10;
+      --text: #f5f5f7;
+      --muted: rgba(255,255,255,.72);
+      --btn: #ffffff;
+      --btnText: #0b0b10;
+      --radius: 16px;
+    }
 
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.65);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:#111;
+      color: var(--text);
+    }
 
-.modal {
-  background: white;
-  padding: 30px;
-  border-radius: 14px;
-  width: 90%;
-  max-width: 420px;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,.3);
-  animation: fadeIn .5s ease;
-}
+    .modal-overlay{
+      position:fixed;
+      inset:0;
+      background: var(--overlay);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:9999;
+    }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    .modal{
+      width:min(720px, 100%);
+      background: linear-gradient(180deg, #12121a, #07070c);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 90px rgba(0,0,0,.6);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.08);
+      transform: translateY(10px);
+      animation: pop .22s ease-out forwards;
+    }
 
-button {
-  margin-top: 20px;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background: #111;
-  color: white;
-  font-weight: bold;
-}
-</style>
+    @keyframes pop { to { transform: translateY(0); } }
+
+    .modal-top{
+      padding: 16px 16px 10px 16px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 10px;
+    }
+
+    h2{
+      margin: 0;
+      font-size: 1.15rem;
+      letter-spacing: .2px;
+    }
+
+    .close{
+      border:0;
+      background: transparent;
+      color: var(--text);
+      font-size: 22px;
+      cursor:pointer;
+      padding: 6px 10px;
+      border-radius: 10px;
+    }
+    .close:hover{ background: rgba(255,255,255,.08); }
+
+    .content{
+      padding: 0 16px 16px 16px;
+      color: var(--muted);
+    }
+
+    .hint{
+      margin: 8px 0 12px;
+      font-size: .95rem;
+    }
+
+    .media-wrap{
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background:#000;
+    }
+
+    video{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      padding: 14px 16px 18px;
+    }
+
+    .btn{
+      border:0;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-primary{
+      background: var(--btn);
+      color: var(--btnText);
+    }
+
+    .btn-ghost{
+      background: rgba(255,255,255,.10);
+      color: var(--text);
+    }
+
+    .status{
+      padding: 0 16px 16px;
+      font-size: .92rem;
+      color: rgba(255,255,255,.75);
+      min-height: 1.2em;
+    }
+  </style>
 </head>
 <body>
 
-<div class="modal-overlay" id="overlay">
-  <div class="modal">
-    <h2>Welcome 🎼</h2>
-    <p>Click anywhere to begin the experience.</p>
-    <button onclick="closePopup()">Close</button>
+  <div class="modal-overlay" id="overlay" aria-hidden="false">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="title">
+      <div class="modal-top">
+        <div>
+          <h2 id="title">Welcome…</h2>
+          <div class="hint">Click anywhere to start the music (smooth fade-in).</div>
+        </div>
+        <button class="close" id="closeBtn" aria-label="Close">×</button>
+      </div>
 
-    <audio id="voiceMemo" src="Mozart Song.m4a" preload="auto"></audio>
+      <div class="content">
+        <div class="media-wrap">
+          <!-- Ghost “picture” (mp4 video). Autoplays muted (allowed), loops, no controls. -->
+          <video
+            id="ghostVideo"
+            src="mozarts ghost.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="startBtn">Start Music</button>
+        <button class="btn btn-ghost" id="stopBtn">Stop</button>
+      </div>
+
+      <div class="status" id="status"></div>
+
+      <!-- Audio (starts after first click) -->
+      <audio id="mozartAudio" src="Mozart Song.m4a" preload="auto"></audio>
+    </div>
   </div>
-</div>
 
 <script>
-const audio = document.getElementById("voiceMemo");
-const overlay = document.getElementById("overlay");
+  const overlay = document.getElementById("overlay");
+  const closeBtn = document.getElementById("closeBtn");
+  const startBtn = document.getElementById("startBtn");
+  const stopBtn = document.getElementById("stopBtn");
+  const statusEl = document.getElementById("status");
 
-let hasStarted = false;
+  const audio = document.getElementById("mozartAudio");
 
-// Elegant Fade-In Function
-function fadeInAudio(audioElement, duration = 3000) {
-  audioElement.volume = 0;
-  audioElement.play();
+  let started = false;
+  let fadeTimer = null;
 
-  const stepTime = 50;
-  const steps = duration / stepTime;
-  const volumeStep = 1 / steps;
-
-  let currentStep = 0;
-
-  const fadeInterval = setInterval(() => {
-    currentStep++;
-    audioElement.volume = Math.min(currentStep * volumeStep, 1);
-
-    if (currentStep >= steps) {
-      clearInterval(fadeInterval);
-      audioElement.volume = 1;
-    }
-  }, stepTime);
-}
-
-// First click anywhere triggers audio
-function startExperience() {
-  if (!hasStarted) {
-    hasStarted = true;
-    fadeInAudio(audio, 4000); // 4 second smooth fade
+  function setStatus(msg) {
+    statusEl.textContent = msg || "";
   }
-}
 
-document.addEventListener("click", startExperience, { once: true });
+  function clearFade() {
+    if (fadeTimer) {
+      clearInterval(fadeTimer);
+      fadeTimer = null;
+    }
+  }
 
-function closePopup() {
-  overlay.style.display = "none";
-}
+  // Smooth fade-in to target volume
+  async function startWithFadeIn(durationMs = 4000, targetVolume = 1) {
+    if (started) return;
+    started = true;
+
+    clearFade();
+    audio.volume = 0;
+
+    try {
+      await audio.play(); // allowed after user interaction
+    } catch (err) {
+      started = false;
+      setStatus("Audio couldn’t start. Try tapping “Start Music”.");
+      return;
+    }
+
+    setStatus("♫ Playing…");
+
+    const stepMs = 50;
+    const steps = Math.max(1, Math.floor(durationMs / stepMs));
+    const step = targetVolume / steps;
+    let v = 0;
+
+    fadeTimer = setInterval(() => {
+      v = Math.min(targetVolume, v + step);
+      audio.volume = v;
+      if (v >= targetVolume) {
+        clearFade();
+      }
+    }, stepMs);
+  }
+
+  function stopAudio() {
+    clearFade();
+    started = false;
+    audio.pause();
+    audio.currentTime = 0;
+    audio.volume = 1;
+    setStatus("Stopped.");
+  }
+
+  function closePopup() {
+    stopAudio();
+    overlay.style.display = "none";
+    overlay.setAttribute("aria-hidden", "true");
+  }
+
+  // Browser-safe: first click anywhere triggers audio (one time)
+  function firstInteractionStart() {
+    startWithFadeIn(4500, 1);
+    document.removeEventListener("pointerdown", firstInteractionStart);
+    document.removeEventListener("keydown", firstInteractionStartKey);
+  }
+
+  function firstInteractionStartKey(e) {
+    // allow Enter/Space too
+    if (e.key === "Enter" || e.key === " ") firstInteractionStart();
+  }
+
+  document.addEventListener("pointerdown", firstInteractionStart, { passive: true });
+  document.addEventListener("keydown", firstInteractionStartKey);
+
+  // Buttons
+  startBtn.addEventListener("click", () => startWithFadeIn(4500, 1));
+  stopBtn.addEventListener("click", stopAudio);
+  closeBtn.addEventListener("click", closePopup);
+
+  // ESC closes popup
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.style.display !== "none") closePopup();
+  });
 </script>
-
 </body>
 </html>
