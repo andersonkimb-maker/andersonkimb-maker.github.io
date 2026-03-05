@@ -12,7 +12,6 @@
       --text:#f5f5f7;
       --muted:rgba(255,255,255,.72);
       --muted2:rgba(255,255,255,.55);
-
       --overlay:rgba(0,0,0,.72);
 
       --radius:18px;
@@ -30,7 +29,7 @@
       overflow-x:hidden;
     }
 
-    /* ---------- HOME / DOOR ONLY ---------- */
+    /* ---------- HOME / CURTAIN ---------- */
     .gate{
       min-height:100vh;
       display:grid;
@@ -38,8 +37,8 @@
       padding: 32px 16px;
     }
 
-    .door-scene{
-      width: min(520px, 100%);
+    .curtain-scene{
+      width: min(560px, 100%);
       border-radius: 20px;
       border: var(--stroke);
       background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.45));
@@ -51,102 +50,72 @@
       overflow:hidden;
     }
 
-    .door-stage{
-      width: min(360px, 92%);
-      aspect-ratio: 3 / 4.2;
-      position: relative;
-      perspective: 1200px;
+    .curtain-stage{
+      position:relative;
+      width: min(420px, 92%);
+      aspect-ratio: 4 / 5;
+      border-radius: 18px;
+      overflow:hidden;
+      cursor:pointer;
       outline: none;
+      border: 1px solid rgba(255,255,255,.10);
+      background: radial-gradient(220px 260px at 50% 45%, rgba(140,120,255,.18), rgba(0,0,0,.0) 65%),
+                  linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.35));
+      box-shadow: inset 0 0 60px rgba(0,0,0,.55);
     }
 
-    .door-frame{
+    .curtain{
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:50%;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #7b0f1a 0px,
+          #7b0f1a 10px,
+          #5a0912 10px,
+          #5a0912 20px
+        );
+      box-shadow: inset -14px 0 40px rgba(0,0,0,.55);
+      transition: transform 1s cubic-bezier(.2,.85,.2,1);
+      will-change: transform;
+    }
+
+    .curtain-left{
+      left:0;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+
+    .curtain-right{
+      right:0;
+      border-left: 1px solid rgba(255,255,255,.08);
+      box-shadow: inset 14px 0 40px rgba(0,0,0,.55);
+    }
+
+    .curtain-stage.open .curtain-left{ transform: translateX(-102%); }
+    .curtain-stage.open .curtain-right{ transform: translateX(102%); }
+
+    .curtain-folds{
       position:absolute;
       inset:0;
-      border-radius: 18px;
-      background:
-        radial-gradient(120px 120px at 50% 12%, rgba(255,255,255,.10), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)),
-        #0b0b14;
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow:
-        inset 0 0 0 12px rgba(0,0,0,.25),
-        inset 0 0 60px rgba(0,0,0,.45);
-      overflow:hidden;
+      background: radial-gradient(circle at 50% 10%, rgba(255,255,255,.10), transparent 55%);
+      opacity:.35;
+      pointer-events:none;
+      mix-blend-mode: screen;
     }
 
-    .door-glow{
+    .curtain-glow{
       position:absolute;
-      inset: 18px;
-      border-radius: 12px;
-      background: radial-gradient(220px 260px at 60% 50%, rgba(140,120,255,.32), rgba(0,0,0,0) 65%);
-      opacity: .25;
-      filter: blur(2px);
-      transition: opacity .6s ease;
+      inset:0;
+      background: radial-gradient(circle at 50% 55%, rgba(140,120,255,.35), transparent 72%);
+      opacity:.28;
+      transition: opacity 1s ease;
       pointer-events:none;
     }
+    .curtain-stage.open .curtain-glow{ opacity:.65; }
 
-    .door{
-      position:absolute;
-      left: 18px;
-      top: 18px;
-      bottom: 18px;
-      width: calc(100% - 36px);
-      border-radius: 12px;
-      transform-origin: left center;
-      transform: rotateY(0deg);
-      transition: transform .85s cubic-bezier(.2,.8,.2,1);
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.08), rgba(0,0,0,.15) 14%, rgba(0,0,0,.25) 85%, rgba(255,255,255,.05)),
-        repeating-linear-gradient(180deg, rgba(255,255,255,.06) 0 6px, rgba(0,0,0,.0) 6px 20px),
-        #3a2c1f;
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow:
-        inset 0 0 0 2px rgba(0,0,0,.20),
-        0 18px 50px rgba(0,0,0,.45);
-      cursor: pointer;
-    }
-
-    .door::before{
-      content:"";
-      position:absolute;
-      inset: 18px;
-      border-radius: 10px;
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.18));
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: inset 0 0 0 10px rgba(0,0,0,.16);
-      pointer-events:none;
-    }
-
-    .knob{
-      position:absolute;
-      right: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ffe7a8, #b98d2d 60%, #6a4f10 100%);
-      box-shadow: 0 8px 20px rgba(0,0,0,.35);
-      pointer-events:none;
-    }
-    .knob::after{
-      content:"";
-      position:absolute;
-      right: -10px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 16px;
-      height: 10px;
-      border-radius: 10px;
-      background: linear-gradient(180deg, #ffd889, #9a7420);
-      box-shadow: 0 6px 16px rgba(0,0,0,.25);
-      pointer-events:none;
-    }
-
-    .door-stage.open .door{ transform: rotateY(-70deg); }
-    .door-stage.open .door-glow{ opacity: .75; }
-
-    .door-note{
+    .curtain-note{
       margin-top: 12px;
       text-align:center;
       font-size: 12px;
@@ -345,18 +314,16 @@
 
 <body>
 
-  <!-- HOME (just the door) -->
+  <!-- HOME (curtain only) -->
   <section class="gate" id="gate">
-    <div class="door-scene">
-      <div class="door-stage" id="doorStage" tabindex="0" aria-label="Door. Click to open.">
-        <div class="door-frame">
-          <div class="door-glow"></div>
-          <div class="door" id="door">
-            <div class="knob"></div>
-          </div>
-        </div>
+    <div class="curtain-scene">
+      <div class="curtain-stage" id="curtainStage" tabindex="0" aria-label="Curtain. Click to open.">
+        <div class="curtain-glow"></div>
+        <div class="curtain curtain-left"></div>
+        <div class="curtain curtain-right"></div>
+        <div class="curtain-folds"></div>
       </div>
-      <div class="door-note">Click the door.</div>
+      <div class="curtain-note">Click the curtain.</div>
     </div>
   </section>
 
@@ -365,7 +332,8 @@
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <div class="modal-top">
         <div>
-          <h2 id="modalTitle">You Found the Secret link!</h2>
+          <h2 id="modalTitle">Welcome</h2>
+          <div class="sub">Click anywhere to start the music with a smooth fade-in.</div>
         </div>
         <button class="close" id="closeBtn" aria-label="Close">×</button>
       </div>
@@ -398,7 +366,7 @@
     <div class="story-wrap">
       <h1>How I Fell in Love With AI</h1>
       <p class="lead">
-        Long before AI tools were a part of normal every day life, I got my first taste of the future from a movie scene that stayed with me.
+        Long before AI tools were normal, I got my first taste of the future from a movie scene that stayed with me.
       </p>
 
       <div class="story-card">
@@ -423,9 +391,9 @@
           Now we have tools that can write, search, reason, and build. The future is not perfect, but it is here.
         </div>
 
-      <div class="back-home">
-  <a href="about.html">← Back to About Me</a>
-</div>
+        <div class="back-home">
+          <a href="about.html">← Back to About Me</a>
+        </div>
 
         <footer class="site-footer">
           <div>© 2026 Kim Anderson · AML · Fraud Investigation · Digital Assets · AI Tools</div>
@@ -443,9 +411,8 @@
   const gate = document.getElementById("gate");
   const story = document.getElementById("story");
 
-  // Door
-  const doorStage = document.getElementById("doorStage");
-  const door = document.getElementById("door");
+  // Curtain
+  const curtainStage = document.getElementById("curtainStage");
 
   // Modal
   const overlay = document.getElementById("overlay");
@@ -455,12 +422,9 @@
   const statusEl = document.getElementById("status");
   const audio = document.getElementById("mozartAudio");
 
-  // Back home
-  const backHomeLink = document.getElementById("backHomeLink");
-
   let started = false;
   let fadeTimer = null;
-  let doorLocked = false;
+  let curtainLocked = false;
 
   function setStatus(msg) { statusEl.textContent = msg || ""; }
 
@@ -539,18 +503,18 @@
   document.addEventListener("pointerdown", firstInteractionStart, { passive: true });
   document.addEventListener("keydown", firstInteractionStartKey);
 
-  // Door flow: click door -> open -> popup
-  function doorFlow() {
-    if (doorLocked) return;
-    doorLocked = true;
+  // Curtain flow: click curtain -> open -> popup
+  function curtainFlow() {
+    if (curtainLocked) return;
+    curtainLocked = true;
 
-    doorStage.classList.add("open");
-    setTimeout(() => openPopup(), 850);
+    curtainStage.classList.add("open");
+    setTimeout(() => openPopup(), 1000);
   }
 
-  door.addEventListener("click", doorFlow);
-  doorStage.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") doorFlow();
+  curtainStage.addEventListener("click", curtainFlow);
+  curtainStage.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") curtainFlow();
   });
 
   // Modal controls
@@ -563,22 +527,9 @@
       closePopupToStory();
     }
   });
-
-  // Back to Home resets everything
-  backHomeLink.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    story.classList.remove("is-visible");
-    gate.style.display = "grid";
-
-    // Reset door and lock
-    doorStage.classList.remove("open");
-    doorLocked = false;
-
-    document.title = "Home";
-    window.scrollTo({ top: 0, behavior: "instant" });
-  });
 </script>
 
+</body>
+</html>
 </body>
 </html>
